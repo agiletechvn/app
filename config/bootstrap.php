@@ -75,9 +75,6 @@ use Cake\Utility\Security;
 try {
     Configure::config('default', new PhpConfig());
     Configure::load('app', 'default', false);
-    Configure::load('flat_admin', 'default', false);
-    Configure::load('recaptcha', 'default', false);
-    Configure::load('html_minify', 'default', false);
 } catch (\Exception $e) {
     exit($e->getMessage() . "\n");
 }
@@ -152,6 +149,10 @@ Email::configTransport(Configure::consume('EmailTransport'));
 Email::config(Configure::consume('Email'));
 Log::config(Configure::consume('Log'));
 Security::salt(Configure::consume('Security.salt'));
+
+Configure::load('recaptcha', 'default');
+Configure::load('html_minify', 'default');
+Configure::load('flat_admin', 'default');
 
 /**
  * The default crypto extension in 3.0 is OpenSSL.
