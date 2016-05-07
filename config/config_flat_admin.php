@@ -6,7 +6,7 @@ return [
         'version' => '1.0',
         'keywords' => 'crabstudio, anhtuank7c, cakephp3, backend, flat-admin',
         'description' => ' A completed simple admin backend [roles, users, login, logout, register, forgot password etc...]',
-        'logo' => '/flat_admin/img/logo.png'
+        'logo' => '/img/logo.png'
     ],
     'Expired' => [
         'register' => '24 hours',

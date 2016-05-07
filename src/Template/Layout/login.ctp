@@ -9,8 +9,7 @@
     <?=$this->Html->meta('icon')?>
     <?=$this->fetch('meta')?>
     <?=$this->Html->css('bootstrap.min')?>
-    <?=$this->Html->css('font-awesome.min')?>
-    <?=$this->Html->css('style_login')?>
+    <?=$this->Html->css('login_style')?>
     <?=$this->fetch('css')?>
 
 </head>

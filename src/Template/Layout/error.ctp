@@ -9,8 +9,7 @@
     <?=$this->Html->meta('icon')?>
     <?=$this->fetch('meta')?>
     <?=$this->Html->css('bootstrap.min')?>
-    <?=$this->Html->css('font-awesome.min')?>
-    <?=$this->Html->css('style_error')?>
+    <?=$this->Html->css('error_style')?>
     <?=$this->fetch('css')?>
 </head>
 <body>
