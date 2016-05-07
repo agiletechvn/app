@@ -33,6 +33,7 @@ configuration relevant for your application.
 Open terminal/command line then execute migration
 ```
 bin/cake migrations migrate
+bin/cake migrations migrate --plugin EmailQueue
 ```
 
 ## Seed
