@@ -1,5 +1,5 @@
 <?php
-$class = 'message';
+$class = '';
 if (!empty($params['class'])) {
     $class .= ' ' . $params['class'];
 }

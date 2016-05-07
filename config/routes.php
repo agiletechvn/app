@@ -74,6 +74,22 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->fallbacks('DashedRoute');
 });
 
+Router::prefix('admin', function ($routes) {
+    $routes->connect('/', ['controller' => 'Dashboard', 'action' => 'index']);
+    $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
+    $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
+    //Password recovery
+    $routes->connect('/lost-password', ['controller' => 'Users', 'action' => 'lostPassword']);
+    $routes->connect('/reset-password/:token/:email', ['controller' => 'Users', 'action' => 'resetPassword'], ['pass' => ['token', 'email']]);
+    //Register account
+    $routes->connect('/register', ['controller' => 'Users', 'action' => 'register']);
+    $routes->connect('/active-account/:token/:email', ['controller' => 'Users', 'action' => 'activeAccount'], ['pass' => ['token', 'email']]);
+    $routes->connect('/:controller', ['action' => 'index']);
+    $routes->connect('/:controller/:action/*', []);
+
+    $routes->fallbacks('DashedRoute');
+});
+
 /**
  * Load all plugin routes.  See the Plugin documentation on
  * how to customize the loading of plugin routes.

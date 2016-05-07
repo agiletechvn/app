@@ -15,6 +15,7 @@
 namespace App\Controller;
 
 use Cake\Controller\Controller;
+use Cake\Core\Configure;
 use Cake\Event\Event;
 
 /**
@@ -43,6 +44,68 @@ class AppController extends Controller
 
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('Cookie');
+        $this->loadComponent('Auth', [
+            'authorize' => [
+                'TinyAuth.Tiny' => [
+                    'multiRole' => false,
+                    'autoClearCache' => Configure::read('debug'),
+                ],
+            ],
+            'authenticate' => [
+                'Form' => [
+                    'fields' => [
+                        'username' => 'email',
+                        'password' => 'password',
+                    ],
+                    'scope' => ['Users.status' => true],
+                ],
+                'Xety/Cake3CookieAuth.Cookie' => [
+                    'fields' => [
+                        'username' => 'email',
+                        'password' => 'password',
+                    ],
+                    'scope' => ['Users.status' => true],
+                ],
+            ],
+            'loginAction' => [
+                'plugin' => 'FlatAdmin',
+                'controller' => 'Users',
+                'action' => 'login',
+            ],
+            'loginRedirect' => [
+                'plugin' => 'FlatAdmin',
+                'controller' => 'Dashboard',
+                'action' => 'index',
+            ],
+            'logoutRedirect' => [
+                'plugin' => 'FlatAdmin',
+                'controller' => 'Users',
+                'action' => 'login',
+            ],
+            'unauthorizedRedirect' => false,
+            'authError' => __('Did you really think you are allowed to see that?'),
+            'storage' => 'Session',
+        ]);
+    }
+
+    /**
+     * beforeFilter method
+     * Do automatic login
+     * If cannot login, delete cookie
+     * @param Event $event
+     */
+    public function beforeFilter(Event $event)
+    {
+        //Automaticaly Login.
+        if (!$this->Auth->user() && $this->Cookie->read('CookieAuth')) {
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
+            } else {
+                $this->Cookie->delete('CookieAuth');
+            }
+        }
     }
 
     /**

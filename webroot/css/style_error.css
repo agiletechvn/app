@@ -1,0 +1,92 @@
+body {
+    background: #ADADAD
+}
+
+.logo {
+    width: 330px;
+    margin: 68px auto 20px auto;
+    display: block;
+    text-align: center;
+}
+
+.logo img {
+    width: 168px;
+}
+
+.alert {
+    border: none;
+    padding: 0px;
+}
+
+.alert-danger, .alert-success {
+    background: transparent;
+    border: none;
+}
+
+.btn {
+    border-radius: 0px;
+}
+
+.btn-primary, .btn-danger, .btn-info, .btn-warning {
+    padding: 8px 45px;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.btn-primary {
+    background: #333;
+}
+
+.btn-primary:hover {
+    background: #888;
+}
+
+.form-control:focus {
+    border: 1px solid rgba(51, 51, 51, 0.60);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.content {
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 120px;
+    background: #fff;
+}
+
+.error {
+    color: #a94442
+}
+
+@media only screen and (max-width:768px) {
+    .content {
+        margin-top: 50px;
+    }
+}
+
+@media only screen and (max-width:568px) {
+    .content {
+        margin-top: 40px;
+    }
+}
+
+@media only screen and (max-width:480px) {
+    .content {
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width:420px) {
+    .content {
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width:320px) {
+    .content {
+        margin-top: 20px;
+    }
+}

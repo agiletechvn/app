@@ -1,0 +1,164 @@
+body {
+    background: url(/flat_admin/img/login-bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.logo {
+    width: 330px;
+    margin: 68px auto 20px auto;
+    display: block;
+    text-align: center;
+}
+
+.logo img {
+    width: 168px;
+}
+
+.alert {
+    border: none;
+    padding: 0px;
+}
+
+.alert-danger, .alert-success {
+    background: transparent;
+    border: none;
+}
+
+.btn {
+    border-radius: 0px;
+}
+
+.btn-primary, .btn-danger, .btn-info, .btn-warning {
+    padding: 8px 45px;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.btn-primary {
+    background: #333;
+}
+
+.btn-primary:hover {
+    background: #888;
+}
+
+.form-control:focus {
+    border: 1px solid rgba(51, 51, 51, 0.60);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+}
+
+.form-signin label {
+    color: #333
+}
+
+.form-signin a, .form-signin a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.form-signin .form-signin-heading, .form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin .checkbox > input {
+    margin-left: 0px
+}
+
+.form-signin .form-control {
+    font-size: 16px;
+    margin-bottom: 5px;
+    border-radius: 0;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.action-link {
+    width: 330px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    padding: 0px;
+}
+
+.action-link a {
+    color: #fff
+}
+
+.action-link a:nth-child(2n+0) {
+    float: right;
+}
+
+.action-link a:nth-child(2n+1) {
+    float: left;
+    clear: both;
+}
+
+.error {
+    color: #a94442
+}
+
+.error-message>ul {
+    margin-left: -25px
+}
+
+@media only screen and (max-width:768px) {
+    .logo {
+        margin: 58px auto 16px;
+    }
+}
+
+@media only screen and (max-width:568px) {
+    .logo {
+        margin: 26px auto 10px;
+    }
+    .logo img {
+        width: 100px;
+    }
+}
+
+@media only screen and (max-width:480px) {
+    .logo {
+        margin: 20px auto 10px;
+    }
+    .logo img {
+        width: 100px;
+    }
+}
+
+@media only screen and (max-width:420px) {
+    .logo {
+        margin: 28px auto 10px;
+    }
+    .logo img {
+        width: 90px;
+    }
+}
+
+@media only screen and (max-width:320px) {
+    .logo {
+        margin: 18px auto 10px;
+        width: 290px;
+    }
+    .logo img {
+        width: 80px;
+    }
+    .action-link {
+        width: 290px;
+    }
+}

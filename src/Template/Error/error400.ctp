@@ -2,7 +2,8 @@
 use Cake\Core\Configure;
 use Cake\Error\Debugger;
 
-$this->layout = 'error';
+$this->layout = 'default';
+$this->assign('title', h($error->getMessage()));
 
 if (Configure::read('debug')):
     $this->layout = 'dev_error';
@@ -11,31 +12,52 @@ if (Configure::read('debug')):
     $this->assign('templateName', 'error400.ctp');
 
     $this->start('file');
-?>
-<?php if (!empty($error->queryString)) : ?>
-    <p class="notice">
-        <strong>SQL Query: </strong>
-        <?= h($error->queryString) ?>
-    </p>
-<?php endif; ?>
-<?php if (!empty($error->params)) : ?>
+    ?>
+    <?php if (!empty($error->queryString)): ?>
+        <p class="notice">
+            <strong>SQL Query: </strong>
+            <?=h($error->queryString)?>
+        </p>
+    <?php endif;?>
+<?php if (!empty($error->params)): ?>
         <strong>SQL Query Params: </strong>
-        <?php Debugger::dump($error->params) ?>
-<?php endif; ?>
-<?= $this->element('auto_table_warning') ?>
+        <?php Debugger::dump($error->params)?>
+<?php endif;?>
+<?=$this->element('auto_table_warning')?>
 <?php
-    if (extension_loaded('xdebug')):
-        xdebug_print_function_stack();
-    endif;
+if (extension_loaded('xdebug')):
+    xdebug_print_function_stack();
+endif;
 
-    $this->end();
+$this->end();
 endif;
 ?>
-<h2><?= h($message) ?></h2>
-<p class="error">
-    <strong><?= __d('cake', 'Error') ?>: </strong>
-    <?= sprintf(
-        __d('cake', 'The requested address %s was not found on this server.'),
-        "<strong>'{$url}'</strong>"
-    ) ?>
-</p>
+<?php
+if ($this->request->session()->read('Auth.User') && $this->request->params['plugin'] === 'Admin'):
+?>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title"><div class="title"><?=__('Error {0}', $code)?></div></div>
+            </div>
+            <div class="card-body">
+                <p><?=sprintf(__d('cake', 'The requested address %s was not found on this server.'), "<strong>'{$url}'</strong>")?></p>
+                <p>
+                    <?=$this->Html->link('<i class="fa fa-caret-left fa-lg"></i>&nbsp;' . __('Back to home'), ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'btn btn-success', 'escape' => false])?>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+else:
+    $this->layout = 'error';
+    ?>
+    <legend><?=__('Error {0}', $code)?></legend>
+    <p class="error-message">
+        <?=h($error->getMessage())?>
+    </p>
+<?php
+endif;
+?>
