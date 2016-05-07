@@ -26,7 +26,7 @@ $this->Html->addCrumb(__('<%= Inflector::humanize($action) %>'));
                 </div>
             </div>
             <div class="card-body">
-                <?= $this->Form->create($<%= $singularVar %>, ['templates' => 'FlatAdmin.template_form_1_column']) ?>
+                <?= $this->Form->create($<%= $singularVar %>, ['templates' => 'template_form_1_column']) ?>
         <?php
 <%
         foreach ($fields as $field) {
