@@ -53,6 +53,14 @@ Default users:
 
 - admin@example.com/admin@1234
 
+## Bake
+
+You can use bake to generate CRUD code, then you're ready to use.
+
+```
+bin/cake bake all Posts --prefix admin
+```
+
 ## Add menu to the backend
 
 Edit `config/flat_admin.php` as bellow
@@ -90,3 +98,33 @@ Edit `config/flat_admin.php` as bellow
 [CookieAuth](https://github.com/Xety/Cake3-CookieAuth)
 
 [Search](https://github.com/friendsofcake/search)
+
+## Free Backend Template:
+
+This skeleton use [Flat Admin v2](https://github.com/tui2tone/flat-admin-bootstrap-templates) as backend template
+
+========
+# Demo
+
+Login
+![Login page](http://i.imgur.com/OYwbXOQ.png)
+
+Lost password
+![Lost password](http://i.imgur.com/JUyTJKi.png)
+
+Register
+![Register](http://i.imgur.com/UNxAcHr.png)
+
+# CRUD
+
+Index
+![Index](http://img.prntscr.com/img?url=http://i.imgur.com/YirtdcJ.png)
+
+Add
+![Add](http://i.imgur.com/NRJ5rn1.png)
+
+Edit
+![Edit](http://i.imgur.com/4Hl8sbG.png)
+
+View
+![View](http://i.imgur.com/yHopFTc.png)

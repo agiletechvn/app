@@ -36,9 +36,7 @@ class Initial extends AbstractMigration
                 'limit' => null,
                 'null' => true,
             ])
-            ->addIndex(['alias'],
-                ['unique' => true]
-            )
+            ->addIndex(['alias'], ['unique' => true])
             ->create();
 
         $table = $this->table('users');
