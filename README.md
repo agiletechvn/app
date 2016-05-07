@@ -115,6 +115,9 @@ Lost password
 Register
 ![Register](http://i.imgur.com/UNxAcHr.png)
 
+Maintenance mode
+![Maintenance mode](http://i.imgur.com/gtE7lwb.png)
+
 # CRUD
 
 Index

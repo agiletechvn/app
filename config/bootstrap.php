@@ -230,3 +230,5 @@ Plugin::load('Recaptcha', ['bootstrap' => true]);
 Plugin::load('EmailQueue', ['bootstrap' => true]);
 Plugin::load('Xety/Cake3CookieAuth');
 Plugin::load('Search');
+
+DispatcherFactory::add('Maintenance');
