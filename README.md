@@ -27,3 +27,39 @@ configuration relevant for your application.
 
 Read and edit `config/flat_admin.php`, `config/recaptcha.php`, `config/html_minify.php` and setup any other
 configuration relevant for your application.
+
+## Migration
+
+Open terminal/command line then execute migration
+```
+bin/cake migrations migrate
+```
+
+## Seed
+
+Open terminal/command line then execute migration
+```
+bin/cake migrations seed
+```
+
+Default roles:
+
+- Admin
+- Manager
+- Member
+
+Default users:
+
+- admin@example.com/admin@1234
+
+## Included Plugins
+
+[TinyAuth](github.com/dereuromark/cakephp-tinyauth)
+
+[MinifyHtml](https://github.com/WyriHaximus/MinifyHtml)
+
+[EmailQueue](https://github.com/crabstudio/emailqueue)
+
+[CookieAuth](https://github.com/Xety/Cake3-CookieAuth)
+
+[Search](https://github.com/friendsofcake/search)
