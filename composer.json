@@ -1,7 +1,7 @@
 {
-    "name": "cakephp/app",
+    "name": "crabstudio/app",
     "description": "CakePHP skeleton app",
-    "homepage": "http://cakephp.org",
+    "homepage": "http://crabstudio.info",
     "type": "project",
     "license": "MIT",
     "require": {
