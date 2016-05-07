@@ -65,14 +65,14 @@ Edit `config/flat_admin.php` as bellow
             //link
             [
                 '<span class="icon fa fa-edit"></span><span class="title">' . __('Posts') . '</span>', 
-                ['plugin' => 'FlatAdmin', 'controller' => 'Posts', 'action' => 'index']
+                ['prefix' => 'admin', 'controller' => 'Posts', 'action' => 'index']
             ],
             //group link
             [
                 '<span class="icon fa fa-cogs"></span><span class="title">' . __('System') . '</span>',
                 [
-                    [__('Role'), ['plugin' => 'FlatAdmin', 'controller' => 'Roles', 'action' => 'index']],
-                    [__('User'), [''plugin' => 'FlatAdmin', controller' => 'Users', 'action' => 'index']],
+                    [__('Role'), ['prefix' => 'admin', 'controller' => 'Logs', 'action' => 'index']],
+                    [__('User'), ['prefix' => 'admin', controller' => 'Schedules', 'action' => 'index']],
                 ]
             ],
         ],
