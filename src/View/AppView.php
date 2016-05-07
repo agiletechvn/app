@@ -40,7 +40,7 @@ class AppView extends View
         if ($this->request->prefix === 'admin') {
             $this->loadHelper('Menu');
             if ($this->request->action === 'index') {
-                $this->loadHelper('Paginator' => ['templates' => 'template_paginator']);
+                $this->loadHelper('Paginator', ['templates' => 'template_paginator']);
             }
         }
     }
