@@ -53,6 +53,32 @@ Default users:
 
 - admin@example.com/admin@1234
 
+## Add menu to the backend
+
+Edit `config/flat_admin.php` as bellow
+
+```
+<?php
+// You can add more menu to the sidebar like this
+    'Menu' => [
+        'Side' => [
+            //link
+            [
+                '<span class="icon fa fa-edit"></span><span class="title">' . __('Posts') . '</span>', 
+                ['plugin' => 'FlatAdmin', 'controller' => 'Posts', 'action' => 'index']
+            ],
+            //group link
+            [
+                '<span class="icon fa fa-cogs"></span><span class="title">' . __('System') . '</span>',
+                [
+                    [__('Role'), ['plugin' => 'FlatAdmin', 'controller' => 'Roles', 'action' => 'index']],
+                    [__('User'), [''plugin' => 'FlatAdmin', controller' => 'Users', 'action' => 'index']],
+                ]
+            ],
+        ],
+    ],
+```
+
 ## Included Plugins
 
 [TinyAuth](github.com/dereuromark/cakephp-tinyauth)
