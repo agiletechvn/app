@@ -72,7 +72,7 @@ Edit `config/flat_admin.php` as bellow
                 '<span class="icon fa fa-cogs"></span><span class="title">' . __('System') . '</span>',
                 [
                     [__('Role'), ['prefix' => 'admin', 'controller' => 'Logs', 'action' => 'index']],
-                    [__('User'), ['prefix' => 'admin', controller' => 'Schedules', 'action' => 'index']],
+                    [__('User'), ['prefix' => 'admin', 'controller' => 'Schedules', 'action' => 'index']],
                 ]
             ],
         ],
