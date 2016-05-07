@@ -13,16 +13,16 @@ use Cake\Core\Configure;
             <ul class="nav navbar-nav">
             <?php
                 echo $this->Menu->link('<span class="icon fa fa-tachometer"></span><span class="title">' . __('Dashboard') . '</span>', 
-                    ['plugin' => 'FlatAdmin', 'controller' => 'Dashboard', 'action' => 'index'],
+                    ['prefix' => 'admin', 'controller' => 'Dashboard', 'action' => 'index'],
                     ['escape' => false]
                 );
                 echo $this->Menu->groupLink('<span class="icon fa fa-cogs"></span><span class="title">' . __('System') . '</span>',
                     [
-                        [__('Role'), ['plugin' => 'FlatAdmin', 'controller' => 'Roles', 'action' => 'index']],
-                        [__('User'), ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'index']],
+                        [__('Role'), ['prefix' => 'admin', 'controller' => 'Roles', 'action' => 'index']],
+                        [__('User'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'index']],
                     ]
                 );
-                $navbar_sides = Configure::read('FlatAdmin.Menu.Side');
+                $navbar_sides = Configure::read('Menu.Side');
                 foreach ($navbar_sides as $k => $v) {
                     if (isset($v[1][0]) && is_array($v[1][0])) {
                         echo $this->Menu->groupLink($v[0], $v[1], ['escape' => false]);

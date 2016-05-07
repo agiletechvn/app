@@ -1,6 +1,6 @@
 <?php
 $this->assign('title', __('Active account'));
-$this->layout = 'FlatAdmin.login';
+$this->layout = 'login';
 ?>
 <?=$this->Form->create($user, ['class' => 'form-signin'])?>
     <?=$this->Flash->render()?>
@@ -20,6 +20,6 @@ $this->layout = 'FlatAdmin.login';
     <?= $this->Form->input(__('Active'), ['type' => 'submit', 'class' => 'btn btn-primary'])?>
 <?=$this->Form->end()?>
 <dir class="action-link">
-    <?= $this->Html->link(__('Login'), ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'login'])?>
-    <?= $this->Html->link(__('Lost password?'), ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'lostPassword'])?>
+    <?= $this->Html->link(__('Login'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'login'])?>
+    <?= $this->Html->link(__('Lost password?'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'lostPassword'])?>
 </div>

@@ -3,7 +3,7 @@ $this->assign('title', __('Login'));
 $templates = [
     'nestingLabel' => '{{hidden}}{{input}}<label{{attrs}}>{{text}}</label>',
 ];
-$this->layout = 'FlatAdmin.login';
+$this->layout = 'login';
 ?>
 <?=$this->Form->create(null, ['templates' => $templates, 'class' => 'form-signin'])?>
     <?=$this->Flash->render()?>
@@ -20,6 +20,6 @@ $this->layout = 'FlatAdmin.login';
     <?=$this->Form->input(__('Login'), ['type' => 'submit', 'class' => 'btn btn-primary'])?>
 <?=$this->Form->end()?>
 <dir class="action-link">
-    <?=$this->Html->link(__('Lost password?'), ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'lostPassword'])?>
-    <?=\Cake\Core\Configure::read('FlatAdmin.AllowRegister')?$this->Html->link(__('Register'), ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'register']):''?>
+    <?=$this->Html->link(__('Lost password?'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'lostPassword'])?>
+    <?=\Cake\Core\Configure::read('AllowRegister')?$this->Html->link(__('Register'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'register']):''?>
 </dir>

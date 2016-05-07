@@ -8,9 +8,9 @@
     </title>
     <?=$this->Html->meta('icon')?>
     <?=$this->fetch('meta')?>
-    <?=$this->Html->css('FlatAdmin.bootstrap.min')?>
-    <?=$this->Html->css('FlatAdmin.font-awesome.min')?>
-    <?=$this->Html->css('FlatAdmin.style_error')?>
+    <?=$this->Html->css('bootstrap.min')?>
+    <?=$this->Html->css('font-awesome.min')?>
+    <?=$this->Html->css('style_error')?>
     <?=$this->fetch('css')?>
 </head>
 <body>

@@ -4,7 +4,7 @@
             <button type="button" class="navbar-expand-toggle">
                 <i class="fa fa-bars icon"></i>
             </button>
-            <?=$this->Html->getCrumbList(['class' => 'breadcrumb navbar-breadcrumb', 'firstClass' => false, 'lastClass' => 'active'], ['text' => __('Dashboard'), 'url' => ['plugin' => 'FlatAdmin', 'controller' => 'Dashboard', 'action' => 'index'], 'escape' => false])?>
+            <?=$this->Html->getCrumbList(['class' => 'breadcrumb navbar-breadcrumb', 'firstClass' => false, 'lastClass' => 'active'], ['text' => __('Dashboard'), 'url' => ['prefix' => 'admin', 'controller' => 'Dashboard', 'action' => 'index'], 'escape' => false])?>
             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                 <i class="fa fa-th icon"></i>
             </button>
@@ -64,8 +64,8 @@
                             <h4 class="username"><?=h($this->request->session()->read('Auth.User.full_name'))?></h4>
                             <p><?=h($this->request->session()->read('Auth.User.email'))?></p>
                             <div class="btn-group margin-bottom-2x" role="group">
-                                <?=$this->Html->link('<i class="fa fa-user"></i>&nbsp;' . __('Profile'), ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'profile'], ['class' => 'btn btn-default', 'style' => 'margin-right: 5px', 'escape' => false])?>
-                                <?=$this->Html->link('<i class="fa fa-sign-out"></i>&nbsp;' . __('Logout'), ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'logout'], ['class' => 'btn btn-default', 'escape' => false])?>
+                                <?=$this->Html->link('<i class="fa fa-user"></i>&nbsp;' . __('Profile'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'profile'], ['class' => 'btn btn-default', 'style' => 'margin-right: 5px', 'escape' => false])?>
+                                <?=$this->Html->link('<i class="fa fa-sign-out"></i>&nbsp;' . __('Logout'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'logout'], ['class' => 'btn btn-default', 'escape' => false])?>
                             </div>
                         </div>
                     </li>

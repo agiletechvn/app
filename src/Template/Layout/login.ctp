@@ -8,16 +8,16 @@
     </title>
     <?=$this->Html->meta('icon')?>
     <?=$this->fetch('meta')?>
-    <?=$this->Html->css('FlatAdmin.bootstrap.min')?>
-    <?=$this->Html->css('FlatAdmin.font-awesome.min')?>
-    <?=$this->Html->css('FlatAdmin.style_login')?>
+    <?=$this->Html->css('bootstrap.min')?>
+    <?=$this->Html->css('font-awesome.min')?>
+    <?=$this->Html->css('style_login')?>
     <?=$this->fetch('css')?>
 
 </head>
 <body>
     <div class="container">
         <div class="logo">
-            <?= $this->Html->image(Cake\Core\Configure::read('FlatAdmin.Meta.logo'))?>
+            <?= $this->Html->image(Cake\Core\Configure::read('Meta.logo'))?>
         </div>
         <?=$this->fetch('content')?>
     </div>

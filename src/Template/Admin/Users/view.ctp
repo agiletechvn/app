@@ -1,7 +1,7 @@
 <?php
 $this->assign('title', __('System') . '/' . __('Users') . '/' . __('View'));
 $this->Html->addCrumb(__('System'));
-$this->Html->addCrumb(__('Users'), ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'index']);
+$this->Html->addCrumb(__('Users'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'index']);
 $this->Html->addCrumb(__('View'));
 ?>
 <div class="row">
@@ -42,7 +42,7 @@ $this->Html->addCrumb(__('View'));
                         </tr>
                         <tr>
                             <td><?= __('Status')?></td>
-                            <td><?=$this->Form->postLink($user->status?__('Activated'):__('Disabled'), ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'toggle', $user->id], ['class' => ($user->status?'btn btn-success btn-xs':'btn btn-warning btn-xs'), 'confirm' => __('Are you sure you want to change user status to "{0}"', ($user->status?__('Disabled'):__('Activated')))])?></td>
+                            <td><?=$this->Form->postLink($user->status?__('Activated'):__('Disabled'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'toggle', $user->id], ['class' => ($user->status?'btn btn-success btn-xs':'btn btn-warning btn-xs'), 'confirm' => __('Are you sure you want to change user status to "{0}"', ($user->status?__('Disabled'):__('Activated')))])?></td>
                         </tr>
                         <tr>
                             <td><?= __('Created')?></td>

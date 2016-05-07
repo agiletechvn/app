@@ -2,9 +2,9 @@
 $this->assign('title', __('System') . '/' . __('Users'));
 $this->Html->addCrumb(__('System'));
 $this->Html->addCrumb(__('Users'));
-$this->Html->css('FlatAdmin.bootstrap-datepicker3.min.css', ['block' => true]);
-$this->Html->script('FlatAdmin.bootstrap-datepicker.min.js', ['block' => true]);
-$this->loadHelper('FlatAdmin.Search');
+$this->Html->css('bootstrap-datepicker3.min.css', ['block' => true]);
+$this->Html->script('bootstrap-datepicker.min.js', ['block' => true]);
+$this->loadHelper('Search');
 $this->Html->scriptBlock('$(\'#created\').datepicker({autoclose: true,todayHighlight: true});', ['block' => true]);
 $this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHighlight: true});', ['block' => true]);
 ?>
@@ -64,10 +64,10 @@ $this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHigh
                                 <?=$this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', h($user->full_name)), 'escape' => false])?>
                             </td>
                             <td><?=$this->Number->format($user->id)?></td>
-                            <td><?=$user->has('role') ? $this->Html->link(h($user->role->name), ['plugin' => 'FlatAdmin', 'controller' => 'Roles', 'action' => 'view', $user->role->id]) : ''?></td>
+                            <td><?=$user->has('role') ? $this->Html->link(h($user->role->name), ['prefix' => 'admin', 'controller' => 'Roles', 'action' => 'view', $user->role->id]) : ''?></td>
                             <td><?=h($user->email)?></td>
                             <td><?=h($user->full_name)?></td>
-                            <td><?=$this->Form->postLink($user->status ? __('Activated') : __('Disabled'), ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'toggle', $user->id], ['class' => ($user->status ? 'btn btn-success btn-xs' : 'btn btn-warning btn-xs'), 'confirm' => __('Are you sure you want to change user status to "{0}"', ($user->status ? __('Disabled') : __('Activated')))])?></td>
+                            <td><?=$this->Form->postLink($user->status ? __('Activated') : __('Disabled'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'toggle', $user->id], ['class' => ($user->status ? 'btn btn-success btn-xs' : 'btn btn-warning btn-xs'), 'confirm' => __('Are you sure you want to change user status to "{0}"', ($user->status ? __('Disabled') : __('Activated')))])?></td>
                             <td><?=$user->created?></td>
                             <td><?=$user->modified?></td>
                         </tr>

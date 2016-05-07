@@ -3,9 +3,9 @@ $this->assign('title', __('System') . '/' . __('Roles'));
 $this->Html->addCrumb(__('System'));
 $this->Html->addCrumb(__('Roles'));
 
-$this->Html->css('FlatAdmin.bootstrap-datepicker3.min.css', ['block' => true]);
-$this->Html->script('FlatAdmin.bootstrap-datepicker.min.js', ['block' => true]);
-$this->loadHelper('FlatAdmin.Search');
+$this->Html->css('bootstrap-datepicker3.min.css', ['block' => true]);
+$this->Html->script('bootstrap-datepicker.min.js', ['block' => true]);
+$this->loadHelper('Search');
 $this->Html->scriptBlock('$(\'#created\').datepicker({autoclose: true,todayHighlight: true});', ['block' => true]);
 $this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHighlight: true});', ['block' => true]);
 ?>

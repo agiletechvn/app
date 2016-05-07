@@ -1,7 +1,7 @@
 <?php
 $this->assign('title', __('System') . '/' . __('Users') . '/' . __('Profile'));
 $this->Html->addCrumb(__('System'));
-$this->Html->addCrumb(__('Users'), ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'index']);
+$this->Html->addCrumb(__('Users'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'index']);
 $this->Html->addCrumb(__('Profile'));
 ?>
 <div class="row">
@@ -24,7 +24,7 @@ $this->Html->addCrumb(__('Profile'));
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="home">
                             <?php
-                                echo $this->Form->create($user, ['templates' => 'FlatAdmin.template_form_1_column']);
+                                echo $this->Form->create($user, ['templates' => 'template_form_1_column']);
                                 echo $this->Form->input('action', ['type' => 'hidden', 'value' => 'edit_profile']);
                                 echo $this->Form->input('id', ['type' => 'hidden']);
                                 echo $this->Form->input('email',['readonly' => true]);
@@ -35,7 +35,7 @@ $this->Html->addCrumb(__('Profile'));
                         </div>
                         <div role="tabpanel" class="tab-pane" id="profile">
                             <?php
-                                echo $this->Form->create($user, ['templates' => 'FlatAdmin.template_form_1_column']);
+                                echo $this->Form->create($user, ['templates' => 'template_form_1_column']);
                                 echo $this->Form->input('action', ['type' => 'hidden', 'value' => 'change_password']);
                                 echo $this->Form->input('id', ['type' => 'hidden']);
                                 echo $this->Form->input('current_password', ['type' => 'password']);

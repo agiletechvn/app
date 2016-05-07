@@ -1,7 +1,7 @@
 <?php
 $this->assign('title', __('System') . '/' . __('Users') . '/' . __('Edit'));
 $this->Html->addCrumb(__('System'));
-$this->Html->addCrumb(__('Users'), ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'index']);
+$this->Html->addCrumb(__('Users'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'index']);
 $this->Html->addCrumb(__('Edit'));
 ?>
 <div class="row">
@@ -20,7 +20,7 @@ $this->Html->addCrumb(__('Edit'));
                 </div>
             </div>
             <div class="card-body">
-                <?= $this->Form->create($user, ['templates' => 'FlatAdmin.template_form_1_column']) ?>
+                <?= $this->Form->create($user, ['templates' => 'template_form_1_column']) ?>
                     <?php
                         echo $this->Form->input('role_id', ['options' => $roles]);
                         echo $this->Form->input('email');

@@ -33,7 +33,7 @@ $this->end();
 endif;
 ?>
 <?php
-if ($this->request->session()->read('Auth.User') && $this->request->params['plugin'] === 'Admin'):
+if ($this->request->session()->read('Auth.User') && $this->request->params['prefix'] === 'admin'):
 ?>
 <div class="row">
     <div class="col-xs-12">

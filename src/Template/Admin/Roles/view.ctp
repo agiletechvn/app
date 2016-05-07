@@ -1,7 +1,7 @@
 <?php
 $this->assign('title', __('System') . '/' . __('Roles') . '/' . __('View'));
 $this->Html->addCrumb(__('System'));
-$this->Html->addCrumb(__('Roles'), ['plugin' => 'FlatAdmin', 'controller' => 'Roles', 'action' => 'index']);
+$this->Html->addCrumb(__('Roles'), ['prefix' => 'admin', 'controller' => 'Roles', 'action' => 'index']);
 $this->Html->addCrumb(__('View'));
 ?>
 <div class="row">
@@ -75,14 +75,14 @@ $this->Html->addCrumb(__('View'));
                     <?php foreach ($role->users as $users): ?>
                     <tr>
                         <td>
-                            <?=$this->Html->link('<i class="fa fa-search"></i>', ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'view', $users->id], ['escape' => false])?>&nbsp;
-                            <?=$this->Html->link('<i class="fa fa-edit"></i>', ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'edit', $users->id], ['escape' => false])?>&nbsp;
-                            <?=$this->Form->postLink('<i class="fa fa-trash"></i>', ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'delete', $users->id], ['confirm' => __('Are you sure you want to delete # {0}?', h($users->full_name)), 'escape' => false])?>
+                            <?=$this->Html->link('<i class="fa fa-search"></i>', ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'view', $users->id], ['escape' => false])?>&nbsp;
+                            <?=$this->Html->link('<i class="fa fa-edit"></i>', ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'edit', $users->id], ['escape' => false])?>&nbsp;
+                            <?=$this->Form->postLink('<i class="fa fa-trash"></i>', ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'delete', $users->id], ['confirm' => __('Are you sure you want to delete # {0}?', h($users->full_name)), 'escape' => false])?>
                         </td>
                         <td><?= h($users->id) ?></td>
                         <td><?= h($users->email) ?></td>
                         <td><?= h($users->full_name) ?></td>
-                        <td><?=$this->Form->postLink($users->status?__('Activated'):__('Disabled'), ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'toggle', $users->id], ['class' => ($users->status?'btn btn-success btn-xs':'btn btn-warning btn-xs'), 'confirm' => __('Are you sure you want to change user status to "{0}"', ($users->status?__('Disabled'):__('Activated')))])?></td>
+                        <td><?=$this->Form->postLink($users->status?__('Activated'):__('Disabled'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'toggle', $users->id], ['class' => ($users->status?'btn btn-success btn-xs':'btn btn-warning btn-xs'), 'confirm' => __('Are you sure you want to change user status to "{0}"', ($users->status?__('Disabled'):__('Activated')))])?></td>
                         <td><?= h($users->created) ?></td>
                         <td><?= h($users->modified) ?></td>
                     </tr>

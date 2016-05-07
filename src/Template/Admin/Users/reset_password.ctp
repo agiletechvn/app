@@ -1,6 +1,6 @@
 <?php
 $this->assign('title', __('Reset password'));
-$this->layout = 'FlatAdmin.login';
+$this->layout = 'login';
 $templates = [
     'nestingLabel' => '{{hidden}}{{input}}<label{{attrs}}>{{text}}</label>',
 ];
@@ -23,6 +23,6 @@ $templates = [
     <?= $this->Form->input(__('Reset'), ['type' => 'submit', 'class' => 'btn btn-primary'])?>
 <?=$this->Form->end()?>
 <div class="action-link">
-    <?= $this->Html->link(__('Login'), ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'login'])?>
-    <?=\Cake\Core\Configure::read('FlatAdmin.AllowRegister')?$this->Html->link(__('Register'), ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'register']):''?>
+    <?= $this->Html->link(__('Login'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'login'])?>
+    <?=\Cake\Core\Configure::read('AllowRegister')?$this->Html->link(__('Register'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'register']):''?>
 </div>

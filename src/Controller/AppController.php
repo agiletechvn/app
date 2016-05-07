@@ -69,17 +69,17 @@ class AppController extends Controller
                 ],
             ],
             'loginAction' => [
-                'plugin' => 'FlatAdmin',
+                'prefix' => 'admin',
                 'controller' => 'Users',
                 'action' => 'login',
             ],
             'loginRedirect' => [
-                'plugin' => 'FlatAdmin',
+                'prefix' => 'admin',
                 'controller' => 'Dashboard',
                 'action' => 'index',
             ],
             'logoutRedirect' => [
-                'plugin' => 'FlatAdmin',
+                'prefix' => 'admin',
                 'controller' => 'Users',
                 'action' => 'login',
             ],
