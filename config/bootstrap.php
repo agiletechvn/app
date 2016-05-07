@@ -75,9 +75,9 @@ use Cake\Utility\Security;
 try {
     Configure::config('default', new PhpConfig());
     Configure::load('app', 'default', false);
-    Configure::load('FlatAdmin.config_flat_admin', 'default', false);
-    Configure::load('FlatAdmin.config_recaptcha', 'default', false);
-    Configure::load('FlatAdmin.config_html_minify', 'default', false);
+    Configure::load('config_flat_admin', 'default', false);
+    Configure::load('config_recaptcha', 'default', false);
+    Configure::load('config_html_minify', 'default', false);
 } catch (\Exception $e) {
     exit($e->getMessage() . "\n");
 }
