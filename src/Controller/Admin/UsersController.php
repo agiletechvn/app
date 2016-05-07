@@ -225,7 +225,7 @@ class UsersController extends AppController
                 'user' => $this->Auth->user(),
                 'url' => full_base_url($this->request)], [
                 'subject' => __('Your account has been deactivated'),
-                'template' => 'FlatAdmin.Users/deactivated',
+                'template' => 'Users/deactivated',
                 'format' => 'html',
                 'layout' => 'default']);
                 return $this->redirect(['action' => 'logout']);
@@ -280,7 +280,7 @@ class UsersController extends AppController
     {
         if ($this->request->is('post')) {
             if ($this->Recaptcha->verify()) {
-                $tokenData = $this->Users->createToken($this->request->data['email'], true, Configure::read('FlatAdmin.Expired.reset_password'));
+                $tokenData = $this->Users->createToken($this->request->data['email'], true, Configure::read('Expired.reset_password'));
                 if ($tokenData) {
                     enqueue($tokenData['user']->email, [
                         'user' => $tokenData['user'],
@@ -288,7 +288,7 @@ class UsersController extends AppController
                         'expired' => $tokenData['expired'],
                         'token' => $tokenData['token']], [
                         'subject' => __('Reset Password'),
-                        'template' => 'FlatAdmin.Users/reset_password',
+                        'template' => 'Users/reset_password',
                         'format' => 'html',
                         'layout' => 'default']);
                         $this->Flash->success(__('Please check your email to create a new password.'));
@@ -319,7 +319,7 @@ class UsersController extends AppController
             throw new ForbiddenException(__('Invalid token. Please read email carefully and try again!'));
         }
 
-        if (!$user->token_created->wasWithinLast(Configure::read('FlatAdmin.Expired.reset_password'))) {
+        if (!$user->token_created->wasWithinLast(Configure::read('Expired.reset_password'))) {
             $this->Flash->error(__('Your request has been expired. Please create a new request!'));
             return $this->redirect(['action' => 'lostPassword']);
         }
@@ -334,7 +334,7 @@ class UsersController extends AppController
                     'user' => $user,
                     'url' => full_base_url($this->request)], [
                     'subject' => __('Your password has been recovered'),
-                    'template' => 'FlatAdmin.Users/password_recovered',
+                    'template' => 'Users/password_recovered',
                     'layout' => 'default',
                     'format' => 'html']);
                     $this->Flash->success(__('Your password has been recovered. You can login right now!'));
@@ -350,7 +350,7 @@ class UsersController extends AppController
      */
     public function register()
     {
-        if (!Configure::read('FlatAdmin.AllowRegister')) {
+        if (!Configure::read('AllowRegister')) {
             throw new ForbiddenException(__('Register function was disabled. Please contact to your administrator.'));
         }
         $user = $this->Users->newEntity();
@@ -364,14 +364,14 @@ class UsersController extends AppController
                 $user->status = false;
                 $user = $this->Users->patchEntity($user, $this->request->data, ['validate' => 'Register']);
                 if ($this->Users->save($user)) {
-                    $tokenData = $this->Users->createToken($user->email, $user->status, Configure::read('FlatAdmin.Expired.register'));
+                    $tokenData = $this->Users->createToken($user->email, $user->status, Configure::read('Expired.register'));
                     enqueue($user->email, [
                         'user' => $user,
                         'url' => full_base_url($this->request),
                         'expired' => $tokenData['expired'],
                         'token' => $tokenData['token']], [
                         'subject' => __('Create account'),
-                        'template' => 'FlatAdmin.Users/register',
+                        'template' => 'Users/register',
                         'format' => 'html',
                         'layout' => 'default']);
                         $this->Flash->success(__('Please check your email to verify account.'));
@@ -402,7 +402,7 @@ class UsersController extends AppController
             throw new ForbiddenException(__('Invalid token. Please read email carefully and try again.'));
         }
 
-        if (!$user->token_created->wasWithinLast(Configure::read('FlatAdmin.Expired.register'))) {
+        if (!$user->token_created->wasWithinLast(Configure::read('Expired.register'))) {
             throw new ForbiddenException(__('Your request has been expired. Please contact to your administrator.'));
         }
         unset($user->password);
@@ -417,7 +417,7 @@ class UsersController extends AppController
                     'user' => $user,
                     'url' => full_base_url($this->request)], [
                     'subject' => __('Your account has been activated'),
-                    'template' => 'FlatAdmin.Users/account_verified',
+                    'template' => 'Users/account_verified',
                     'layout' => 'default',
                     'format' => 'html']);
                     $this->Flash->success(__('Your account has been activated. You can login right now'));
