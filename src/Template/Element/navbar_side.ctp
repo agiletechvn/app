@@ -5,7 +5,7 @@ use Cake\Core\Configure;
     <nav class="navbar navbar-default" role="navigation">
         <div class="side-menu-container">
             <div class="navbar-header">
-                <?= $this->Html->link('<div class="icon fa fa-paper-plane"></div><div class="title">' . h(Configure::read('FlatAdmin.Meta.brandname')) . '</div>', ['plugin' => 'FlatAdmin', 'controller' => 'Dashboard', 'action' => 'index'], ['escape' => false, 'class' => 'navbar-brand'])?>
+                <?= $this->Html->link('<div class="icon fa fa-paper-plane"></div><div class="title">' . h(Configure::read('Meta.brandname')) . '</div>', ['prefix' => 'admin', 'controller' => 'Dashboard', 'action' => 'index'], ['escape' => false, 'class' => 'navbar-brand'])?>
                 <button type="button" class="navbar-expand-toggle pull-right visible-xs">
                     <i class="fa fa-times icon"></i>
                 </button>
@@ -18,8 +18,8 @@ use Cake\Core\Configure;
                 );
                 echo $this->Menu->groupLink('<span class="icon fa fa-cogs"></span><span class="title">' . __('System') . '</span>',
                     [
-                        [__('Role'), ['prefix' => 'admin', 'controller' => 'Roles', 'action' => 'index']],
-                        [__('User'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'index']],
+                        [__('Roles'), ['prefix' => 'admin', 'controller' => 'Roles', 'action' => 'index']],
+                        [__('Users'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'index']],
                     ]
                 );
                 $navbar_sides = Configure::read('Menu.Side');
