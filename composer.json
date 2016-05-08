@@ -30,7 +30,7 @@
         "psr-4": {
             "App\\": "src"
         },
-        "files": ["src\\functions.php"]
+        "files": ["src\\Utility\\functions.php"]
     },
     "autoload-dev": {
         "psr-4": {
