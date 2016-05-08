@@ -57,7 +57,9 @@ $this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHigh
         <tbody>
             <?= $this->Search->generate([['search', ['type' => 'submit', 'class' => 'btn btn-primary', 'style' => 'margin: 0px']],
 <%
+$colspan = 1;
 foreach ($fields as $field):
+    $colspan++;
     echo "['$field'],";
 endforeach;
 %>
@@ -66,7 +68,7 @@ endforeach;
             if($<%= $pluralVar%>->count() == 0):
             ?>
                 <tr>
-                    <td colspan="<%= sizeof($fields) + 1%>" class="text-center"><?= __('No data found')?></td>
+                    <td colspan="<%= $colspan%>" class="text-center"><?= __('No data found')?></td>
                 </tr>
             <?php endif;?>
 
