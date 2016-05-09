@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <?=$this->Html->charset()?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
@@ -12,14 +13,17 @@
     <?=$this->Html->css('//fonts.googleapis.com/css?family=Roboto+Condensed:300,400')?>
     <?=$this->Html->css('//fonts.googleapis.com/css?family=Lato:300,400,700,900')?>
     <!-- CSS Libs -->
-    <?=$this->Html->css('bootstrap.min.css')?>
-    <?=$this->Html->css('font-awesome.min.css')?>
-    <?=$this->Html->css('animate.min.css')?>
+    <?=$this->Html->css('bootstrap.min')?>
+    <?=$this->Html->css('font-awesome.min')?>
+    <?=$this->Html->css('animate.min')?>
     <?=$this->fetch('css')?>
     <!-- CSS App -->
-    <?=$this->Html->css('admin_style.css')?>
-    <?=$this->Html->css('themes/flat-blue.css')?>
-
+    <?=$this->Html->css('admin_style')?>
+    <?=$this->Html->css('themes/flat-blue')?>
+    <!--[if lt IE 9]>
+        <?=$this->Html->script('html5shiv.min')?>
+        <?=$this->Html->script('respond.min')?>
+    <![endif]-->
 </head>
 <body class="flat-blue">
     <div class="app-container">
@@ -39,11 +43,16 @@
         <!-- /. FOOTER  -->
     </div>
 
-    <?=$this->Html->script('jquery.min.js')?>
-    <?=$this->Html->script('bootstrap.min.js')?>
-    <?=$this->Html->script('bootstrap-switch.min.js')?>
-    <?=$this->Html->script('jquery.matchHeight-min.js')?>
-    <?=$this->Html->script('app.js')?>
+    <!--[if lt IE 9]>
+        <?=$this->Html->script('jquery-1.12.3.min')?>
+    <![endif]-->
+    <!--[if (gte IE 9) | (!IE)]><!-->
+        <?=$this->Html->script('jquery.min')?>
+    <![endif]-->
+    <?=$this->Html->script('bootstrap.min')?>
+    <?=$this->Html->script('bootstrap-switch.min')?>
+    <?=$this->Html->script('jquery.matchHeight-min')?>
+    <?=$this->Html->script('app')?>
     <?=$this->fetch('script')?>
 </body>
 </html>

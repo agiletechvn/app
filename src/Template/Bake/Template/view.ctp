@@ -117,8 +117,9 @@ $this->Html->addCrumb(__('View'));
                 <?= $this->Text->autoParagraph(h($<%= $singularVar %>-><%= $field %>)); ?>
             </div>
         </div>
-    </div>
 <% endforeach; %>
+    </div>
+</div>
 <% endif; %>
 <%
 $relations = $associations['HasMany'] + $associations['BelongsToMany'];
@@ -127,42 +128,40 @@ foreach ($relations as $alias => $details):
     $otherPluralHumanName = Inflector::humanize(Inflector::underscore($details['controller']));
     %>
     <?php if (!empty($<%= $singularVar %>-><%= $details['property'] %>)): ?>
-    <div class="col-xs-12">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title">
-                    <div class="title"><?= __('Related <%= $otherPluralHumanName %>') ?></div>
-                </div>
-                <div class="pull-right card-action">
-                    <div class="btn-group" role="group">
-                        <?= $this->Number->format($role->users)?>&nbsp;<?= __('Users')?>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="title"><?= __('Related <%= $otherPluralHumanName %>') ?></div>
                     </div>
                 </div>
-            </div>
-            <div class="card-body no-padding">
-                <table class="table table-striped table-hover" cellspacing="0" width="100%">
-                    <tr>
-                        <th class="actions"><?= __('Actions') ?></th>
+                <div class="card-body no-padding">
+                    <table class="table table-striped table-hover" cellspacing="0" width="100%">
+                        <tr>
+                            <th class="actions"><?= __('Actions') ?></th>
 <% foreach ($details['fields'] as $field): %>
-                        <th><?= __('<%= Inflector::humanize($field) %>') ?></th>
+                            <th><?= __('<%= Inflector::humanize($field) %>') ?></th>
 <% endforeach; %>
-                    </tr>
-            <?php foreach ($<%= $singularVar %>-><%= $details['property'] %> as $<%= $otherSingularVar %>): ?>
-                    <tr>
+                        </tr>
+                    <?php foreach ($<%= $singularVar %>-><%= $details['property'] %> as $<%= $otherSingularVar %>): ?>
+                        <tr>
             <%- $otherPk = "\${$otherSingularVar}->{$details['primaryKey'][0]}"; %>
-                        <td>
-                            <?=$this->Html->link('<i class="fa fa-search"></i>', ['controller' => '<%= $details['controller'] %>', 'action' => 'view', <%= $otherPk %>], ['escape' => false])?>&nbsp;
-                            <?=$this->Html->link('<i class="fa fa-edit"></i>', ['controller' => '<%= $details['controller'] %>', 'action' => 'edit', <%= $otherPk %>], ['escape' => false])?>&nbsp;
-                            <?=$this->Form->postLink('<i class="fa fa-trash"></i>', ['controller' => '<%= $details['controller'] %>', 'action' => 'delete', <%= $otherPk %>], ['confirm' => __('Are you sure you want to delete # {0}?', <%= $otherPk %>), 'escape' => false])?>
-                        </td>
+                            <td>
+                                <?=$this->Html->link('<i class="fa fa-search"></i>', ['controller' => '<%= $details['controller'] %>', 'action' => 'view', <%= $otherPk %>], ['escape' => false])?>&nbsp;
+                                <?=$this->Html->link('<i class="fa fa-edit"></i>', ['controller' => '<%= $details['controller'] %>', 'action' => 'edit', <%= $otherPk %>], ['escape' => false])?>&nbsp;
+                                <?=$this->Form->postLink('<i class="fa fa-trash"></i>', ['controller' => '<%= $details['controller'] %>', 'action' => 'delete', <%= $otherPk %>], ['confirm' => __('Are you sure you want to delete # {0}?', <%= $otherPk %>), 'escape' => false])?>
+                            </td>
             <%- foreach ($details['fields'] as $field): %>
-                        <td><?= h($<%= $otherSingularVar %>-><%= $field %>) ?></td>
+                            <td><?= h($<%= $otherSingularVar %>-><%= $field %>) ?></td>
             <%- endforeach; %>
-                    </tr>
-            <?php endforeach; ?>
-                </table>
-        <?php endif; ?>
+                        </tr>
+                    <?php endforeach; ?>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+    <?php endif; ?>
 <% endforeach; %>
 </div>
