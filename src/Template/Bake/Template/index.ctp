@@ -55,7 +55,7 @@ $this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHigh
             </tr>
         </thead>
         <tbody>
-            <?= $this->Search->generate([['search', ['type' => 'submit', 'class' => 'btn btn-primary', 'style' => 'margin: 0px']],
+            <?= $this->Search->generate([[__('Search'), ['type' => 'submit', 'class' => 'btn btn-primary', 'style' => 'margin: 0px']],
 <%
 $colspan = 1;
 foreach ($fields as $field):
