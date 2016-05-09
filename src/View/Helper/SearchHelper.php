@@ -73,6 +73,7 @@ class SearchHelper extends Helper
             $result .= '</td>';
         }
         $result .= '</tr>';
+        $result .= $this->Form->end();
         return $result;
     }
 }
