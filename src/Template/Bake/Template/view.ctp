@@ -110,17 +110,16 @@ $this->Html->addCrumb(__('View'));
 <% endif; %>
                 </table>
             </div>
+        </div>
 <% if ($groupedFields['text']) : %>
 <% foreach ($groupedFields['text'] as $field) : %>
             <div class="card-body">
                 <h4><?= __('<%= Inflector::humanize($field) %>') ?></h4>
                 <?= $this->Text->autoParagraph(h($<%= $singularVar %>-><%= $field %>)); ?>
             </div>
-        </div>
 <% endforeach; %>
-    </div>
-</div>
 <% endif; %>
+    </div>
 <%
 $relations = $associations['HasMany'] + $associations['BelongsToMany'];
 foreach ($relations as $alias => $details):
@@ -128,7 +127,6 @@ foreach ($relations as $alias => $details):
     $otherPluralHumanName = Inflector::humanize(Inflector::underscore($details['controller']));
     %>
     <?php if (!empty($<%= $singularVar %>-><%= $details['property'] %>)): ?>
-    <div class="row">
         <div class="col-xs-12">
             <div class="card">
                 <div class="card-header">
@@ -161,7 +159,6 @@ foreach ($relations as $alias => $details):
                 </div>
             </div>
         </div>
-    </div>
     <?php endif; ?>
 <% endforeach; %>
 </div>

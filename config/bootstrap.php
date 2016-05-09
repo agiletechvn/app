@@ -150,8 +150,6 @@ Email::config(Configure::consume('Email'));
 Log::config(Configure::consume('Log'));
 Security::salt(Configure::consume('Security.salt'));
 
-Configure::load('recaptcha', 'default');
-Configure::load('html_minify', 'default');
 Configure::load('flat_admin', 'default');
 
 /**
