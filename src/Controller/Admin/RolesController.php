@@ -11,6 +11,10 @@ use App\Controller\AppController;
 class RolesController extends AppController
 {
 
+    /**
+     * Roles Controller
+     * @return void
+     */
     public function initialize()
     {
         parent::initialize();
@@ -23,7 +27,7 @@ class RolesController extends AppController
     /**
      * Index method
      *
-     * @return \Cake\Network\Response|null
+     * @return void
      */
     public function index()
     {
@@ -39,7 +43,7 @@ class RolesController extends AppController
      * View method
      *
      * @param string|null $id Role id.
-     * @return \Cake\Network\Response|null
+     * @return void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)

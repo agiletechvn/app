@@ -31,6 +31,11 @@ class Role extends Entity
         'id' => false,
     ];
 
+    /**
+     * _setAlias
+     * @param string $alias alias
+     * @return string
+     */
     protected function _setAlias($alias)
     {
         return strtolower($alias);

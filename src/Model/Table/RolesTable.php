@@ -1,12 +1,12 @@
 <?php
 namespace App\Model\Table;
 
+use App\Model\Entity\Role;
 use Cake\I18n\FrozenTime;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-use App\Model\Entity\Role;
 
 /**
  * Roles Model

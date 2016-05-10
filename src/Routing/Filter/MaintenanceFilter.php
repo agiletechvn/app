@@ -15,17 +15,16 @@ class MaintenanceFilter extends DispatcherFilter
 
     /**
      * beforeDispatch function
-     * @param Cake\Event\Event $event
+     * @param Cake\Event\Event $event event
+     * @return void
      */
     public function beforeDispatch(Event $event)
     {
         parent::beforeDispatch($event);
         $maintenance = Configure::read('Maintenance');
 
-        /**
-         * Allow ip in the list only.
-         * Allow all if empty restrict ip
-         */
+        // Allow ip in the list only.
+        // Allow all if empty restrict ip
         if (!$maintenance['enable'] || empty($maintenance['allowedIp'])) {
             return;
         }
@@ -46,6 +45,10 @@ class MaintenanceFilter extends DispatcherFilter
         return $response;
     }
 
+    /**
+     * _getView
+     * @return Cake\View\View
+     */
     protected function _getView()
     {
         $view = new \Cake\View\View();
@@ -54,6 +57,10 @@ class MaintenanceFilter extends DispatcherFilter
         return $view;
     }
 
+    /**
+     * _getUserIpAddr
+     * @return string
+     */
     protected function _getUserIpAddr()
     {
         $ip = '0.0.0.0';
@@ -70,9 +77,9 @@ class MaintenanceFilter extends DispatcherFilter
     }
 
     /**
-     * compareIP function apply to ipv4
-     * @param string $userId
-     * @param string $compareIp
+     * _compareIp function
+     * @param int $userIp user Id
+     * @param int $compareIp compare Ip
      * @return bool true|false
      */
     protected function _compareIp($userIp, $compareIp)

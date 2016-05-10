@@ -9,7 +9,6 @@
 <% if ($belongsTo): %>
         $this->paginate = [
             'contain' => [<%= $this->Bake->stringifyList($belongsTo, ['indent' => false]) %>],
-            'templates' => 'template_paginator'
         ];
 <% endif; %>
         $<%= $pluralName %> = $this->paginate($this-><%= $currentModelName %>->find('search', $this-><%= $currentModelName %>->filterParams($this->request->query)));

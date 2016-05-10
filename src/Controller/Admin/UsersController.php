@@ -16,6 +16,11 @@ use Cake\Utility\Security;
 class UsersController extends AppController
 {
 
+    /**
+     * initialize
+     *
+     * @return void
+     */
     public function initialize()
     {
         parent::initialize();
@@ -41,7 +46,7 @@ class UsersController extends AppController
     /**
      * Index method
      *
-     * @return \Cake\Network\Response|null
+     * @return void
      */
     public function index()
     {
@@ -58,7 +63,7 @@ class UsersController extends AppController
      * View method
      *
      * @param string|null $id User id.
-     * @return \Cake\Network\Response|null
+     * @return void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
@@ -236,6 +241,7 @@ class UsersController extends AppController
 
     /**
      * Login function
+     * @return Cake\Network\Response
      */
     public function login()
     {
@@ -266,6 +272,7 @@ class UsersController extends AppController
 
     /**
      * Logout function
+     * @return Cake\Network\Response
      */
     public function logout()
     {
@@ -275,6 +282,7 @@ class UsersController extends AppController
     /**
      * Password recovery
      * $token hash from $user->email . $user->token_created . $user->id
+     * @return Cake\Network\Response
      */
     public function lostPassword()
     {
@@ -304,7 +312,8 @@ class UsersController extends AppController
     /**
      * Reset password
      * @param string $token hash from $user->email . $user->token_created . $user->id
-     * @param string $email
+     * @param string $email email
+     * @return Cake\Network\Response
      */
     public function resetPassword($token = null, $email = null)
     {
@@ -347,6 +356,7 @@ class UsersController extends AppController
     /**
      * Register account
      * $token hash from $user->email . $user->token_created . $user->id
+     * @return Cake\Network\Response
      */
     public function register()
     {
@@ -387,7 +397,8 @@ class UsersController extends AppController
     /**
      * Active Account
      * @param string $token hash from $user->email . $user->token_created . $user->id
-     * @param string $email
+     * @param string $email email
+     * @return Cake\Network\Response
      */
     public function activeAccount($token = null, $email = null)
     {

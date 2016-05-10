@@ -93,7 +93,8 @@ class AppController extends Controller
      * beforeFilter method
      * Do automatic login
      * If cannot login, delete cookie
-     * @param Event $event
+     * @param Cake\Event\Event $event event
+     * @return void
      */
     public function beforeFilter(Event $event)
     {

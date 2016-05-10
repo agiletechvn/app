@@ -28,8 +28,8 @@
 <body class="flat-blue">
     <div class="app-container">
         <div class="row content-container">
-            <?= $this->element('navbar_top')?>
-            <?= $this->element('navbar_side')?>
+            <?= $this->element('Admin/navbar_top')?>
+            <?= $this->element('Admin/navbar_side')?>
             <div class="container-fluid">
                 <div class="side-body">
                     <?=$this->Flash->render()?>
@@ -39,7 +39,7 @@
             </div>
             <!-- /. MAIN CONTENT  -->
         </div>
-        <?= $this->element('footer')?>
+        <?= $this->element('Admin/footer')?>
         <!-- /. FOOTER  -->
     </div>
 

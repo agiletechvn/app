@@ -54,7 +54,7 @@ class SearchHelper extends Helper
 
     /**
      * generate menu function
-     * @param array $fields
+     * @param array $fields array input
      * @return string
      */
     public function generate(array $fields = [])

@@ -1,13 +1,13 @@
 <?php
 namespace App\Model\Table;
 
+use App\Model\Entity\User;
 use Cake\Auth\DefaultPasswordHasher;
 use Cake\I18n\FrozenTime;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Utility\Security;
 use Cake\Validation\Validator;
-use App\Model\Entity\User;
 
 /**
  * Users Model
@@ -231,10 +231,9 @@ class UsersTable extends Table
 
     /**
      * Create token
-     * @param string $email
-     * @param bool $status
-     * @param string $expired
-     *
+     * @param string $email email
+     * @param bool $status status
+     * @param string $expired expired
      * @return array ['token', 'expired']
      */
     public function createToken($email, $status, $expired)
@@ -317,7 +316,7 @@ class UsersTable extends Table
     /**
      * deactive account
      *
-     * @param int $userId
+     * @param int $userId userId
      * @return bool true|false
      */
     public function deactive($userId)
