@@ -16,6 +16,7 @@ class FlatAdminSeeder extends AbstractSeed
      *      email = admin@example.com,
      *      password = admin@1234,
      * ]
+     * @return void
      */
     public function run()
     {

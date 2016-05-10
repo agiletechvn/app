@@ -5,10 +5,10 @@ class Initial extends AbstractMigration
 {
     /**
      * Up function
+     * @return void
      */
     public function up()
     {
-
         $table = $this->table('roles');
         $table
             ->addColumn('alias', 'string', [
@@ -103,6 +103,10 @@ class Initial extends AbstractMigration
             ->update();
     }
 
+    /**
+     * Down function
+     * @return void
+     */
     public function down()
     {
         $this->table('users')
