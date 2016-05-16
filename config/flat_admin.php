@@ -35,4 +35,12 @@ return [
             'factory' => 'WyriHaximus\HtmlCompress\Factory::constructSmallest',
         ],
     ],
+    'SchedulerShell' => [
+        'jobs' => [
+            'EmailSender' => [
+                'interval' => 'PT5M', // each 5 minute do send bulk email
+                'task' => 'EmailSender',
+            ],
+        ],
+    ],
 ];
