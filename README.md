@@ -105,35 +105,49 @@ Edit `config/flat_admin.php` as bellow
 
 [Search](https://github.com/friendsofcake/search)
 
+[Scheduler](https://github.com/trentrichardson/cakephp-scheduler/)
+
 ## Backend Template:
 
-This skeleton use [Flat Admin v2](https://github.com/tui2tone/flat-admin-bootstrap-templates) as backend template
+This skeleton use [Flat Admin v2](https://github.com/tui2tone/flat-admin-bootstrap-templates) as new bake template
 
-========
+You just do bake code, you're good to go.
+
+## Job schedule:
+
+Open crontab `crontab -e` then add cronjob:
+
+```
+*/5 * * * * cd /path/to/app && bin/cake Scheduler.Scheduler
+```
+
+If you want to add more job, you just needed to create Task class inside `app/src/Shell/Taks` then write
+
+to configure:
+
+```
+Configure::write('SchedulerShell.jobs', array(
+    'CleanUp' => array('interval' => 'next day 5:00', 'task' => 'CleanUp'),// tomorrow at 5am
+    'Newsletters' => array('interval' => 'PT15M', 'task' => 'Newsletter') //every 15 minutes
+));
+```
+
 # Demo
 
-Login
 ![Login page](http://i.imgur.com/OYwbXOQ.png)
 
-Lost password
 ![Lost password](http://i.imgur.com/JUyTJKi.png)
 
-Register
 ![Register](http://i.imgur.com/UNxAcHr.png)
 
-Maintenance mode
 ![Maintenance mode](http://i.imgur.com/gtE7lwb.png)
 
 # CRUD
 
-Index
 ![Index](http://img.prntscr.com/img?url=http://i.imgur.com/YirtdcJ.png)
 
-Add
 ![Add](http://i.imgur.com/NRJ5rn1.png)
 
-Edit
 ![Edit](http://i.imgur.com/4Hl8sbG.png)
 
-View
 ![View](http://i.imgur.com/yHopFTc.png)
