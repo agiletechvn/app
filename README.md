@@ -123,7 +123,7 @@ Open crontab `crontab -e` then add cronjob:
 */5 * * * * cd /path/to/app && bin/cake Scheduler.Scheduler
 ```
 
-If you want to add more job, you just needed to create Task class inside `app/src/Shell/Taks` then write
+If you want to add more job, you just needed to create Task class inside `app/src/Shell/Task` then write
 
 to configure:
 
