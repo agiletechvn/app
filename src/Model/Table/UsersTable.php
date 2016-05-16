@@ -47,7 +47,7 @@ class UsersTable extends Table
             ])
             ->add('role_id', 'Search.Value')
             ->add('status', 'Search.Value')
-            ->add('email', 'Search.like', [
+            ->add('email', 'Search.Like', [
                 'before' => true,
                 'after' => true,
                 'field' => [$this->aliasField('email')]

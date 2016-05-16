@@ -62,9 +62,15 @@ else:
     $this->layout = 'error';
     ?>
     <legend><?=__('Error {0}', $code)?></legend>
-    <p class="error-message">
-        <?=h($error->getMessage())?>
-    </p>
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-xs-12">
+            <?= $this->Html->image('sorry.png', ['class' => 'img-responsive'])?>
+        </div>
+        <div class="col-lg-9 col-md-9 col-xs-12">
+            <p class="text-danger"><?=sprintf(__d('cake', 'The requested address %s was not found on this server.'), "<strong>'{$url}'</strong>")?></p>
+            <?=$this->Html->link('< ' . __('Back to home'), ['controller' => 'LandingPage', 'action' => 'index'], ['class' => 'btn btn-success'])?>
+        </div>
+    </div>
 <?php
 endif;
 ?>

@@ -64,8 +64,8 @@
                             <h4 class="username"><?=h($this->request->session()->read('Auth.User.full_name'))?></h4>
                             <p><?=h($this->request->session()->read('Auth.User.email'))?></p>
                             <div class="btn-group margin-bottom-2x" role="group">
-                                <?=$this->Html->link('<i class="fa fa-user"></i>&nbsp;' . __('Profile'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'profile'], ['class' => 'btn btn-default', 'style' => 'margin-right: 5px', 'escape' => false])?>
-                                <?=$this->Html->link('<i class="fa fa-sign-out"></i>&nbsp;' . __('Logout'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'logout'], ['class' => 'btn btn-default', 'escape' => false])?>
+                                <?=$this->Html->link('<i class="fa fa-user"></i>&nbsp;' . __('Profile'), ['controller' => 'Users', 'action' => 'profile'], ['class' => 'btn btn-default', 'style' => 'margin-right: 5px', 'escape' => false])?>
+                                <?=$this->Html->link('<i class="fa fa-sign-out"></i>&nbsp;' . __('Logout'), ['controller' => 'Users', 'action' => 'logout'], ['class' => 'btn btn-default', 'escape' => false])?>
                             </div>
                         </div>
                     </li>

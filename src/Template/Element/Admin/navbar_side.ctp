@@ -18,8 +18,8 @@ use Cake\Core\Configure;
                 );
                 echo $this->Menu->groupLink('<span class="icon fa fa-cogs"></span><span class="title">' . __('System') . '</span>',
                     [
-                        [__('Roles'), ['prefix' => 'admin', 'controller' => 'Roles', 'action' => 'index']],
-                        [__('Users'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'index']],
+                        [__('Roles'), ['controller' => 'Roles', 'action' => 'index']],
+                        [__('Users'), ['controller' => 'Users', 'action' => 'index']],
                     ]
                 );
                 $navbar_sides = Configure::read('Menu.Side');

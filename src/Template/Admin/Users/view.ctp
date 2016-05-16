@@ -1,7 +1,7 @@
 <?php
 $this->assign('title', __('System') . '/' . __('Users') . '/' . __('View'));
 $this->Html->addCrumb(__('System'));
-$this->Html->addCrumb(__('Users'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'index']);
+$this->Html->addCrumb(__('Users'), ['controller' => 'Users', 'action' => 'index']);
 $this->Html->addCrumb(__('View'));
 ?>
 <div class="row">
@@ -16,8 +16,8 @@ $this->Html->addCrumb(__('View'));
                 </div>
                 <div class="pull-right card-action">
                     <div class="btn-group" role="group" aria-label="...">
-                        <?=$this->Html->link('<i class="fa fa-edit"></i>', ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'edit', $user->id], ['escape' => false, 'class' => 'btn btn-warning'])?>
-                        <?=$this->Form->postLink('<i class="fa fa-trash"></i>', ['plugin' => 'FlatAdmin', 'controller' => 'Users', 'action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', h($user->full_name)), 'escape' => false, 'class' => 'btn btn-danger'])?>
+                        <?=$this->Html->link('<i class="fa fa-edit"></i>', ['controller' => 'Users', 'action' => 'edit', $user->id], ['escape' => false, 'class' => 'btn btn-warning'])?>
+                        <?=$this->Form->postLink('<i class="fa fa-trash"></i>', ['controller' => 'Users', 'action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', h($user->full_name)), 'escape' => false, 'class' => 'btn btn-danger'])?>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@ $this->Html->addCrumb(__('View'));
                         </tr>
                         <tr>
                             <td><?= __('Status')?></td>
-                            <td><?=$this->Form->postLink($user->status?__('Activated'):__('Disabled'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'toggle', $user->id], ['class' => ($user->status?'btn btn-success btn-xs':'btn btn-warning btn-xs'), 'confirm' => __('Are you sure you want to change user status to "{0}"', ($user->status?__('Disabled'):__('Activated')))])?></td>
+                            <td><?=$this->Form->postLink($user->status?__('Activated'):__('Disabled'), ['controller' => 'Users', 'action' => 'toggle', $user->id], ['class' => ($user->status?'btn btn-success btn-xs':'btn btn-warning btn-xs'), 'confirm' => __('Are you sure you want to change user status to "{0}"', ($user->status?__('Disabled'):__('Activated')))])?></td>
                         </tr>
                         <tr>
                             <td><?= __('Created')?></td>

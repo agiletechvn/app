@@ -1,7 +1,7 @@
 <?php
 $this->assign('title', __('System') . '/' . __('Roles') . '/' . __('Add'));
 $this->Html->addCrumb(__('System'));
-$this->Html->addCrumb(__('Roles'), ['prefix' => 'admin', 'controller' => 'Roles', 'action' => 'index']);
+$this->Html->addCrumb(__('Roles'), ['controller' => 'Roles', 'action' => 'index']);
 $this->Html->addCrumb(__('Add'));
 ?>
 <div class="row">
