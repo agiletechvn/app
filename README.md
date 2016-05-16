@@ -34,6 +34,8 @@ configuration relevant for your application.
 
 ## Migration
 
+Setup database connection in `config/app.php` first
+
 Open terminal/command line then execute migration
 ```
 bin/cake migrations migrate
