@@ -16,7 +16,7 @@ class AuthHelper extends Helper
     public $helpers = ['Html', 'Form'];
 
     /**
-     * AuthUserHelper::_getUser()
+     * getUser method
      *
      * @return array
      */
@@ -28,7 +28,15 @@ class AuthHelper extends Helper
         return $this->request->session()->read('Auth.User');
     }
 
-    public function link($title, $url, array $options = array(), array $roles = array())
+    /**
+     * link method
+     * @param string $title title
+     * @param array|string $url url
+     * @param array $options options
+     * @param array $roles roles
+     * @return string|bool
+     */
+    public function link($title, $url, array $options = [], array $roles = [])
     {
         if (empty($roles) || $this->hasRoles($roles)) {
             return $this->Html->link($title, $url, $options);
@@ -36,7 +44,15 @@ class AuthHelper extends Helper
         return false;
     }
 
-    public function postLink($title, $url = null, array $options = array(), array $roles = array())
+    /**
+     * postLink method
+     * @param string $title title
+     * @param array|string $url url
+     * @param array $options options
+     * @param array $roles roles
+     * @return string|bool
+     */
+    public function postLink($title, $url = null, array $options = [], array $roles = [])
     {
         if (empty($roles) || $this->hasRoles($roles)) {
             return $this->Form->postLink($title, $url, $options);

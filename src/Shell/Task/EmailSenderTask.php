@@ -13,19 +13,17 @@ use EmailQueue\Model\Table\EmailQueueTable;
  */
 class EmailSenderTask extends Shell
 {
-
-	public $params = [
-		'limit' => 50,
-		'template' => 'default',
-		'layout' => 'default',
-		'stagger' => false,
-		'config' => 'default',
-	];
+    public $params = [
+        'limit' => 50,
+        'template' => 'default',
+        'layout' => 'default',
+        'stagger' => false,
+        'config' => 'default'];
 
     /**
      * main() method.
      *
-     * @return bool|int Success or error code.
+     * @return void
      */
     public function main()
     {
@@ -42,11 +40,11 @@ class EmailSenderTask extends Shell
             $configName = $e->config === 'default' ? $this->params['config'] : $e->config;
             $template = $e->template === 'default' ? $this->params['template'] : $e->template;
             $layout = $e->layout === 'default' ? $this->params['layout'] : $e->layout;
-            $headers = empty($e->headers) ? array() : (array) $e->headers;
-            $theme = empty($e->theme) ? '' : (string) $e->theme;
+            $headers = empty($e->headers) ? [] : (array)$e->headers;
+            $theme = empty($e->theme) ? '' : (string)$e->theme;
             $helpers = ['Html', 'Text', 'Number', 'Url'];
-            $from_email = null;
-            $from_name  = null;
+            $fromEmail = null;
+            $fromName = null;
 
             try {
                 $email = $this->_newEmail($configName);
@@ -77,17 +75,17 @@ class EmailSenderTask extends Shell
                     $sent->addBcc(explode(',', $e->email_bcc));
                 }
                 if (get_class($transport) === 'Cake\Mailer\Transport\SmtpTransport') {
-                    $from_email = $from_name = $transport->config()['username'];
+                    $fromEmail = $fromName = $transport->config()['username'];
                 } else {
                     foreach ($sent->from() as $k => $v) {
-                        $from_email = $k;
-                        $from_name  = $v;
+                        $fromEmail = $k;
+                        $fromName = $v;
                     }
                 }
                 if ($e->email_reply_to) {
                     $sent->replyTo(explode(',', $e->email_reply_to));
                 } else {
-                    $sent->replyTo($from_email, $from_name);
+                    $sent->replyTo($fromEmail, $fromName);
                 }
                 $sent = $sent->send();
             } catch (SocketException $exception) {
@@ -95,10 +93,10 @@ class EmailSenderTask extends Shell
                 $sent = false;
             }
             if ($sent) {
-                $emailQueue->success($e->id, $from_email, $from_email);
+                $emailQueue->success($e->id, $fromEmail, $fromEmail);
                 $this->out('<success>Email ' . $e->id . ' was sent</success>');
             } else {
-                $emailQueue->fail($e->id, $from_email, $from_email);
+                $emailQueue->fail($e->id, $fromEmail, $fromEmail);
                 $this->out('<error>Email ' . $e->id . ' was not sent</error>');
             }
         }
@@ -109,6 +107,7 @@ class EmailSenderTask extends Shell
 
     /**
      * Clears all locked emails in the queue, useful for recovering from crashes.
+     * @return void
      **/
     public function clearLocks()
     {
@@ -117,7 +116,7 @@ class EmailSenderTask extends Shell
 
     /**
      * Returns a new instance of CakeEmail.
-     *
+     * @param array $config config
      * @return Email
      **/
     protected function _newEmail($config)
