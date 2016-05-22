@@ -15,8 +15,8 @@ class MaintenanceFilter extends DispatcherFilter
 
     /**
      * beforeDispatch function
-     * @param Cake\Event\Event $event event
-     * @return void
+     * @param \Cake\Event\Event $event event
+     * @return /Cake/Network/Response|null
      */
     public function beforeDispatch(Event $event)
     {
@@ -26,13 +26,13 @@ class MaintenanceFilter extends DispatcherFilter
         // Allow ip in the list only.
         // Allow all if empty restrict ip
         if (!$maintenance['enable'] || empty($maintenance['allowedIp'])) {
-            return;
+            return null;
         }
         $userIP = $this->_getUserIpAddr();
         $ips = explode(',', trim($maintenance['allowedIp']));
         foreach ($ips as $ip) {
             if ($this->_compareIp($userIP, trim($ip))) {
-                return;
+                return null;
             }
         }
 
@@ -46,20 +46,19 @@ class MaintenanceFilter extends DispatcherFilter
     }
 
     /**
-     * _getView
-     * @return Cake\View\View
+     * getView method
+     * @return /Cake/View/View
      */
     protected function _getView()
     {
         $view = new \Cake\View\View();
-        $view->loadHelper('WyriHaximus/MinifyHtml.MinifyHtml');
         $view->hasRendered = false;
         return $view;
     }
 
     /**
-     * _getUserIpAddr
-     * @return string
+     * getUserIpAddr method
+     * @return int
      */
     protected function _getUserIpAddr()
     {
@@ -77,9 +76,9 @@ class MaintenanceFilter extends DispatcherFilter
     }
 
     /**
-     * _compareIp function
-     * @param int $userIp user Id
-     * @param int $compareIp compare Ip
+     * compareIp function apply to ipv4
+     * @param string $userIp userIp
+     * @param string $compareIp compareIp
      * @return bool true|false
      */
     protected function _compareIp($userIp, $compareIp)

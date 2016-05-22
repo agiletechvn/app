@@ -3,6 +3,7 @@ namespace App\Shell\Task;
 
 use Cake\Console\Shell;
 use Cake\Core\Configure;
+use Cake\Log\Log;
 use Cake\Mailer\Email;
 use Cake\Network\Exception\SocketException;
 use Cake\ORM\TableRegistry;
@@ -13,6 +14,9 @@ use EmailQueue\Model\Table\EmailQueueTable;
  */
 class EmailSenderTask extends Shell
 {
+    /**
+     * @var $params
+     */
     public $params = [
         'limit' => 50,
         'template' => 'default',
@@ -94,10 +98,10 @@ class EmailSenderTask extends Shell
             }
             if ($sent) {
                 $emailQueue->success($e->id, $fromEmail, $fromEmail);
-                $this->out('<success>Email ' . $e->id . ' was sent</success>');
+                Log::info("Email {$e->id} was sent");
             } else {
                 $emailQueue->fail($e->id, $fromEmail, $fromEmail);
-                $this->out('<error>Email ' . $e->id . ' was not sent</error>');
+                Log::info("Email {$e->id} was NOT sent");
             }
         }
         if ($count > 0) {

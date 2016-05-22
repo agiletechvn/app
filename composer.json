@@ -16,7 +16,7 @@
         "wyrihaximus/minify-html": "^1.1",
         "xety/cake3-cookieauth": "1.*",
         "friendsofcake/search": "^1.2",
-        "trentrichardson/cakephp-scheduler": "~3.0"
+        "crabstudio/scheduler": "^3.0"
     },
     "require-dev": {
         "psy/psysh": "@stable",

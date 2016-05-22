@@ -75,7 +75,7 @@ a:hover {
 }
 
 .navbar {
-    z-index: 10001;
+    z-index: 1;
     padding-left: 60px;
     -webkit-transition: all 0.25s;
     transition: all 0.25s;
@@ -276,7 +276,7 @@ a:hover {
 
 .app-container .content-container .side-menu {
     overflow-y: auto;
-    z-index: 100000;
+    z-index: 1;
     position: fixed;
     width: 60px;
     height: 100%;
@@ -980,9 +980,9 @@ body.login-page .login-footer {
     border-top: 0;
 }
 
-.tab-content > div {
+/*.tab-content > div {
     padding: 20px;
-}
+}*/
 
 .tabs-below > .nav-tabs, .tabs-right > .nav-tabs, .tabs-left > .nav-tabs {
     border-bottom: 0;
