@@ -55,7 +55,9 @@ $this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHigh
                         </tr>
                     </thead>
                     <tbody>
-                        <?= $this->Search->generate([[__('Search'), ['type' => 'submit', 'class' => 'btn btn-primary', 'style' => 'margin: 0px']],
+                        <?= $this->Search->generate([
+                            [__('Search'), ['type' => 'submit', 'class' => 'btn btn-primary', 'style' => 'margin: 0px']
+                        ],
             <%
             $colspan = 1;
             foreach ($fields as $field):
@@ -63,7 +65,7 @@ $this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHigh
                 echo "['$field'],";
             endforeach;
             %>
-            ])?>
+                        ])?>
                         <?php
                         if($<%= $pluralVar%>->count() == 0):
                         ?>
@@ -78,8 +80,8 @@ $this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHigh
 %>
                         <tr>
                             <td>
-                                <?= $this->Html->link('<i class="fa fa-search"></i>', ['action' => 'view', <%= $pk %>], ['escape' => false])?>&nbsp;
-                                <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', <%= $pk %>], ['escape' => false])?>&nbsp;
+                                <?= $this->Html->link('<i class="fa fa-search"></i>', ['action' => 'view', <%= $pk %>], ['escape' => false])?>
+                                <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', <%= $pk %>], ['escape' => false])?>
                                 <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', <%= $pk %>], ['confirm' => __('Are you sure you want to delete # {0}?', <%= $pk %>), 'escape' => false])?>
                             </td>
 <%

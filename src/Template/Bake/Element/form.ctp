@@ -27,7 +27,7 @@ $this->Html->addCrumb(__('<%= Inflector::humanize($action) %>'));
             </div>
             <div class="card-body">
                 <?= $this->Form->create($<%= $singularVar %>, ['templates' => 'template_form_1_column']) ?>
-        <?php
+                    <?php
 <%
         foreach ($fields as $field) {
             if (in_array($field, $primaryKey)) {
@@ -67,7 +67,7 @@ $this->Html->addCrumb(__('<%= Inflector::humanize($action) %>'));
             }
         }
 %>
-        ?>
+                    ?>
                     <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']) ?>
                 <?= $this->Form->end() ?>
             </div>

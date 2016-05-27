@@ -276,7 +276,7 @@ a:hover {
 
 .app-container .content-container .side-menu {
     overflow-y: auto;
-    z-index: 1;
+    z-index: 2;
     position: fixed;
     width: 60px;
     height: 100%;
@@ -528,7 +528,7 @@ a:hover {
     content:"\f0dd"
 }
 div.mce-fullscreen {
-    z-index: 200000;
+    z-index: 2;
 }
 /* small screen */
 
@@ -705,8 +705,8 @@ div.mce-fullscreen {
 }
 
 .btn {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    /*margin-top: 5px;*/
+    /*margin-bottom: 5px;*/
     border-radius: 1px;
     border-width: 1px;
     font-family: 'Roboto Condensed', sans-serif;
@@ -734,17 +734,36 @@ div.mce-fullscreen {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
-
 .pagination li:last-child > a, .pagination li:last-child span {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
 }
-
+.form-group label, .input-group label {
+    display: inline;
+}
 .form-control {
     border-radius: 1px;
     box-shadow: none;
 }
-
+.input-group {
+    margin-bottom: 15px;
+}
+.input-group, .form-control {
+    z-index: 1;
+}
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    box-shadow: none;
+    height: 36px;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 33px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 33px;
+}
 .required label:first-child:after {
     content: ' *';
     color: #FA2A00

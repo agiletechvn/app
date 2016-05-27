@@ -9,7 +9,7 @@ return [
     'error' => '<div class="error-message">{{content}}</div>',
     'errorList' => '<ul>{{content}}</ul>',
     'errorItem' => '<li>{{text}}</li>',
-    'file' => '<div class="input-group">',
+    'file' => '<div class="input-group"><input type="text" name="{{name}}"{{attrs}} class="form-control"><span class="input-group-btn"><a href="/filemanager/dialog.php?type=1&relative_url=1&field_id={{name}}" class="btn btn-default iframe-btn"><i class="fa fa-upload"></i></a></span></div>',
     'fieldset' => '<fieldset{{attrs}}>{{content}}</fieldset>',
     'formStart' => '<form{{attrs}} role="form">',
     'formEnd' => '</form>',

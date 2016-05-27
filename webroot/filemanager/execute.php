@@ -130,8 +130,8 @@ if (isset($_GET['action']))
 		case 'create_folder':
 			if ($create_folders)
 			{
-
-				$name = fix_filename($_POST['name'],$transliteration,$convert_spaces, $replace_with);
+				$name = str_unsign_unicode($_POST['name']);
+				$name = fix_filename($name,$transliteration,$convert_spaces, $replace_with);
 				$path .= $name;
 				$path_thumb .= $name;
 				create_folder(fix_path($path,$transliteration,$convert_spaces, $replace_with),fix_path($path_thumb,$transliteration,$convert_spaces, $replace_with));
@@ -139,6 +139,7 @@ if (isset($_GET['action']))
 			break;
 		case 'rename_folder':
 			if ($rename_folders){
+				$name = str_unsign_unicode($name);
 				$name=fix_filename($name,$transliteration,$convert_spaces, $replace_with);
 				$name=str_replace('.','',$name);
 
@@ -182,6 +183,7 @@ if (isset($_GET['action']))
 
 			// correct name
 			$old_name = $name;
+			$name = str_unsign_unicode($name);
 			$name=fix_filename($name,$transliteration,$convert_spaces, $replace_with);
 			if (empty($name))
 			{
@@ -221,7 +223,8 @@ if (isset($_GET['action']))
 			break;
 		case 'rename_file':
 			if ($rename_files){
-				$name=fix_filename($name,$transliteration,$convert_spaces, $replace_with);
+				$name = str_unsign_unicode($name);
+				$name = fix_filename($name,$transliteration,$convert_spaces, $replace_with);
 				if (!empty($name))
 				{
 					if (!rename_file($path,$name,$transliteration))
@@ -256,6 +259,7 @@ if (isset($_GET['action']))
 		case 'duplicate_file':
 			if ($duplicate_files)
 			{
+				$name = str_unsign_unicode($name);
 				$name=fix_filename($name,$transliteration,$convert_spaces, $replace_with);
 				if (!empty($name))
 				{

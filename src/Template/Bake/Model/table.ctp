@@ -51,9 +51,9 @@ class <%= $name %>Table extends Table
 <% if (!empty($primaryKey)): %>
 <% foreach($validation as $field => $rules):%>
         $this->searchManager()
-        ->add('<%= $field%>', 'Search.Value', [
-            'field' => $this->aliasField('<%= $field%>')
-        ]);
+            ->add('<%= $field%>', 'Search.Value', [
+                'field' => $this->aliasField('<%= $field%>')
+            ]);
 <% endforeach%>
 <% if (count($primaryKey) > 1): %>
         $this->primaryKey([<%= $this->Bake->stringifyList((array)$primaryKey, ['indent' => false]) %>]);
