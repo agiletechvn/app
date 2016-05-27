@@ -43,6 +43,7 @@ class FileWidget implements WidgetInterface
     {
         $data += [
             'name' => '',
+            'id' => '',
             'val' => null,
             'type' => 'text',
             'escape' => true,
@@ -53,6 +54,7 @@ class FileWidget implements WidgetInterface
 
         return $this->_templates->format('file', [
             'name' => $data['name'],
+            'id' => str_to_slug($data['name']),
             'type' => $data['type'],
             'templateVars' => $data['templateVars'],
             'attrs' => $this->_templates->formatAttributes($data, ['name', 'type'])
