@@ -8,6 +8,21 @@ $(function() {
         return $(".navbar-right-expand-toggle").toggleClass("fa-rotate-90");
     });
 });
+//Back to top button scroll
+$(window).on('scroll', function(event) {
+    if ($(window).scrollTop() > 100) {
+        $('#back-to-top').css('visibility', 'visible');
+    } else {
+        $('#back-to-top').css('visibility', 'hidden');
+    }
+});
+//Back to top button click
+$("#back-to-top").on("click", function() {
+    jQuery("html, body").animate({
+        scrollTop: 0
+    }, 600);
+    return false;
+});
 $(".alert").fadeTo(2000, 500).slideUp(500, function(){
     $(".alert").alert('close');
 });
