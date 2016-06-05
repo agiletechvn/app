@@ -18,8 +18,8 @@
     <?=$this->Html->css('animate.min')?>
     <?=$this->fetch('css')?>
     <!-- CSS App -->
-    <?=$this->Html->css('admin_style')?>
-    <?=$this->Html->css('themes/flat-blue')?>
+    <?=$this->Html->css('admin_style.min')?>
+    <?=$this->Html->css('themes/flat-blue.min')?>
     <!--[if lt IE 9]>
         <?=$this->Html->script('html5shiv.min')?>
         <?=$this->Html->script('respond.min')?>

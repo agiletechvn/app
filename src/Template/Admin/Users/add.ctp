@@ -1,6 +1,5 @@
 <?php
-$this->assign('title', __('System') . '/' . __('Users') . '/' . __('Add'));
-$this->Html->addCrumb(__('System'));
+$this->assign('title', __('Users') . '/' . __('Add'));
 $this->Html->addCrumb(__('Users'), ['controller' => 'Users', 'action' => 'index']);
 $this->Html->addCrumb(__('Add'));
 ?>

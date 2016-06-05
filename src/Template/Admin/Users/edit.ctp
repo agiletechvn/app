@@ -1,6 +1,5 @@
 <?php
-$this->assign('title', __('System') . '/' . __('Users') . '/' . __('Edit'));
-$this->Html->addCrumb(__('System'));
+$this->assign('title', __('Users') . '/' . __('Edit'));
 $this->Html->addCrumb(__('Users'), ['controller' => 'Users', 'action' => 'index']);
 $this->Html->addCrumb(__('Edit'));
 ?>
@@ -29,7 +28,7 @@ $this->Html->addCrumb(__('Edit'));
                         echo $this->Form->input('re_password', ['type' => 'password', 'required' => true, 'value' => $user->password]);
                         echo $this->Form->input('status');
                     ?>
-                    <?= $this->Form->button(__('Update'), ['class' => 'btn btn-primary'], ['escape' => false, 'class' => 'btn btn-success'])?>&nbsp;
+                    <?= $this->Form->button(__('Update'), ['class' => 'btn btn-primary'], ['escape' => false, 'class' => 'btn btn-success'])?>
                 <?= $this->Form->end() ?>
             </div>
         </div>

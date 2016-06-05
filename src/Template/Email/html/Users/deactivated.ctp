@@ -9,4 +9,4 @@ Xin chào <b><?= h($user['full_name'])?></b>
 Bạn sẽ không thể tiếp tục đăng nhập vào hệ thống
 <br/>
 Nếu bạn đổi ý, hãy liên lạc trực tiếp với quản trị viên để được phục hồi tài khoản.
-<?= $this->Html->link(__('Homepage'), $url)?>
+<?= $this->Html->link(__('Homepage'), $this->Url->build('/', ['full' => true]))?>

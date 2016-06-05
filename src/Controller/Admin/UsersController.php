@@ -228,7 +228,6 @@ class UsersController extends AppController
         if ($this->Users->deactive($this->Auth->user('id'))) {
             enqueue($this->Auth->user('email'), [
                 'user' => $this->Auth->user(),
-                'url' => full_base_url($this->request)], [
                 'subject' => __('Your account has been deactivated'),
                 'template' => 'Users/deactivated',
                 'format' => 'html',
@@ -288,11 +287,10 @@ class UsersController extends AppController
     {
         if ($this->request->is('post')) {
             if ($this->Recaptcha->verify()) {
-                $tokenData = $this->Users->createToken($this->request->data['email'], true, Configure::read('Expired.reset_password'));
+                $tokenData = $this->Users->createToken($this->request->data['email'], true, Configure::readOrFail('Member.TokenExpired.reset_password'));
                 if ($tokenData) {
                     enqueue($tokenData['user']->email, [
                         'user' => $tokenData['user'],
-                        'url' => full_base_url($this->request),
                         'expired' => $tokenData['expired'],
                         'token' => $tokenData['token']], [
                         'subject' => __('Reset Password'),
@@ -328,7 +326,7 @@ class UsersController extends AppController
             throw new ForbiddenException(__('Invalid token. Please read email carefully and try again!'));
         }
 
-        if (!$user->token_created->wasWithinLast(Configure::read('Expired.reset_password'))) {
+        if (!$user->token_created->wasWithinLast(Configure::readOrFail('Member.TokenExpired.reset_password'))) {
             $this->Flash->error(__('Your request has been expired. Please create a new request!'));
             return $this->redirect(['action' => 'lostPassword']);
         }
@@ -341,7 +339,6 @@ class UsersController extends AppController
                 unset($user->password);
                 enqueue($user->email, [
                     'user' => $user,
-                    'url' => full_base_url($this->request)], [
                     'subject' => __('Your password has been recovered'),
                     'template' => 'Users/password_recovered',
                     'layout' => 'default',
@@ -360,7 +357,7 @@ class UsersController extends AppController
      */
     public function register()
     {
-        if (!Configure::read('AllowRegister')) {
+        if (!Configure::read('Member.AnyoneCanRegister')) {
             throw new ForbiddenException(__('Register function was disabled. Please contact to your administrator.'));
         }
         $user = $this->Users->newEntity();
@@ -374,10 +371,9 @@ class UsersController extends AppController
                 $user->status = false;
                 $user = $this->Users->patchEntity($user, $this->request->data, ['validate' => 'Register']);
                 if ($this->Users->save($user)) {
-                    $tokenData = $this->Users->createToken($user->email, $user->status, Configure::read('Expired.register'));
+                    $tokenData = $this->Users->createToken($user->email, $user->status, Configure::readOrFail('Member.TokenExpired.register'));
                     enqueue($user->email, [
                         'user' => $user,
-                        'url' => full_base_url($this->request),
                         'expired' => $tokenData['expired'],
                         'token' => $tokenData['token']], [
                         'subject' => __('Create account'),
@@ -413,7 +409,7 @@ class UsersController extends AppController
             throw new ForbiddenException(__('Invalid token. Please read email carefully and try again.'));
         }
 
-        if (!$user->token_created->wasWithinLast(Configure::read('Expired.register'))) {
+        if (!$user->token_created->wasWithinLast(Configure::readOrFail('Member.TokenExpired.register'))) {
             throw new ForbiddenException(__('Your request has been expired. Please contact to your administrator.'));
         }
         unset($user->password);
@@ -426,7 +422,6 @@ class UsersController extends AppController
                 unset($user->password);
                 enqueue($user->email, [
                     'user' => $user,
-                    'url' => full_base_url($this->request)], [
                     'subject' => __('Your account has been activated'),
                     'template' => 'Users/account_verified',
                     'layout' => 'default',

@@ -14,5 +14,5 @@ $this->layout = 'login';
 <?=$this->Form->end()?>
 <div class="action-link">
     <?= $this->Html->link(__('Login'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'login'])?>
-    <?=\Cake\Core\Configure::read('AllowRegister')?$this->Html->link(__('Register'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'register']):''?>
+    <?=\Cake\Core\Configure::read('Member.AnyoneCanRegister')?$this->Html->link(__('Register'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'register']):''?>
 </div>

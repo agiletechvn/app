@@ -16,4 +16,4 @@ Tôi sẽ giúp bạn tạo mật khẩu mới và đăng nhập ngay bây giờ
 <br/>
 Click vào link bên dưới để tạo mật khẩu mới.
 <br/>
-<?=$this->Html->link(__('Create password'), $url . '/admin/reset-password/' . $token . '/' . urlencode($user->email))?>
+<?= $this->Html->link(__('Reset password'), $this->Url->build(['prefix' => 'admin', 'controller' => 'Users', 'action' => 'resetPassword', $token, urlencode($user->email)], ['full' => true]))?>

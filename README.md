@@ -69,37 +69,13 @@ bin/cake bake all Posts --prefix admin
 
 ## Add menu to the backend
 
-Edit `config/flat_admin.php` as bellow
-
-```
-<?php
-// You can add more menu to the sidebar like this
-    'Menu' => [
-        'Side' => [
-            //link
-            [
-                '<span class="icon fa fa-edit"></span><span class="title">' . __('Posts') . '</span>', 
-                ['prefix' => 'admin', 'controller' => 'Posts', 'action' => 'index']
-            ],
-            //group link
-            [
-                '<span class="icon fa fa-cogs"></span><span class="title">' . __('System') . '</span>',
-                [
-                    [__('Role'), ['prefix' => 'admin', 'controller' => 'Logs', 'action' => 'index']],
-                    [__('User'), ['prefix' => 'admin', 'controller' => 'Schedules', 'action' => 'index']],
-                ]
-            ],
-        ],
-    ],
-```
+Edit `src/Template/Element/Admin/navbar_side.ctp` to add more menu
 
 ## Included Plugins
 
 [TinyAuth](https://github.com//dereuromark/cakephp-tinyauth)
 
 [Recaptcha](https://github.com/crabstudio/recaptcha)
-
-[MinifyHtml](https://github.com/WyriHaximus/MinifyHtml)
 
 [EmailQueue](https://github.com/crabstudio/emailqueue)
 

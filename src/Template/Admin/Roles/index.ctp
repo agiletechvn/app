@@ -1,6 +1,5 @@
 <?php
-$this->assign('title', __('System') . '/' . __('Roles'));
-$this->Html->addCrumb(__('System'));
+$this->assign('title', __('Roles'));
 $this->Html->addCrumb(__('Roles'));
 
 $this->Html->css('bootstrap-datepicker3.min.css', ['block' => true]);
@@ -58,8 +57,8 @@ $this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHigh
                         <?php foreach ($roles as $role): ?>
                         <tr>
                             <td>
-                                <?=$this->Html->link('<i class="fa fa-search"></i>', ['action' => 'view', $role->id], ['escape' => false])?>&nbsp;
-                                <?=$this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $role->id], ['escape' => false])?>&nbsp;
+                                <?=$this->Html->link('<i class="fa fa-search"></i>', ['action' => 'view', $role->id], ['escape' => false])?>
+                                <?=$this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $role->id], ['escape' => false])?>
                                 <?=$this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $role->id], ['confirm' => __('Are you sure you want to delete # {0}?', h($role->name)), 'escape' => false])?>
                             </td>
                             <td><?=h($role->id)?></td>

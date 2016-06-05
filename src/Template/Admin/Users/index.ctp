@@ -1,6 +1,5 @@
 <?php
-$this->assign('title', __('System') . '/' . __('Users'));
-$this->Html->addCrumb(__('System'));
+$this->assign('title', __('Users'));
 $this->Html->addCrumb(__('Users'));
 $this->Html->css('bootstrap-datepicker3.min.css', ['block' => true]);
 $this->Html->script('bootstrap-datepicker.min.js', ['block' => true]);
@@ -59,8 +58,8 @@ $this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHigh
                         <?php foreach ($users as $user): ?>
                         <tr>
                             <td>
-                                <?=$this->Html->link('<i class="fa fa-search"></i>', ['action' => 'view', $user->id], ['escape' => false])?>&nbsp;
-                                <?=$this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $user->id], ['escape' => false])?>&nbsp;
+                                <?=$this->Html->link('<i class="fa fa-search"></i>', ['action' => 'view', $user->id], ['escape' => false])?>
+                                <?=$this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $user->id], ['escape' => false])?>
                                 <?=$this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', h($user->full_name)), 'escape' => false])?>
                             </td>
                             <td><?=$this->Number->format($user->id)?></td>
