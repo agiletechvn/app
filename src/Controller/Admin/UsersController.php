@@ -227,7 +227,7 @@ class UsersController extends AppController
         $this->request->allowMethod(['post', 'put']);
         if ($this->Users->deactive($this->Auth->user('id'))) {
             enqueue($this->Auth->user('email'), [
-                'user' => $this->Auth->user(),
+                'user' => $this->Auth->user()], [
                 'subject' => __('Your account has been deactivated'),
                 'template' => 'Users/deactivated',
                 'format' => 'html',
@@ -337,8 +337,7 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $data, ['validate' => 'ResetPassword']);
             if ($this->Users->save($user)) {
                 unset($user->password);
-                enqueue($user->email, [
-                    'user' => $user,
+                enqueue($user->email, ['user' => $user], [
                     'subject' => __('Your password has been recovered'),
                     'template' => 'Users/password_recovered',
                     'layout' => 'default',
@@ -420,8 +419,7 @@ class UsersController extends AppController
             $user->status = true;
             if ($this->Users->save($user)) {
                 unset($user->password);
-                enqueue($user->email, [
-                    'user' => $user,
+                enqueue($user->email, ['user' => $user], [
                     'subject' => __('Your account has been activated'),
                     'template' => 'Users/account_verified',
                     'layout' => 'default',

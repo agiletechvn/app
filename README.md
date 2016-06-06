@@ -32,6 +32,10 @@ configuration relevant for your application.
 Read and edit `config/flat_admin.php`, `config/recaptcha.php`, `config/html_minify.php` and setup any other
 configuration relevant for your application.
 
+#### Important
+
+Change `App.fullBaseUrl` from `false` to `http://your_domain.com` in production, because of Email task will use this to generate url
+
 ## Migration
 
 Setup database connection in `config/app.php` first
