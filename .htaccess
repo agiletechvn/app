@@ -3,3 +3,31 @@
     RewriteRule    ^$    webroot/    [L]
     RewriteRule    (.*) webroot/$1    [L]
 </IfModule>
+<IfModule mod_expires.c>
+	# Turn on the module.
+	ExpiresActive on
+	# Set the default expiry times.
+	ExpiresDefault "access plus 2 days"
+	ExpiresByType image/jpg "access plus 1 month"
+	ExpiresByType image/gif "access plus 1 month"
+	ExpiresByType image/jpeg "access plus 1 month"
+	ExpiresByType image/png "access plus 1 month"
+	ExpiresByType text/css "access plus 1 month"
+	ExpiresByType text/javascript "access plus 1 month"
+	ExpiresByType application/javascript "access plus 1 month"
+	ExpiresByType application/x-shockwave-flash "access plus 1 month"
+	ExpiresByType text/css "now plus 1 month"
+	ExpiresByType image/ico "access plus 1 month"
+	ExpiresByType image/x-icon "access plus 1 month"
+	ExpiresByType text/html "access plus 600 seconds"
+</IfModule>
+<ifModule mod_gzip.c>
+	mod_gzip_on Yes
+	mod_gzip_dechunk Yes
+	mod_gzip_item_include file .(html?|txt|css|js|php|pl)$
+	mod_gzip_item_include handler ^cgi-script$
+	mod_gzip_item_include mime ^text/.*
+	mod_gzip_item_include mime ^application/x-javascript.*
+	mod_gzip_item_exclude mime ^image/.*
+	mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</ifModule>

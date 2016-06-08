@@ -36,7 +36,6 @@ class AppView extends View
      */
     public function initialize()
     {
-        $this->loadHelper('WyriHaximus/MinifyHtml.MinifyHtml');
         if ($this->request->prefix === 'admin') {
             $this->loadHelper('Menu');
             if ($this->request->action === 'index') {

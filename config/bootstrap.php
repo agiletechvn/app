@@ -222,7 +222,6 @@ Type::build('date')
 Type::build('datetime')
     ->useImmutable();
 
-Plugin::load('WyriHaximus/MinifyHtml', ['bootstrap' => true]);
 Plugin::load('TinyAuth');
 Plugin::load('Recaptcha', ['bootstrap' => true]);
 Plugin::load('EmailQueue', ['bootstrap' => true]);
