@@ -4,21 +4,20 @@ $this->assign('title', __('Verify account'));
 <table>
     <tr>
         <td>
-            <p>Xin chào <b><?= $user->email?></b>,</p>
-            <p>Chúc mừng bạn đã đăng ký tài khoản thành công.</p>
-            <h1>Tôi sẽ giúp bạn tạo mật khẩu mới và đăng nhập ngay bây giờ.</h1>
-            <ol>Lưu ý
+            <p><?= __('Hi <b>{0}</b>,', $user->email)?></p>
+            <h1><?= __('Thank you for join in. Please create password to completed verify account')?></h1>
+            <ol><?= __('Attention')?>
                 <ul>
-					<li>Yêu cầu này sẽ hết hạn vào "<?= $expired?>"</li>
-					<li>Bạn cần phải hoàn tất kích hoạt tài khoản để bắt đầu sử dụng dịch vụ.</li>
+                    <li><?= __('This request will expired on {0}', $expired)?></li>
+                    <li><?= __('You have to completed verify account to start using service')?></li>
                 </ul>
             </ol>
-            <p>Click vào link bên dưới để xác thực tài khoản.</p>
+            <p><?= __('Click button bellow')?></p>
             <!-- button -->
             <table class="btn-primary" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td>
-                        <?= $this->Html->link(__('Reset password'), $this->Url->build(['prefix' => 'admin', 'controller' => 'Users', 'action' => 'activeAccount', $token, urlencode($user->email)], ['full' => true]))?>
+                        <?= $this->Html->link(__('Create password'), $this->Url->build(['prefix' => 'admin', 'controller' => 'Users', 'action' => 'activeAccount', $token, urlencode($user->email)], ['full' => true]))?>
                     </td>
                 </tr>
             </table>

@@ -4,17 +4,16 @@ $this->assign('title', __('Reset password'));
 <table>
     <tr>
         <td>
-            <p>Xin chào <b><?=h($user->full_name)?></b>,</p>
-            <p>Bạn đã quên mật khẩu ư?</p>
-            <h1>Tôi sẽ giúp bạn tạo mật khẩu mới và đăng nhập ngay bây giờ.</h1>
-            <ol>Lưu ý
+            <p><?= __('Hi <b>{0}</b>', h($user->full_name))?></p>
+            <h1><?= __('Did you forgot your password. We can create a new password right now')?></h1>
+            <ol><?= __('Attention')?>
                 <ul>
-                    <li>Yêu cầu này sẽ hết hạn vào "<?= $expired?>"</li>
-                    <li>Bạn vẫn có thể đăng nhập bằng mật khẩu hiện thời nếu bạn nhớ</li>
-                    <li>Bạn có thể bỏ qua email này nếu không muốn đặt lại mật khẩu</li>
+                    <li><?= __('This request will expired on {0}', $expired)?></li>
+                    <li><?= __('Current password still valid until changed')?></li>
+                    <li><?= __('Ignore this email if you dont want to change')?></li>
                 </ul>
             </ol>
-            <p>Click vào link bên dưới để tạo mật khẩu mới.</p>
+            <p><?= __('Click button bellow')?></p>
             <!-- button -->
             <table class="btn-primary" cellpadding="0" cellspacing="0" border="0">
                 <tr>
