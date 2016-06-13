@@ -29,8 +29,7 @@ the setup traffic lights.
 Read and edit `config/app.php` and setup the 'Datasources' and any other
 configuration relevant for your application.
 
-Read and edit `config/flat_admin.php`, `config/recaptcha.php`, `config/html_minify.php` and setup any other
-configuration relevant for your application.
+Read and edit `config/flat_admin.php` and setup any other configuration relevant for your application.
 
 #### Important
 
