@@ -115,13 +115,13 @@ Configure::write('SchedulerShell.jobs', array(
 
 # Demo
 
-![Login page](http://i.imgur.com/OYwbXOQ.png)
+![Login page](http://image.prntscr.com/image/1e676ca9184e4af78f1cae85b8b294e5.png)
 
-![Lost password](http://i.imgur.com/JUyTJKi.png)
+![Lost password](http://image.prntscr.com/image/4b7027688ba346d792c3dc3c64144a7d.png)
 
-![Register](http://i.imgur.com/UNxAcHr.png)
+![Register](http://image.prntscr.com/image/1f0b3c15b82a4cd78b1bf9119734e794.png)
 
-![Maintenance mode](http://i.imgur.com/gtE7lwb.png)
+![Maintenance mode](http://image.prntscr.com/image/a43e3a8973ca4febaa2543981fb0c978.png)
 
 # CRUD
 
