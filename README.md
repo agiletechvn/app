@@ -125,10 +125,10 @@ Configure::write('SchedulerShell.jobs', array(
 
 # CRUD
 
-![Index](http://img.prntscr.com/img?url=http://i.imgur.com/YirtdcJ.png)
+![Index](http://image.prntscr.com/image/3db718250128448a8a35737b26eb8ddb.png)
 
-![Add](http://i.imgur.com/NRJ5rn1.png)
+![Add](http://image.prntscr.com/image/6d35fdbc998e431b8e8054aedb253bb8.png)
 
-![Edit](http://i.imgur.com/4Hl8sbG.png)
+![Edit](http://image.prntscr.com/image/46a6870ee9dc4804b081dc9a232d268c.png)
 
-![View](http://i.imgur.com/yHopFTc.png)
+![View](http://image.prntscr.com/image/8e820a4daf244d7f99b77d0a7b23e4e1.png)
