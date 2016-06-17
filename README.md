@@ -1,7 +1,6 @@
-# CakePHP Application Skeleton with FlatAdmin as default template
+# CakePHP Application Skeleton with [Flat Admin v2](https://github.com/tui2tone/flat-admin-bootstrap-templates) as default template
 
-[![Build Status](https://travis-ci.org/crabstudio/app.svg?branch=master)](https://travis-ci.org/crabstudio/app)
-[![License](https://img.shields.io/packagist/l/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
+[![Build Status](https://travis-ci.org/crabstudio/app.svg?branch=master)](https://travis-ci.org/crabstudio/app) [![License](https://img.shields.io/packagist/l/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app) [![Latest Stable Version](https://poser.pugx.org/crabstudio/app/v/stable)](https://packagist.org/packages/crabstudio/app) [![Total Downloads](https://poser.pugx.org/crabstudio/app/downloads)](https://packagist.org/packages/crabstudio/app) [![Latest Unstable Version](https://poser.pugx.org/crabstudio/app/v/unstable)](https://packagist.org/packages/crabstudio/app)
 
 A skeleton for creating applications with [CakePHP](http://cakephp.org) 3.x.
 
