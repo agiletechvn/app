@@ -133,3 +133,17 @@ Configure::write('SchedulerShell.jobs', array(
 ![Edit](http://image.prntscr.com/image/46a6870ee9dc4804b081dc9a232d268c.png)
 
 ![View](http://image.prntscr.com/image/8e820a4daf244d7f99b77d0a7b23e4e1.png)
+
+# Page speed improvement
+
+- [Google pagespeed mod](https://developers.google.com/speed/pagespeed/module/) on your server
+
+	`.htaccess` already setup mod expires and deflate/gzip, you have to setup these mods
+
+- [mod_expires apache](http://httpd.apache.org/docs/current/mod/mod_expires.html), [expires nginx](https://gist.github.com/anhtuank7c/fa03b1dae5bc71a246af)
+
+- [mod_deflate apache](http://httpd.apache.org/docs/current/mod/mod_deflate.html), [gzip nginx](http://aspyct.org/blog/2012/08/20/setting-up-http-cache-and-gzip-with-nginx/)
+
+	`Nodejp` required to use `gulp`
+
+- Install and use [gulp](http://gulpjs.com/), [minify npm](https://github.com/srod/node-minify) to compress your js, css
