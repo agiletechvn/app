@@ -12,7 +12,7 @@ $this->Html->addCrumb(__('View'));
                 </div>
                 <div class="pull-right card-action">
                     <div class="btn-group" role="group" aria-label="...">
-                        <?=$this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $role->id], ['escape' => false, 'class' => 'btn btn-warning'])?>
+                        <?=$this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $role->id], ['escape' => false, 'class' => 'btn btn-warning'])?>&nbsp;
                         <?=$this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $role->id], ['confirm' => __('Are you sure you want to delete # {0}?', h($role->name)), 'escape' => false, 'class' => 'btn btn-danger'])?>
                     </div>
                 </div>

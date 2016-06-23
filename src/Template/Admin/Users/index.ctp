@@ -18,7 +18,7 @@ $this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHigh
                 </div>
                 <div class="pull-right card-action">
                     <div class="btn-group" role="group" aria-label="...">
-                        <?= $this->Html->link('<i class="fa fa-plus"></i>', ['action' => 'add'], ['class' => 'btn btn-success', 'escape' => false])?>
+                        <?= $this->Html->link('<i class="fa fa-plus"></i>', ['action' => 'add'], ['class' => 'btn btn-success', 'escape' => false])?>&nbsp;
                         <?= $this->Html->link('<i class="fa fa-refresh"></i>', ['action' => 'index'], ['class' => 'btn btn-default', 'escape' => false])?>
                     </div>
                 </div>
@@ -58,8 +58,8 @@ $this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHigh
                         <?php foreach ($users as $user): ?>
                         <tr>
                             <td>
-                                <?=$this->Html->link('<i class="fa fa-search"></i>', ['action' => 'view', $user->id], ['escape' => false])?>
-                                <?=$this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $user->id], ['escape' => false])?>
+                                <?=$this->Html->link('<i class="fa fa-search"></i>', ['action' => 'view', $user->id], ['escape' => false])?>&nbsp;
+                                <?=$this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', $user->id], ['escape' => false])?>&nbsp;
                                 <?=$this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', h($user->full_name)), 'escape' => false])?>
                             </td>
                             <td><?=$this->Number->format($user->id)?></td>

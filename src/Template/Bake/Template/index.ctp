@@ -24,8 +24,10 @@ $this->Html->addCrumb(__('<%= $pluralHumanName %>'));
 $this->Html->css('bootstrap-datepicker3.min.css', ['block' => true]);
 $this->Html->script('bootstrap-datepicker.min.js', ['block' => true]);
 $this->loadHelper('Search');
-$this->Html->scriptBlock('$(\'#created\').datepicker({autoclose: true,todayHighlight: true});', ['block' => true]);
-$this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHighlight: true});', ['block' => true]);
+$this->Html->scriptBlock('
+    $("#created").datepicker({autoclose: true,todayHighlight: true});
+    $("#modified").datepicker({autoclose: true,todayHighlight: true});
+', ['block' => true]);
 ?>
 
 <div class="row">
@@ -39,7 +41,7 @@ $this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHigh
                 </div>
                 <div class="pull-right card-action">
                     <div class="btn-group" role="group" aria-label="...">
-                        <?= $this->Html->link('<i class="fa fa-plus"></i>', ['action' => 'add'], ['class' => 'btn btn-success', 'escape' => false])?>
+                        <?= $this->Html->link('<i class="fa fa-plus"></i>', ['action' => 'add'], ['class' => 'btn btn-success', 'escape' => false])?>&nbsp;
                         <?= $this->Html->link('<i class="fa fa-refresh"></i>', ['action' => 'index'], ['class' => 'btn btn-default', 'escape' => false])?>
                     </div>
                 </div>
@@ -56,13 +58,15 @@ $this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHigh
                     </thead>
                     <tbody>
                         <?= $this->Search->generate([
-                            [__('Search'), ['type' => 'submit', 'class' => 'btn btn-primary', 'style' => 'margin: 0px']
-                        ],
+                            [
+                                __('Search'), ['type' => 'submit', 'class' => 'btn btn-primary', 'style' => 'margin: 0px']
+                            ],
             <%
+
             $colspan = 1;
             foreach ($fields as $field):
                 $colspan++;
-                echo "['$field'],";
+                            echo "['$field'],";
             endforeach;
             %>
                         ])?>
@@ -80,8 +84,8 @@ $this->Html->scriptBlock('$(\'#modified\').datepicker({autoclose: true,todayHigh
 %>
                         <tr>
                             <td>
-                                <?= $this->Html->link('<i class="fa fa-search"></i>', ['action' => 'view', <%= $pk %>], ['escape' => false])?>
-                                <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', <%= $pk %>], ['escape' => false])?>
+                                <?= $this->Html->link('<i class="fa fa-search"></i>', ['action' => 'view', <%= $pk %>], ['escape' => false])?>&nbsp;
+                                <?= $this->Html->link('<i class="fa fa-edit"></i>', ['action' => 'edit', <%= $pk %>], ['escape' => false])?>&nbsp;
                                 <?= $this->Form->postLink('<i class="fa fa-trash"></i>', ['action' => 'delete', <%= $pk %>], ['confirm' => __('Are you sure you want to delete # {0}?', <%= $pk %>), 'escape' => false])?>
                             </td>
 <%
