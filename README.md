@@ -75,6 +75,8 @@ Edit `src/Template/Element/Admin/navbar_side.ctp` to add more menu
 
 ## Included Plugins
 
+[MinifyHtml](https://github.com/WyriHaximus/MinifyHtml)
+
 [TinyAuth](https://github.com//dereuromark/cakephp-tinyauth)
 
 [Recaptcha](https://github.com/crabstudio/recaptcha)

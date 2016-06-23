@@ -206,6 +206,7 @@ if (Configure::read('debug')) {
 DispatcherFactory::add('Asset');
 DispatcherFactory::add('Routing');
 DispatcherFactory::add('ControllerFactory');
+DispatcherFactory::add('Maintenance');
 
 /**
  * Enable immutable time objects in the ORM.
@@ -222,11 +223,10 @@ Type::build('date')
 Type::build('datetime')
     ->useImmutable();
 
+Plugin::load('WyriHaximus/MinifyHtml', ['bootstrap' => true]);
 Plugin::load('TinyAuth');
 Plugin::load('Recaptcha', ['bootstrap' => true]);
 Plugin::load('EmailQueue', ['bootstrap' => true]);
 Plugin::load('Xety/Cake3CookieAuth');
 Plugin::load('Search');
 Plugin::load('Scheduler');
-
-DispatcherFactory::add('Maintenance');
