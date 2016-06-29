@@ -3,7 +3,6 @@ namespace App\Shell\Task;
 
 use Cake\Console\Shell;
 use Cake\Datasource\ConnectionManager;
-use Cake\Filesystem\File;
 use Cake\Filesystem\Folder;
 
 /**
