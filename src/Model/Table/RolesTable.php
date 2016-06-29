@@ -2,7 +2,6 @@
 namespace App\Model\Table;
 
 use App\Model\Entity\Role;
-use Cake\I18n\FrozenTime;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -60,12 +59,12 @@ class RolesTable extends Table
             ])
             ->add('created', 'Search.Callback', [
                 'callback' => function ($query, $args, $manager) {
-                    return $query->andWhere(["Roles.created >=" => new FrozenTime($args['created'])]);
+                    return $query->andWhere(["DATE(created) >=" => $args['created']]);
                 }
             ])
             ->add('modified', 'Search.Callback', [
                 'callback' => function ($query, $args, $manager) {
-                    return $query->andWhere(["Roles.modified <=" => new FrozenTime($args['modified'])]);
+                    return $query->andWhere(["DATE(modified) <=" => $args['modified']]);
                 }
             ]);
 

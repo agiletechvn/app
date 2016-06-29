@@ -9,7 +9,7 @@
     </title>
     <?=$this->Html->meta('icon')?>
     <?=$this->fetch('meta')?>
-    <?=$this->Html->css('bootstrap.min')?>
+    <?=$this->Html->css('//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')?>
     <?=$this->Html->css('error_style')?>
     <?=$this->fetch('css')?>
 </head>

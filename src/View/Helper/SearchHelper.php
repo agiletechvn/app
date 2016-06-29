@@ -50,7 +50,7 @@ class SearchHelper extends Helper
         ]
     ];
 
-    public $helpers = ['Html', 'Form'];
+    public $helpers = ['Form'];
 
     /**
      * generate menu function

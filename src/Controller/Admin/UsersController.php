@@ -2,7 +2,7 @@
 namespace App\Controller\Admin;
 
 use App\Controller\AppController;
-use Cake\Core\Configure;
+use App\Core\Setting;
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
@@ -39,7 +39,7 @@ class UsersController extends AppController
         ])) {
             $this->Auth->allow();
             $this->loadComponent('Csrf');
-            $this->loadComponent('Recaptcha.Recaptcha');
+            $this->loadComponent('Recaptcha');
         }
     }
 
@@ -287,7 +287,7 @@ class UsersController extends AppController
     {
         if ($this->request->is('post')) {
             if ($this->Recaptcha->verify()) {
-                $tokenData = $this->Users->createToken($this->request->data['email'], true, Configure::readOrFail('Member.TokenExpired.reset_password'));
+                $tokenData = $this->Users->createToken($this->request->data['email'], true, Setting::readOrFail('Member.ResetPasswordTokenExpired'));
                 if ($tokenData) {
                     enqueue($tokenData['user']->email, [
                         'user' => $tokenData['user'],
@@ -300,7 +300,7 @@ class UsersController extends AppController
                         $this->Flash->success(__('Please check your email to create a new password.'));
                         return $this->redirect(['action' => 'login']);
                 }
-                $this->Flash->error(__('Email doesn\'t exist/inactive. Please try again!'));
+                $this->Flash->error(__('Email does not exist/inactive. Please try again!'));
             } else {
                 $this->Flash->error(__('Please pass Google Recaptcha first'));
             }
@@ -326,7 +326,7 @@ class UsersController extends AppController
             throw new ForbiddenException(__('Invalid token. Please read email carefully and try again!'));
         }
 
-        if (!$user->token_created->wasWithinLast(Configure::readOrFail('Member.TokenExpired.reset_password'))) {
+        if (!$user->token_created->wasWithinLast(Setting::readOrFail('Member.ResetPasswordTokenExpired'))) {
             $this->Flash->error(__('Your request has been expired. Please create a new request!'));
             return $this->redirect(['action' => 'lostPassword']);
         }
@@ -356,7 +356,7 @@ class UsersController extends AppController
      */
     public function register()
     {
-        if (!Configure::read('Member.AnyoneCanRegister')) {
+        if (!Setting::readOrFail('Member.AnyoneCanRegister')) {
             throw new ForbiddenException(__('Register function was disabled. Please contact to your administrator.'));
         }
         $user = $this->Users->newEntity();
@@ -370,7 +370,7 @@ class UsersController extends AppController
                 $user->status = false;
                 $user = $this->Users->patchEntity($user, $this->request->data, ['validate' => 'Register']);
                 if ($this->Users->save($user)) {
-                    $tokenData = $this->Users->createToken($user->email, $user->status, Configure::readOrFail('Member.TokenExpired.register'));
+                    $tokenData = $this->Users->createToken($user->email, $user->status, Setting::readOrFail('Member.RegisterTokenExpired'));
                     enqueue($user->email, [
                         'user' => $user,
                         'expired' => $tokenData['expired'],
@@ -408,7 +408,7 @@ class UsersController extends AppController
             throw new ForbiddenException(__('Invalid token. Please read email carefully and try again.'));
         }
 
-        if (!$user->token_created->wasWithinLast(Configure::readOrFail('Member.TokenExpired.register'))) {
+        if (!$user->token_created->wasWithinLast(Setting::readOrFail('Member.RegisterTokenExpired'))) {
             throw new ForbiddenException(__('Your request has been expired. Please contact to your administrator.'));
         }
         unset($user->password);

@@ -104,7 +104,10 @@ body {
     float: left;
     clear: both;
 }
-
+.required label:first-child:after {
+    content: ' *';
+    color: #FA2A00
+}
 .error {
     color: #a94442
 }

@@ -28,7 +28,7 @@ the setup traffic lights.
 Read and edit `config/app.php` and setup the 'Datasources' and any other
 configuration relevant for your application.
 
-Read and edit `config/flat_admin.php` and setup any other configuration relevant for your application.
+use `Configurations` in backend to control your configurations
 
 #### Important
 
@@ -41,7 +41,6 @@ Setup database connection in `config/app.php` first
 Open terminal/command line then execute migration
 ```
 bin/cake migrations migrate
-bin/cake migrations migrate --plugin EmailQueue
 ```
 
 ## Seed
@@ -79,15 +78,9 @@ Edit `src/Template/Element/Admin/navbar_side.ctp` to add more menu
 
 [TinyAuth](https://github.com//dereuromark/cakephp-tinyauth)
 
-[Recaptcha](https://github.com/crabstudio/recaptcha)
-
-[EmailQueue](https://github.com/crabstudio/emailqueue)
-
 [CookieAuth](https://github.com/Xety/Cake3-CookieAuth)
 
 [Search](https://github.com/friendsofcake/search)
-
-[Scheduler](https://github.com/trentrichardson/cakephp-scheduler/)
 
 ## Backend Template:
 

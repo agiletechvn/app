@@ -63,5 +63,17 @@ class FlatAdminSeeder extends AbstractSeed
         ];
         $Users = $this->table('users');
         $Users->insert($userData)->save();
+
+        $configurations = [
+            [
+                'name' => 'Meta.Name',
+                'type' => 'text',
+                'editable' => 1,
+                'autoload' => 1,
+                ''
+            ]
+        ];
+
+        $Settings = $this->table('configurations');
     }
 }

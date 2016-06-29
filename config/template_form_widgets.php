@@ -1,5 +1,5 @@
 <?php
 
 return [
-	'file' => ['App\View\Widget\FileWidget'],
+    'file' => ['App\View\Widget\FileWidget'],
 ];

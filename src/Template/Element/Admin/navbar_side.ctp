@@ -16,8 +16,11 @@ use Cake\Core\Configure;
                     ['prefix' => 'admin', 'controller' => 'Dashboard', 'action' => 'index'],
                     ['escape' => false]
                 );
-                echo $this->Menu->groupLink('<span class="icon fa fa-shield"></span><span class="title">' . __('Security') . '</span>',
-                    [
+                echo $this->Menu->link('<span class="icon fa fa-gears"></span><span class="title">' . __('Configurations') . '</span>',
+                    ['prefix' => 'admin', 'controller' => 'Configurations', 'action' => 'index'],
+                    ['escape' => false]
+                );
+                echo $this->Menu->groupLink('<span class="icon fa fa-shield"></span><span class="title">' . __('Security') . '</span>', [
                         [__('Roles'), ['controller' => 'Roles', 'action' => 'index']],
                         [__('Users'), ['controller' => 'Users', 'action' => 'index']],
                     ]

@@ -3,7 +3,7 @@
 session_name('CAKEPHP');
 session_start();
 
-if (!isset($_SESSION['Auth']['User'])) {
+if (empty($_SESSION['Auth']['User'])) {
     die('Access Denied!');
 }
 
@@ -74,7 +74,7 @@ $config = array(
 	| with start and final /
 	|
 	*/
-	'upload_dir' => '/source/',
+	'upload_dir' => '/upload/',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -84,7 +84,7 @@ $config = array(
 	| with final /
 	|
 	*/
-	'current_path' => '../source/',
+	'current_path' => '../upload/',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -157,7 +157,6 @@ $config = array(
 	|
 	*/
 	'icon_theme' => "ico",
-
 
 	//Show or not total size in filemanager (is possible to greatly increase the calculations)
 	'show_total_size'						=> false,

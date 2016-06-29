@@ -59,12 +59,12 @@ class UsersTable extends Table
             ])
             ->add('created', 'Search.Callback', [
                 'callback' => function ($query, $args, $manager) {
-                    return $query->andWhere(["Users.created >=" => new FrozenTime($args['created'])]);
+                    return $query->andWhere(["DATE(created) >=" => $args['created']]);
                 }
             ])
             ->add('modified', 'Search.Callback', [
                 'callback' => function ($query, $args, $manager) {
-                    return $query->andWhere(["Users.modified <=" => new FrozenTime($args['modified'])]);
+                    return $query->andWhere(["DATE(modified) <=" => $args['modified']]);
                 }
             ]);
 

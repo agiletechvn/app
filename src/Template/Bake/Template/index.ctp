@@ -21,9 +21,10 @@ if (!empty($indexColumns)) {
 <?php
 $this->assign('title', __('<%= $pluralHumanName %>'));
 $this->Html->addCrumb(__('<%= $pluralHumanName %>'));
-$this->Html->css('bootstrap-datepicker3.min.css', ['block' => true]);
-$this->Html->script('bootstrap-datepicker.min.js', ['block' => true]);
 $this->loadHelper('Search');
+
+$this->Html->css('//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/css/bootstrap-datepicker3.min.css', ['block' => true]);
+$this->Html->script('//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js', ['block' => true]);
 $this->Html->scriptBlock('
     $("#created").datepicker({autoclose: true,todayHighlight: true});
     $("#modified").datepicker({autoclose: true,todayHighlight: true});

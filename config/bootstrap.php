@@ -150,8 +150,6 @@ Email::config(Configure::consume('Email'));
 Log::config(Configure::consume('Log'));
 Security::salt(Configure::consume('Security.salt'));
 
-Configure::load('flat_admin', 'default');
-
 /**
  * The default crypto extension in 3.0 is OpenSSL.
  * If you are migrating from 2.x uncomment this code to
@@ -225,8 +223,5 @@ Type::build('datetime')
 
 Plugin::load('WyriHaximus/MinifyHtml', ['bootstrap' => true]);
 Plugin::load('TinyAuth');
-Plugin::load('Recaptcha', ['bootstrap' => true]);
-Plugin::load('EmailQueue', ['bootstrap' => true]);
 Plugin::load('Xety/Cake3CookieAuth');
 Plugin::load('Search');
-Plugin::load('Scheduler');

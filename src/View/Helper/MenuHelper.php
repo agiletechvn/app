@@ -32,13 +32,13 @@ class MenuHelper extends Helper
      */
     public function link($title, $url, array $options = [])
     {
-        $result = "<li";
+        $result = '<li';
         if (is_array($url) && $this->Html->request->controller === $url['controller']) {
-            $result .= " class=\"active\"";
+            $result .= " class='active'";
         }
-        $result .= ">";
+        $result .= '>';
         $result .= $this->Html->link($title, $url, $options);
-        $result .= "</li>";
+        $result .= '</li>';
         return $result;
     }
 
@@ -67,10 +67,10 @@ class MenuHelper extends Helper
         foreach ($urls as $k => $v) {
             $result .= '<li>' . $this->Html->link($v[0], $v[1]) . '</li>';
         }
-        $result .= "</ul>";
-        $result .= "</div>";
-        $result .= "</div>";
-        $result .= "</li>";
+        $result .= '</ul>';
+        $result .= '</div>';
+        $result .= '</div>';
+        $result .= '</li>';
         return $result;
     }
 }
