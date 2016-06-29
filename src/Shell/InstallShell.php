@@ -2,6 +2,7 @@
 namespace App\Shell;
 
 use Cake\Console\Shell;
+use Cake\Datasource\ConnectionManager;
 use Migrations\Migrations;
 
 /**
@@ -12,32 +13,34 @@ class InstallShell extends Shell
     /**
      * main() method.
      *
-     * @return void
+     * @return bool
      */
     public function main()
     {
-        $this->out('Migrating Tables...');
+        $this->out("Migrating Tables...");
         $this->migrate();
-        $this->out('<info>Migrating Initialize Tables completed!</info>');
-        $this->hr();
-
-        $this->out('Creating roles...');
+        if (!$this->tableExists('roles')) {
+            $this->out("Migrating could not be done!");
+            return false;
+        }
+        $this->out("Migrating Initial Tables completed!");
         $this->dispatchShell('roles');
-
         $this->loadModel('Users');
-        $createAdmin = $this->in('Do you want to create your first administrator?', ['Y', 'n'], 'Y');
-        if ($createAdmin == 'Y') {
-            $this->out('Creating a new administrator');
+        $createAdmin = $this->in("\r\nDo you want to create your first administrator?", ['y', 'n'], 'y');
+        if (strtolower($createAdmin) === 'y') {
             $this->dispatchShell('users');
-            $this->hr();
+        } else {
+            $this->out("\r\nTo create a new administrator, run: bin/cake users");
         }
 
-        $this->out('Creating setting');
         $this->dispatchShell('settings');
-        $this->out('<info>Application installed successfully</info>');
-        $this->hr();
+
+        $this->out("\r\n");
+        $this->out("Application installed successfully");
+        $this->out("\r\n");
 
         $this->donate();
+        return true;
     }
 
     /**
@@ -52,18 +55,32 @@ class InstallShell extends Shell
     }
 
     /**
+     * Checks if the table exists.
+     *
+     * @param string $table table name
+     * @return bool
+     */
+    protected function tableExists($table)
+    {
+        $db = ConnectionManager::get('default');
+        $tables = $db->schemaCollection()->listTables();
+        return in_array($table, $tables);
+    }
+
+    /**
      * donate
      *
      * @return void
      */
     protected function donate()
     {
-        $this->out('<info>One more thing...</info>');
-        $this->hr();
-        $this->out('I hope you enjoy CakePHP. Beside that, you can support me at bellow link');
-        $this->hr();
-        $this->out('<warning><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=anhtuank7c%40hotmail%2ecom&lc=US&item_name=Crabstudio%20CakePHP%203%20%2d%20FlatAdmin%20Skeleton&item_number=crabstudio%2dcakephp%2dskeleton&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest">Donate</a></warning>');
-        $this->hr();
-        $this->out('<info>Thank you so much!</info>');
+        $data = [
+            ['One more thing...'],
+            ['I love CakePHP and i try my best to help you enjoy it'],
+            ['Support me: bit.ly/29f7FWE'],
+            ['Let\'s simplify the world together'],
+            ['Email: anhtuank7c@hotmail.com, Github: github.com/crabstudio']
+        ];
+        $this->helper('Table')->output($data);
     }
 }

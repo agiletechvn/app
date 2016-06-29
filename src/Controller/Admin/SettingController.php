@@ -109,6 +109,30 @@ class SettingController extends AppController
             'weight' => 2
         ]);
 
+        Setting::register('SchedulerShell.jobs.02.task', 'Backup', [
+            'options' => [
+                'Backup' => 'Backup'
+            ],
+            'description' => 'Backup',
+            'type' => 'select',
+            'weight' => 3
+        ]);
+        Setting::register('SchedulerShell.jobs.01.interval', 'PT1W', [
+            'options' => [
+                'PT1M' => __('Each 1 minute'),
+                'PT5M' => __('Each 5 minute'),
+                'PT1H' => __('Each 1 hour'),
+                'PT1D' => __('Each 1 day'),
+                'PT1W' => __('Each 1 week'),
+                'PT1Y' => __('Each 1 year'),
+                'next day 06:00' => __('Next day 06:00am'),
+                'weekday 06:00' => __('Monday-Friday at 06:00'),
+            ],
+            'description' => 'Backup',
+            'type' => 'select',
+            'weight' => 4
+        ]);
+
         Setting::register('Maintenance.enable', false, ['type' => 'checkbox', 'weight' => 1]);
         Setting::register('Maintenance.allowedIp', '127.0.0.1', ['type' => 'text', 'weight' => 2]);
 

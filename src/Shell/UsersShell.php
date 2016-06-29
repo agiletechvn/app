@@ -15,36 +15,46 @@ class UsersShell extends Shell
      */
     public function main()
     {
+        $this->out("\r\nCreate a new administrator");
         $this->loadModel('Roles');
         $roleAdmin = $this->Roles->find()->where(['alias' => 'admin'])->first();
         if (!$roleAdmin) {
-            $this->out('<error>Role admin does not exist. Please create admin role first.</error>');
+            $this->out("\r\nRole admin does not exist");
+            $this->hr();
             return false;
         }
         $this->loadModel('Users');
         $user = $this->Users->newEntity();
-        do {
+
+        enterInputs: {
             $email = $this->in('E-mail address:');
             $password = $this->in('Password: [ENCRYPT]');
             $rePassword = $this->in('RePassword:');
             $fullName = $this->in('Full name:');
-            $status = $this->in('status', ['Y', 'n'], 'Y');
+            $status = $this->in('status', ['y', 'n'], 'y');
 
             $user = $this->Users->patchEntity($user, [
                 'email' => $email,
                 'password' => $password,
                 're_password' => $rePassword,
                 'full_name' => $fullName,
-                'status' => ($status == 'y')?true:false,
-                'role' => $roleAdmin
+                'status' => (strtolower($status) === 'y')?true:false,
+                'role_id' => $roleAdmin->id
             ]);
-        } while (empty($user->errors()));
-
-        if ($this->Users->save($user)) {
-            $this->out('<info>Users ' . $user->full_name . ' has been saved<info>');
-            return true;
         }
-        $this->out('<error>The user ' . $user->full_name . ' could not be saved<error>');
-        return false;
+
+        if (!empty($user->errors())) {
+            $this->out("\r\nOops! Something went wrong.");
+            foreach ($user->errors() as $k => $v) {
+                foreach ($v as $field => $error) {
+                    $this->out($error);
+                }
+            }
+            $this->out("Please try again");
+            goto enterInputs;
+        }
+        $this->Users->save($user);
+        $this->out("Users \"{$user->full_name}\" has been saved");
+        return true;
     }
 }

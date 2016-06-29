@@ -1,8 +1,8 @@
 <?php
 namespace App\Shell;
 
+use App\Core\Setting;
 use Cake\Console\Shell;
-use Cake\Core\Setting;
 use Cake\Filesystem\File;
 use Cake\Filesystem\Folder;
 use \DateInterval;

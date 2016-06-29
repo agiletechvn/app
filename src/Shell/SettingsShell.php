@@ -15,6 +15,7 @@ class SettingsShell extends Shell
      */
     public function main()
     {
+        $this->out("\r\nCreate settings");
         $this->loadModel('Configurations');
         $entities = $this->Configurations->newEntities([
             [
@@ -51,7 +52,7 @@ class SettingsShell extends Shell
                 'type' => 'select',
                 'editable' => 1,
                 'weight' => 1,
-                'autoload' => 1,
+                'autoload' => 0,
             ],
             [
                 'name' => 'Recaptcha.theme',
@@ -60,7 +61,7 @@ class SettingsShell extends Shell
                 'type' => 'select',
                 'editable' => 1,
                 'weight' => 2,
-                'autoload' => 1,
+                'autoload' => 0,
             ],
             [
                 'name' => 'Recaptcha.lang',
@@ -69,7 +70,7 @@ class SettingsShell extends Shell
                 'type' => 'select',
                 'editable' => 1,
                 'weight' => 3,
-                'autoload' => 1,
+                'autoload' => 0,
             ],
             [
                 'name' => 'Recaptcha.enable',
@@ -78,7 +79,7 @@ class SettingsShell extends Shell
                 'type' => 'select',
                 'editable' => 1,
                 'weight' => 4,
-                'autoload' => 1,
+                'autoload' => 0,
             ],
             [
                 'name' => 'Recaptcha.sitekey',
@@ -87,7 +88,7 @@ class SettingsShell extends Shell
                 'type' => 'text',
                 'editable' => 1,
                 'weight' => 5,
-                'autoload' => 1,
+                'autoload' => 0,
             ],
             [
                 'name' => 'Recaptcha.secret',
@@ -96,7 +97,7 @@ class SettingsShell extends Shell
                 'type' => 'text',
                 'editable' => 1,
                 'weight' => 6,
-                'autoload' => 1,
+                'autoload' => 0,
             ],
             [
                 'name' => 'SchedulerShell.jobs.01.task',
@@ -182,11 +183,9 @@ class SettingsShell extends Shell
         ]);
         foreach ($entities as $entity) {
             if ($this->Configurations->save($entity)) {
-                $this->out('<info>Setting ' . $entity->name . ' has been saved</info>');
-                $this->hr();
+                $this->out("{$entity->name} has been saved");
             } else {
-                $this->out('<error>Setting ' . $entity->name . ' could not be saved</error>');
-                $this->hr();
+                $this->out("{$entity->name} could not be saved");
             }
         }
     }

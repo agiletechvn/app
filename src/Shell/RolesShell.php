@@ -15,9 +15,9 @@ class RolesShell extends Shell
      */
     public function main()
     {
-        $this->out('Creating roles...');
+        $this->out("\r\nCreate roles");
         $this->loadModel('Roles');
-        $entities = $this->Administrators->newEntities([
+        $entities = $this->Roles->newEntities([
             [
                 'alias' => 'admin',
                 'name' => 'Admin',
@@ -36,11 +36,9 @@ class RolesShell extends Shell
         ]);
         foreach ($entities as $entity) {
             if ($this->Roles->save($entity)) {
-                $this->out('<info>Role ' . $entity->name . ' has been saved</info>');
-                $this->hr();
+                $this->out("Role {$entity->name} has been saved");
             } else {
-                $this->out('<error>Role ' . $entity->name . ' could not be saved</error>');
-                $this->hr();
+                $this->out("Role {$entity->name} could not be saved");
             }
         }
     }

@@ -271,7 +271,7 @@ class Setting
         }
         self::$_autoloaded = true;
         $model = self::model();
-        $query = $model->find('all')->where(['autoload' => 1])->select(['name', 'value']);
+        $query = $model->find('threaded')->where(['autoload' => 1])->select(['name', 'value']);
         foreach ($query as $configure) {
             self::_store($configure->get('name'), $configure->get('value'));
         }
@@ -298,7 +298,7 @@ class Setting
      * Stores recent data in the $_data-variable.
      *
      * @param string $key The key.
-     * @param mixed $value The value.
+     * @param mixed|array|string $value The value.
      * @return void
      */
     protected static function _store($key, $value)
