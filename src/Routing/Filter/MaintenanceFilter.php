@@ -2,7 +2,7 @@
 
 namespace App\Routing\Filter;
 
-use Cake\Core\Configure;
+use App\Core\Setting;
 use Cake\Event\Event;
 use Cake\Routing\DispatcherFilter;
 
@@ -21,7 +21,7 @@ class MaintenanceFilter extends DispatcherFilter
     public function beforeDispatch(Event $event)
     {
         parent::beforeDispatch($event);
-        $maintenance = Configure::read('Maintenance');
+        $maintenance = Setting::read('Maintenance');
 
         // Allow ip in the list only.
         // Allow all if empty restrict ip
