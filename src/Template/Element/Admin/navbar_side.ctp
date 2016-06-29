@@ -1,6 +1,3 @@
-<?php
-use Cake\Core\Configure;
-?>
 <div class="side-menu sidebar-inverse">
     <nav class="navbar navbar-default" role="navigation">
         <div class="side-menu-container">
@@ -25,7 +22,7 @@ use Cake\Core\Configure;
                         [__('Users'), ['controller' => 'Users', 'action' => 'index']],
                     ]
                 );
-                // $navbar_sides = Configure::read('Menu.Side');
+                // $navbar_sides = App\Core\Setting::read('Menu.Side');
                 // foreach ($navbar_sides as $k => $v) {
                 //     if (isset($v[1][0]) && is_array($v[1][0])) {
                 //         echo $this->Menu->groupLink($v[0], $v[1], ['escape' => false]);

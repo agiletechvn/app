@@ -21,7 +21,7 @@
 <body>
     <div class="container">
         <div class="logo">
-            <?= $this->Html->image(Cake\Core\Configure::read('Meta.logo'))?>
+            <?= $this->Html->image(App\Core\Setting::read('App.Logo'))?>
         </div>
         <?=$this->fetch('content')?>
     </div>

@@ -21,5 +21,5 @@ $this->layout = 'login';
 <?=$this->Form->end()?>
 <dir class="action-link">
     <?=$this->Html->link(__('Lost password?'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'lostPassword'])?>
-    <?=\Cake\Core\Configure::read('Member.AnyoneCanRegister')?$this->Html->link(__('Register'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'register']):''?>
+    <?=App\Core\Setting::read('Member.AnyoneCanRegister')?$this->Html->link(__('Register'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'register']):''?>
 </dir>

@@ -24,5 +24,5 @@ $templates = [
 <?=$this->Form->end()?>
 <div class="action-link">
     <?= $this->Html->link(__('Login'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'login'])?>
-    <?=\Cake\Core\Configure::read('Member.AnyoneCanRegister')?$this->Html->link(__('Register'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'register']):''?>
+    <?=App\Core\Setting::read('Member.AnyoneCanRegister')?$this->Html->link(__('Register'), ['prefix' => 'admin', 'controller' => 'Users', 'action' => 'register']):''?>
 </div>
