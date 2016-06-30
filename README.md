@@ -97,17 +97,6 @@ Open crontab `crontab -e` then add cronjob:
 */5 * * * * cd /path/to/app && bin/cake Scheduler
 ```
 
-If you want to add more job, you just needed to create Task class inside `app/src/Shell/Task` then write
-
-to configure:
-
-```
-Configure::write('SchedulerShell.jobs', array(
-    'CleanUp' => array('interval' => 'next day 5:00', 'task' => 'CleanUp'),// tomorrow at 5am
-    'Newsletters' => array('interval' => 'PT15M', 'task' => 'Newsletter') //every 15 minutes
-));
-```
-
 # Demo
 
 ![Login page](http://image.prntscr.com/image/1e676ca9184e4af78f1cae85b8b294e5.png)
