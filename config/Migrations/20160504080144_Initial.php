@@ -145,9 +145,9 @@ class Initial extends AbstractMigration
                 'null' => false,
             ])
             ->addColumn('created', 'datetime', [
-                'default' => 'CURRENT_TIMESTAMP',
+                'default' => null,
                 'limit' => null,
-                'null' => false,
+                'null' => true,
             ])
             ->addColumn('modified', 'datetime', [
                 'default' => null,
