@@ -6,9 +6,10 @@ A skeleton for creating applications with [CakePHP](http://cakephp.org) 3.x.
 
 The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
 
-## Donate
+## Features
 
-Buy me a cup of coffee [![paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=anhtuank7c%40hotmail%2ecom&lc=US&item_name=Crabstudio%20CakePHP%203%20%2d%20FlatAdmin%20Skeleton&item_number=crabstudio%2dcakephp%2dskeleton&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest)
+
+## Support me [![paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=anhtuank7c%40hotmail%2ecom&lc=US&item_name=Crabstudio%20CakePHP%203%20%2d%20FlatAdmin%20Skeleton&item_number=crabstudio%2dcakephp%2dskeleton&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest)
 
 ## Installation
 
@@ -16,49 +17,31 @@ Buy me a cup of coffee [![paypal](https://img.shields.io/badge/Donate-PayPal-gre
 2. Run `php composer.phar create-project --prefer-dist crabstudio/app [app_name]`.
 
 If Composer is installed globally, run
-```bash
+
+```
 composer create-project --prefer-dist crabstudio/app [app_name]
 ```
 
-You should now be able to visit the path to where you installed the app and see
-the setup traffic lights.
-
 ## Configuration
 
-Read and edit `config/app.php` and setup the 'Datasources' and any other
-configuration relevant for your application.
+1. Setup `Datasource` in `config/app.php`
+2. Run and follow the command: `bin/cake install`
+3. Application ready to use.
 
-use `Configurations` in backend to control your configurations
-
-#### Important
-
-Change `App.fullBaseUrl` from `false` to `http://your_domain.com` in production, because of Email task will use this to generate url
-
-## Migration
-
-Setup database connection in `config/app.php` first
-
-Open terminal/command line then execute migration
 ```
-bin/cake migrations migrate
+	Available shell commands:
+	bin/cake refactory			: wipe existing database then install factory database
+	bin/cake users				: insert administrator
+	bin/cake roles				: insert 3 default roles [admin, manager, member]
+	bin/cake settings			: insert default settings
+	bin/cake scheduler 			: run task, should be called by cronjob
 ```
 
-## Seed
+## Important
 
-Open terminal/command line then execute migration
-```
-bin/cake migrations seed
-```
+Change `App.fullBaseUrl` from `false` to `http://your_domain.com` in production
 
-Default roles:
-
-- Admin
-- Manager
-- Member
-
-Default users:
-
-- admin@example.com/admin@1234
+**EmailSenderTask will use App.fullBaseUrl to generate the url**
 
 ## Bake
 

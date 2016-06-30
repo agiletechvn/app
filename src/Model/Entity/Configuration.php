@@ -35,16 +35,31 @@ class Configuration extends Entity
         'id' => false,
     ];
 
+    /**
+     * _setKey method
+     * @param string $key key
+     * @return void
+     */
     protected function _setKey($key)
     {
         $this->set('name', $key);
     }
 
+    /**
+     * _getKey method
+     *
+     * @return mix
+     */
     protected function _getKey()
     {
         return $this->get('name');
     }
 
+    /**
+     * _getOptions method
+     *
+     * @return mix|bool
+     */
     protected function _getOptions()
     {
         if (array_key_exists('name', $this->_properties)) {

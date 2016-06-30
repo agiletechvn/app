@@ -74,7 +74,7 @@ class BackupTask extends Shell
                 }
                 $sql .= ") VALUES (";
                 //each fields values
-                $fieldCount = sizeof($row);
+                $fieldCount = count($row);
                 $count = 0;
                 foreach ($row as $key => $value) {
                     $count++;

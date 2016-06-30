@@ -1,7 +1,7 @@
 <?php
 use Migrations\AbstractMigration;
 
-class Initialize extends AbstractMigration
+class Initial extends AbstractMigration
 {
     public function up()
     {

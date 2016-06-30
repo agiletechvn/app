@@ -52,7 +52,7 @@ class SettingsShell extends Shell
                 'type' => 'select',
                 'editable' => 1,
                 'weight' => 1,
-                'autoload' => 0,
+                'autoload' => 1,
             ],
             [
                 'name' => 'Recaptcha.theme',
@@ -61,7 +61,7 @@ class SettingsShell extends Shell
                 'type' => 'select',
                 'editable' => 1,
                 'weight' => 2,
-                'autoload' => 0,
+                'autoload' => 1,
             ],
             [
                 'name' => 'Recaptcha.lang',
@@ -70,7 +70,7 @@ class SettingsShell extends Shell
                 'type' => 'select',
                 'editable' => 1,
                 'weight' => 3,
-                'autoload' => 0,
+                'autoload' => 1,
             ],
             [
                 'name' => 'Recaptcha.enable',
@@ -79,7 +79,7 @@ class SettingsShell extends Shell
                 'type' => 'select',
                 'editable' => 1,
                 'weight' => 4,
-                'autoload' => 0,
+                'autoload' => 1,
             ],
             [
                 'name' => 'Recaptcha.sitekey',
@@ -88,7 +88,7 @@ class SettingsShell extends Shell
                 'type' => 'text',
                 'editable' => 1,
                 'weight' => 5,
-                'autoload' => 0,
+                'autoload' => 1,
             ],
             [
                 'name' => 'Recaptcha.secret',
@@ -97,7 +97,7 @@ class SettingsShell extends Shell
                 'type' => 'text',
                 'editable' => 1,
                 'weight' => 6,
-                'autoload' => 0,
+                'autoload' => 1,
             ],
             [
                 'name' => 'SchedulerShell.jobs.01.task',

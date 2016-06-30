@@ -33,28 +33,29 @@ class UsersShell extends Shell
             $fullName = $this->in('Full name:');
             $status = $this->in('status', ['y', 'n'], 'y');
 
-            $user = $this->Users->patchEntity($user, [
+            $data = [
                 'email' => $email,
                 'password' => $password,
                 're_password' => $rePassword,
                 'full_name' => $fullName,
                 'status' => (strtolower($status) === 'y')?true:false,
                 'role_id' => $roleAdmin->id
-            ]);
-        }
-
-        if (!empty($user->errors())) {
-            $this->out("\r\nOops! Something went wrong.");
-            foreach ($user->errors() as $k => $v) {
-                foreach ($v as $field => $error) {
-                    $this->out($error);
-                }
+            ];
+            $user = $this->Users->patchEntity($user, $data);
             }
-            $this->out("Please try again");
-            goto enterInputs;
-        }
-        $this->Users->save($user);
-        $this->out("Users \"{$user->full_name}\" has been saved");
-        return true;
+
+            if (!empty($user->errors())) {
+                $this->out("\r\nOops! Something went wrong.");
+                foreach ($user->errors() as $k => $v) {
+                    foreach ($v as $field => $error) {
+                        $this->out($error);
+                    }
+                }
+                $this->out("Please try again");
+                goto enterInputs;
+            }
+            $this->Users->save($user);
+            $this->out("Users \"{$user->full_name}\" has been saved");
+            return true;
     }
 }
