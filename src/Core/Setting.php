@@ -42,10 +42,9 @@ class Setting
      * Method to read the data.
      *
      * @param string $key Key with the name of the setting.
-     * @param string $type The type to return in.
      * @return mixed|bool
      */
-    public static function read($key = null, $type = null)
+    public static function read($key = null)
     {
         if (!self::_tableExists()) {
             return false;
@@ -54,26 +53,17 @@ class Setting
         if (!$key) {
             return self::$_data;
         }
-        if (key_exists($key, self::$_data)) {
-            if ($type) {
-                $value = self::$_data[$key];
-                settype($value, $type);
-                return $value;
-            }
-            return self::$_data[$key];
+        if ($value = Hash::get(static::$_data, $key)) {
+            return $value;
         }
         $model = self::model();
         $data = $model->findByName($key)->select('value');
         if ($data->count() > 0) {
             $data = $data->first()->toArray();
         } else {
-            return null;
+            return false;
         }
         self::_store($key, $data['value']);
-        $value = $data['value'];
-        if ($type) {
-            settype($value, $type);
-        }
         return $value;
     }
 
@@ -166,14 +156,17 @@ class Setting
      */
     public static function check($key)
     {
-        if (!self::_tableExists()) {
+        if (empty($key)) {
             return false;
         }
         self::autoLoad();
-        $model = self::model();
-        if (key_exists($key, self::$_data)) {
-            return true;
+        if (!Hash::get(static::$_data, $key)) {
+            return false;
         }
+        if (!self::_tableExists()) {
+            return false;
+        }
+        $model = self::model();
         $query = $model->findByName($key);
         if (!$query->Count()) {
             return false;
@@ -271,9 +264,9 @@ class Setting
         }
         self::$_autoloaded = true;
         $model = self::model();
-        $query = $model->find('threaded')->where(['autoload' => 1])->select(['name', 'value']);
-        foreach ($query as $configure) {
-            self::_store($configure->get('name'), $configure->get('value'));
+        $query = $model->find('all')->where(['autoload' => 1])->select(['name', 'value'])->hydrate(false)->toArray();
+        foreach ($query as $k => $v) {
+            self::_store($v['name'], $v['value']);
         }
     }
 
@@ -293,17 +286,39 @@ class Setting
     }
 
     /**
+     * Used to cache delete a key from Setting.
+     *
+     * Usage:
+     * ```
+     * Setting::delete('Name'); will delete the entire Setting::Name
+     * Setting::delete('Name.key'); will delete only the Setting::Name[key]
+     * ```
+     *
+     * @param string $key the key to be deleted
+     * @return void
+     */
+    public static function delete($key)
+    {
+        self::$_data = Hash::remove(self::$_data, $key);
+    }
+
+    /**
      * _store
      *
      * Stores recent data in the $_data-variable.
      *
      * @param string $key The key.
-     * @param mixed|array|string $value The value.
+     * @param mixed $value The value.
      * @return void
      */
-    protected static function _store($key, $value)
+    protected static function _store($key, $value = null)
     {
-        self::$_data[$key] = $value;
+        if (!is_array($key)) {
+            $key = [$key => $value];
+        }
+        foreach ($key as $name => $value) {
+            self::$_data = Hash::insert(self::$_data, $name, $value);
+        }
     }
 
     /**

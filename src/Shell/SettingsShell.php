@@ -128,7 +128,7 @@ class SettingsShell extends Shell
             ],
             [
                 'name' => 'SchedulerShell.jobs.02.interval',
-                'value' => 'PT1W',
+                'value' => 'P1M',
                 'description' => null,
                 'type' => 'select',
                 'editable' => 1,

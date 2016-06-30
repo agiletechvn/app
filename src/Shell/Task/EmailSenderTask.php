@@ -1,13 +1,13 @@
 <?php
 namespace App\Shell\Task;
 
+use App\Model\Table\EmailQueueTable;
 use Cake\Console\Shell;
 use Cake\Core\Configure;
 use Cake\Log\Log;
 use Cake\Mailer\Email;
 use Cake\Network\Exception\SocketException;
 use Cake\ORM\TableRegistry;
-use EmailQueue\Model\Table\EmailQueueTable;
 
 /**
  * EmailSender shell task.
