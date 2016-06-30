@@ -160,8 +160,8 @@ class Setting
             return false;
         }
         self::autoLoad();
-        if (!Hash::get(static::$_data, $key)) {
-            return false;
+        if (Hash::get(static::$_data, $key)) {
+            return true;
         }
         if (!self::_tableExists()) {
             return false;

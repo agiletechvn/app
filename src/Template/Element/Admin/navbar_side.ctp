@@ -2,7 +2,7 @@
     <nav class="navbar navbar-default" role="navigation">
         <div class="side-menu-container">
             <div class="navbar-header">
-                <?= $this->Html->link('<div class="icon fa fa-paper-plane"></div><div class="title">' . h(Configure::read('Meta.title')) . '</div>', ['controller' => 'Dashboard', 'action' => 'index'], ['escape' => false, 'class' => 'navbar-brand'])?>
+                <?= $this->Html->link('<div class="icon fa fa-paper-plane"></div><div class="title">' . h(App\Core\Setting::read('App.Name')) . '</div>', ['controller' => 'Dashboard', 'action' => 'index'], ['escape' => false, 'class' => 'navbar-brand'])?>
                 <button type="button" class="navbar-expand-toggle pull-right visible-xs">
                     <i class="fa fa-times icon"></i>
                 </button>
@@ -13,8 +13,8 @@
                     ['prefix' => 'admin', 'controller' => 'Dashboard', 'action' => 'index'],
                     ['escape' => false]
                 );
-                echo $this->Menu->link('<span class="icon fa fa-gears"></span><span class="title">' . __('Configurations') . '</span>',
-                    ['prefix' => 'admin', 'controller' => 'Configurations', 'action' => 'index'],
+                echo $this->Menu->link('<span class="icon fa fa-gears"></span><span class="title">' . __('Setting') . '</span>',
+                    ['prefix' => 'admin', 'controller' => 'Setting', 'action' => 'index'],
                     ['escape' => false]
                 );
                 echo $this->Menu->groupLink('<span class="icon fa fa-shield"></span><span class="title">' . __('Security') . '</span>', [
