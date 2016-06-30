@@ -19,7 +19,7 @@ The framework source code can be found here: [cakephp/cakephp](https://github.co
 
 ## Support me [![paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=anhtuank7c%40hotmail%2ecom&lc=US&item_name=Crabstudio%20CakePHP%203%20%2d%20FlatAdmin%20Skeleton&item_number=crabstudio%2dcakephp%2dskeleton&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest)
 
-## Installation
+## Create project
 
 1. Download [Composer](http://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
 2. Run `php composer.phar create-project --prefer-dist crabstudio/app [app_name]`.
@@ -30,19 +30,29 @@ If Composer is installed globally, run
 composer create-project --prefer-dist crabstudio/app [app_name]
 ```
 
-## Configuration
+## Installation
+
+Initial new application
 
 1. Setup `Datasource` in `config/app.php`
 2. Run and follow the command: `bin/cake install`
-3. Application ready to use.
+3. Application **ready** to use.
+
+## Refactory
+
+**Incase you want to wipe and reinstall application**
+
+1. Run and follow the command: `bin/cake refactory`
+2. Application ready to use.
+
+## Available shell commands
 
 ```
-	Available shell commands:
 	bin/cake refactory			: wipe existing database then install factory database
 	bin/cake users				: insert administrator
 	bin/cake roles				: insert 3 default roles [admin, manager, member]
 	bin/cake settings			: insert default settings
-	bin/cake scheduler 			: run task, should be called by cronjob
+	bin/cake scheduler 			: run task, let's create crontab schedule [scroll down to Crontab schedule]
 ```
 
 ## Important
@@ -79,7 +89,7 @@ This skeleton use [Flat Admin v2](https://github.com/tui2tone/flat-admin-bootstr
 
 You just do bake code, you're good to go.
 
-## Job schedule:
+## Crontab schedule:
 
 Open crontab `crontab -e` then add cronjob:
 
