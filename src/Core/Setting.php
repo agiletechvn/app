@@ -53,7 +53,7 @@ class Setting
         if (!$key) {
             return self::$_data;
         }
-        if ($value = Hash::get(static::$_data, $key)) {
+        if ($value = Hash::get(self::$_data, $key)) {
             return $value;
         }
         $model = self::model();
@@ -82,7 +82,7 @@ class Setting
         if (!self::check($key, $type)) {
             throw new RuntimeException(sprintf('Expected configuration key "%s" not found.', $key));
         }
-        return $this->read($key, $type);
+        return self::read($key, $type);
     }
 
     /**
@@ -160,7 +160,7 @@ class Setting
             return false;
         }
         self::autoLoad();
-        if (Hash::get(static::$_data, $key)) {
+        if (Hash::get(self::$_data, $key)) {
             return true;
         }
         if (!self::_tableExists()) {

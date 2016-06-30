@@ -224,6 +224,8 @@ Type::build('date')
     ->useImmutable();
 Type::build('datetime')
     ->useImmutable();
+Type::map('json', 'App\Database\Type\JsonType');
+Type::map('serialize', 'App\Database\Type\SerializeType');
 
 Plugin::load('WyriHaximus/MinifyHtml', ['bootstrap' => true]);
 Plugin::load('TinyAuth');
