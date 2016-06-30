@@ -8,6 +8,14 @@ The framework source code can be found here: [cakephp/cakephp](https://github.co
 
 ## Features
 
+1. Authenticate, Authorize
+2. Backend ready
+3. Simple shells => Power tool
+4. New CRUD bake template
+5. Send bulk email
+6. Backup database job
+7. Store Settings in database
+8. Improve pages peed: .htaccess, minify html, cdn, cache
 
 ## Support me [![paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=anhtuank7c%40hotmail%2ecom&lc=US&item_name=Crabstudio%20CakePHP%203%20%2d%20FlatAdmin%20Skeleton&item_number=crabstudio%2dcakephp%2dskeleton&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest)
 
