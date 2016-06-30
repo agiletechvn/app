@@ -94,7 +94,7 @@ You just do bake code, you're good to go.
 Open crontab `crontab -e` then add cronjob:
 
 ```
-*/5 * * * * cd /path/to/app && bin/cake Scheduler.Scheduler
+*/5 * * * * cd /path/to/app && bin/cake Scheduler
 ```
 
 If you want to add more job, you just needed to create Task class inside `app/src/Shell/Task` then write
