@@ -49,10 +49,8 @@ if ($this->request->session()->read('Auth.User')
                 <div class="card-title"><?=__('Error {0}', $code)?></div>
             </div>
             <div class="card-body">
-                <p><?=sprintf(__d('cake', 'The requested address %s was not found on this server.'), "<strong>'{$url}'</strong>")?></p>
-                <p>
-                    <?=$this->Html->link('<i class="fa fa-caret-left fa-lg"></i>&nbsp;' . __('Back to home'), ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'btn btn-success', 'escape' => false])?>
-                </p>
+                <p class="text-danger"><?=$error->getMessage()?></p>
+                <p><?=$this->Html->link('<i class="glyphicon glyphicon-triangle-left"></i>&nbsp;' . __('Back to home'), ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'btn btn-success', 'escape' => false])?></p>
             </div>
         </div>
     </div>
@@ -67,8 +65,8 @@ else:
             <?= $this->Html->image('sorry.png', ['class' => 'img-responsive'])?>
         </div>
         <div class="col-lg-9 col-md-9 col-xs-12">
-            <p class="text-danger"><?=sprintf(__d('cake', 'The requested address %s was not found on this server.'), "<strong>'{$url}'</strong>")?></p>
-            <?=$this->Html->link('< ' . __('Back to home'), ['controller' => 'LandingPage', 'action' => 'index'], ['class' => 'btn btn-success'])?>
+            <p class="text-danger"><?=$error->getMessage()?></p>
+            <p><?=$this->Html->link('<i class="glyphicon glyphicon-triangle-left"></i>&nbsp;' . __('Back to home'), ['prefix' => false, 'controller' => 'Pages', 'action' => 'index'], ['class' => 'btn btn-success', 'escape' => false])?></p>
         </div>
     </div>
 <?php

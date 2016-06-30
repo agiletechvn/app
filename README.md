@@ -108,6 +108,8 @@ Configure::write('SchedulerShell.jobs', array(
 
 ![Maintenance mode](http://image.prntscr.com/image/a43e3a8973ca4febaa2543981fb0c978.png)
 
+![Setting](http://image.prntscr.com/image/8de8335416624955ba9379511e010ed7.png)
+
 # CRUD
 
 ![Index](http://image.prntscr.com/image/3db718250128448a8a35737b26eb8ddb.png)

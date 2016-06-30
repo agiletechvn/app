@@ -127,7 +127,7 @@ class TabsComponent extends Component
      * @param Cake\Controller\Controller $controller Controller
      * @return void
      */
-    public function setController(Cake\Controller\Controller $controller)
+    public function setController($controller)
     {
         $this->Controller = $controller;
     }

@@ -24,6 +24,7 @@ class SettingController extends AppController
         parent::initialize();
         $this->loadComponent('Tabs');
         $this->loadModel('Configurations');
+
         Configure::write('Settings.Prefixes.App', 'App');
         Configure::write('Settings.Prefixes.Recaptcha', 'Recaptcha');
         Configure::write('Settings.Prefixes.Member', 'Member');
@@ -33,11 +34,9 @@ class SettingController extends AppController
         Setting::register('App.Name', 'CakePHP', ['type' => 'text', 'weight' => 1]);
         Setting::register('App.Logo', '/img/logo.png', ['type' => 'file', 'weight' => 2]);
         Setting::register('App.Copyright', '<b>SBD</b> all right reserved', ['type' => 'text', 'weight' => 3]);
+        Setting::register('App.Debug', true, ['type' => 'checkbox', 'weight' => 4]);
 
-        Setting::register('Member.AnyoneCanRegister', false, [
-            'type' => 'checkbox',
-            'weight' => 1,
-        ]);
+        Setting::register('Member.AnyoneCanRegister', false, ['type' => 'checkbox', 'weight' => 1]);
         Setting::register('Member.RegisterTokenExpired', '24 hours', [
             'options' => [
                 '24 hours' => '24 hours',
@@ -121,7 +120,7 @@ class SettingController extends AppController
             'type' => 'select',
             'weight' => 3
         ]);
-        Setting::register('SchedulerShell.jobs.01.interval', 'PT1W', [
+        Setting::register('SchedulerShell.jobs.02.interval', 'PT1W', [
             'options' => [
                 'PT1M' => __('Each 1 minute'),
                 'PT5M' => __('Each 5 minute'),

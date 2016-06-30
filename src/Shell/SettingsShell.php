@@ -46,6 +46,15 @@ class SettingsShell extends Shell
                 'autoload' => 1,
             ],
             [
+                'name' => 'App.Debug',
+                'value' => 1,
+                'description' => null,
+                'type' => 'checkbox',
+                'editable' => 1,
+                'weight' => 4,
+                'autoload' => 1,
+            ],
+            [
                 'name' => 'Recaptcha.type',
                 'value' => 'image',
                 'description' => null,
