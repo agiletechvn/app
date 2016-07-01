@@ -17,16 +17,16 @@ class RefactoryShell extends Shell
      */
     public function main()
     {
-        $this->out('<info>Refactory database</info>');
-        $confirm = $this->in('<warning>Are you sure you want to restore database to factory. (Destroy existing)<warning>', ['Y', 'N'], 'N');
+        $this->out('Refactory database');
+        $confirm = $this->in('Are you sure you want to restore database to factory. (Destroy existing)', ['Y', 'N'], 'N');
         if ($confirm == 'N') {
-            $this->out('<info>You choose No. Nothing changed</info>');
+            $this->out('You choose No. Nothing changed');
             return false;
         }
 
         $this->out('Wiping data');
         $this->wipe();
-        $this->out('<info>Wiped</info>');
+        $this->out('Wiped');
 
         $this->out('Reinstall database');
         $this->dispatchShell('install');
