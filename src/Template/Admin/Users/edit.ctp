@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', __('Users') . '/' . __('Edit'));
+$this->assign('title', __('Users/Edit'));
 $this->Html->addCrumb(__('Users'), ['controller' => 'Users', 'action' => 'index']);
 $this->Html->addCrumb(__('Edit'));
 ?>

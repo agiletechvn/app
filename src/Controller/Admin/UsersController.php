@@ -24,7 +24,6 @@ class UsersController extends AppController
     public function initialize()
     {
         parent::initialize();
-
         $this->loadComponent('Search.Prg', [
             'actions' => ['index'],
         ]);
@@ -181,35 +180,55 @@ class UsersController extends AppController
             'contain' => ['Roles'],
         ]);
         unset($user->password);
-        if ($this->request->is(['post', 'put']) && in_array($this->request->data['action'], ['edit_profile', 'change_password'])) {
-            if ($this->request->data['action'] === 'edit_profile') {
-                $allowedToChange = ['full_name'];
-                $data = array_intersect_key($this->request->data, array_flip($allowedToChange));
-                $user = $this->Users->patchEntity($user, $data, ['validate' => 'EditProfile']);
-                if ($this->Users->save($user)) {
-                    $this->Flash->success(__('Your profile has been updated'));
-                    $userSession = $this->Users->get($user->id)->toArray();
-                    unset($userSession['password']);
-                    $this->Auth->setUser($userSession);
-                    return $this->redirect($this->referer());
-                } else {
-                    $this->Flash->error(__('The profile could not update. Please, try again.'));
-                }
+        if ($this->request->is(['post', 'put', 'patch'])) {
+            $allowedToChange = ['full_name'];
+            $data = array_intersect_key($this->request->data, array_flip($allowedToChange));
+            $user = $this->Users->patchEntity($user, $data, ['validate' => 'EditProfile']);
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('Your profile has been updated'));
+                $userSession = $this->Users->get($user->id)->toArray();
+                unset($userSession['password']);
+                $this->Auth->setUser($userSession);
+                return $this->redirect([]);
             } else {
-                $allowedToChange = ['password', 'current_password', 're_password'];
-                $data = array_intersect_key($this->request->data, array_flip($allowedToChange));
-                $user = $this->Users->patchEntity($user, $data, ['validate' => 'EditPassword']);
-                if ($this->Users->save($user)) {
-                    $this->Flash->success(__('Your password has been updated'));
-                    if (is_array($this->Cookie->read('CookieAuth'))) {
-                        $this->Cookie->write('CookieAuth', [
-                            'password' => $this->request->data['re_password'],
-                        ]);
-                    }
-                    return $this->redirect($this->referer());
-                } else {
-                    $this->Flash->error(__('The password could not be change'));
+                $this->Flash->error(__('The profile could not update. Please, try again.'));
+            }
+        }
+        $this->set(compact('user'));
+        $this->set('_serialize', ['user']);
+    }
+
+    /**
+     * changePassword method
+     *
+     * @return \Cake\Network\Response|null Redirects
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function changePassword()
+    {
+        $user = $this->Users->get($this->Auth->user('id'), [
+            'contain' => ['Roles'],
+        ]);
+        unset($user->password);
+        if ($this->request->is(['post', 'put', 'patch'])) {
+            $allowedToChange = ['password', 'current_password', 're_password'];
+            $data = array_intersect_key($this->request->data, array_flip($allowedToChange));
+            $user = $this->Users->patchEntity($user, $data, ['validate' => 'EditPassword']);
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('Your password has been updated'));
+                if (is_array($this->Cookie->read('CookieAuth'))) {
+                    $this->Cookie->configKey('CookieAuth', [
+                        'expired' => Setting::readOrFail('Member.RememberCookieExpired'),
+                        'domain' => $this->request->host(),
+                        'httpOnly' => !$this->request->is('ssl'),
+                        'secure' => $this->request->is('ssl')]);
+                    $this->Cookie->write('CookieAuth', [
+                        'password' => $this->request->data['re_password'],
+                    ]);
                 }
+                return $this->redirect([]);
+            } else {
+                $this->Flash->error(__('The password could not be change'));
             }
         }
         $this->set(compact('user'));
@@ -225,6 +244,9 @@ class UsersController extends AppController
     public function deactive()
     {
         $this->request->allowMethod(['post', 'put']);
+        if (!Setting::read('Member.AnyoneCanDeactive')) {
+            throw new NotFoundException(__('Page not found'));
+        }
         if ($this->Users->deactive($this->Auth->user('id'))) {
             enqueue($this->Auth->user('email'), [
                 'user' => $this->Auth->user()], [
@@ -256,7 +278,8 @@ class UsersController extends AppController
                 //Write to cookie if Remember me is checked
                 if ((bool)$this->request->data['RememberMe']) {
                     $this->Cookie->configKey('CookieAuth', [
-                        'expired' => '1 months',
+                        'expired' => Setting::readOrFail('Member.RememberCookieExpired'),
+                        'domain' => $this->request->host(),
                         'httpOnly' => !$this->request->is('ssl'),
                         'secure' => $this->request->is('ssl')]);
                     $this->Cookie->write('CookieAuth', [

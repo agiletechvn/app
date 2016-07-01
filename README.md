@@ -16,6 +16,7 @@ The framework source code can be found here: [cakephp/cakephp](https://github.co
 6. Backup database job
 7. Store Settings in database
 8. Improve pages peed: .htaccess, minify html, cdn, cache
+9. Integrated file manager, tinymce
 
 ## Support me [![paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=anhtuank7c%40hotmail%2ecom&lc=US&item_name=Crabstudio%20CakePHP%203%20%2d%20FlatAdmin%20Skeleton&item_number=crabstudio%2dcakephp%2dskeleton&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest)
 
@@ -107,7 +108,13 @@ Open crontab `crontab -e` then add cronjob:
 
 ![Maintenance mode](http://image.prntscr.com/image/a43e3a8973ca4febaa2543981fb0c978.png)
 
-![Setting](http://image.prntscr.com/image/8de8335416624955ba9379511e010ed7.png)
+![File Manager](http://image.prntscr.com/image/3e8ca663fd65495c89c5bd062fb41b4e.png)
+
+![Setting member](http://image.prntscr.com/image/388a11b858be410c9c772eb850ac0bc5.png)
+
+![Change password](http://image.prntscr.com/image/391dd67c748146b6a412a92393e3d3a3.png)
+
+![Task schedule](http://image.prntscr.com/image/448fe09bdc814b149882e50efcde249d.png)
 
 # CRUD
 

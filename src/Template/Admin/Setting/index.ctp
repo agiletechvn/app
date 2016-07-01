@@ -9,7 +9,8 @@ $this->Html->scriptBlock('
       "width": 900,
       "height": 600,
       "type": "iframe",
-      "autoScale": false
+      "autoScale": true,
+      "minHeight": 280
   });
 ', ['block' => true]);
 ?>

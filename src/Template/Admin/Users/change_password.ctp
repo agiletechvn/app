@@ -1,20 +1,20 @@
 <?php
 use App\Core\Setting;
 
-$this->assign('title', __('Users/Profile'));
+$this->assign('title', __('Users/Change password'));
 $this->Html->addCrumb(__('Users'), ['controller' => 'Users', 'action' => 'index']);
-$this->Html->addCrumb(__('Profile'));
+$this->Html->addCrumb(__('Change password'));
 ?>
 <div class="row">
     <div class="col-lg-8 col-lg-offset-3 col-md-10 col-lg-offset-2 col-xs-12">
         <div class="card summary-inline">
             <div role="tabpanel">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active">
-                        <?= $this->Html->link(__('Profile'), '#!')?>
-                    </li>
                     <li role="presentation">
-                        <?= $this->Html->link(__('Change password'), ['action' => 'changePassword'])?>
+                        <?= $this->Html->link(__('Profile'), ['action' => 'profile'])?>
+                    </li>
+                    <li role="presentation" class="active">
+                        <?= $this->Html->link(__('Change password'), '#!')?>
                     </li>
                     <?php
                     if (Setting::read('Member.AnyoneCanDeactive')) {
@@ -29,8 +29,9 @@ $this->Html->addCrumb(__('Profile'));
                         <?php
                             echo $this->Form->create($user, ['templates' => 'template_form_1_column']);
                             echo $this->Form->input('id', ['type' => 'hidden']);
-                            echo $this->Form->input('email',['readonly' => true]);
-                            echo $this->Form->input('full_name', ['autofocus' => true]);
+                            echo $this->Form->input('current_password', ['type' => 'password', 'required' => true, 'autofocus' => true]);
+                            echo $this->Form->input('password');
+                            echo $this->Form->input('re_password', ['type' => 'password']);
                             echo $this->Form->button(__('Save'), ['class' => 'btn btn-primary', 'type' => 'submit']);
                             echo $this->Form->end();
                         ?>

@@ -80,10 +80,24 @@ Router::prefix('admin', function ($routes) {
     $routes->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
     //Password recovery
     $routes->connect('/lost-password', ['controller' => 'Users', 'action' => 'lostPassword']);
-    $routes->connect('/reset-password/:token/:email', ['controller' => 'Users', 'action' => 'resetPassword'], ['pass' => ['token', 'email']]);
+    $routes->connect('/reset-password/:token/:email', [
+            'controller' => 'Users',
+            'action' => 'resetPassword'
+        ], [
+            'email' => '^[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+\.)+([A-Za-z0-9]{2,4}|museum)$',
+            'token' => '[a-z0-9]+',
+            'pass' => ['token', 'email']
+        ]);
     //Register account
     $routes->connect('/register', ['controller' => 'Users', 'action' => 'register']);
-    $routes->connect('/active-account/:token/:email', ['controller' => 'Users', 'action' => 'activeAccount'], ['pass' => ['token', 'email']]);
+    $routes->connect('/active-account/:token/:email', [
+            'controller' => 'Users',
+            'action' => 'activeAccount'
+        ], [
+            'email' => '^[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+\.)+([A-Za-z0-9]{2,4}|museum)$',
+            'token' => '[a-z0-9]+',
+            'pass' => ['token', 'email']
+        ]);
     $routes->connect('/:controller', ['action' => 'index']);
     $routes->connect('/:controller/:action/*', []);
 

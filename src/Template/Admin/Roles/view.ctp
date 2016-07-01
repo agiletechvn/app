@@ -1,5 +1,5 @@
 <?php
-$this->assign('title', __('Roles') . '/' . __('View'));
+$this->assign('title', __('Roles/View'));
 $this->Html->addCrumb(__('Roles'), ['controller' => 'Roles', 'action' => 'index']);
 $this->Html->addCrumb(__('View'));
 ?>

@@ -32,11 +32,12 @@ class SettingController extends AppController
         Configure::write('Settings.Prefixes.SchedulerShell', 'SchedulerShell');
 
         Setting::register('App.Name', 'CakePHP', ['type' => 'text', 'weight' => 1]);
-        Setting::register('App.Logo', '/img/logo.png', ['type' => 'file', 'weight' => 2]);
+        Setting::register('App.Logo', '/uploads/logo.png', ['type' => 'file', 'weight' => 2]);
         Setting::register('App.Copyright', '<b>SBD</b> all right reserved', ['type' => 'text', 'weight' => 3]);
         Setting::register('App.Debug', true, ['type' => 'checkbox', 'weight' => 4]);
 
         Setting::register('Member.AnyoneCanRegister', false, ['type' => 'checkbox', 'weight' => 1]);
+        Setting::register('Member.AnyoneCanDeactive', false, ['type' => 'checkbox', 'weight' => 2]);
         Setting::register('Member.RegisterTokenExpired', '24 hours', [
             'options' => [
                 '24 hours' => '24 hours',
@@ -44,7 +45,7 @@ class SettingController extends AppController
                 '72 hours' => '72 hours',
             ],
             'type' => 'select',
-            'weight' => 2
+            'weight' => 3
         ]);
         Setting::register('Member.ResetPasswordTokenExpired', '24 hours', [
             'options' => [
@@ -53,7 +54,20 @@ class SettingController extends AppController
                 '72 hours' => '72 hours',
             ],
             'type' => 'select',
-            'weight' => 3
+            'weight' => 4
+        ]);
+        Setting::register('Member.RememberCookieExpired', '1 month', [
+            'options' => [
+                '1 day' => '1 day',
+                '10 days' => '10 days',
+                '1 month' => '1 month',
+                '3 months' => '3 months',
+                '6 months' => '6 months',
+                '9 months' => '9 months',
+                '1 year' => '1 year',
+            ],
+            'type' => 'select',
+            'weight' => 5
         ]);
         Setting::register('Recaptcha.type', 'image', [
             'options' => [
