@@ -16,7 +16,7 @@
                 echo $this->Menu->groupLink('<span class="icon fa fa-gears"></span><span class="title">' . __('System') . '</span>', [
                         [__('Roles'), ['controller' => 'Roles', 'action' => 'index']],
                         [__('Users'), ['controller' => 'Users', 'action' => 'index']],
-                        [__('Setting'), 'controller' => 'Setting', 'action' => 'index'],
+                        [__('Setting'), ['controller' => 'Setting', 'action' => 'index']],
                     ]
                 );
                 // $navbar_sides = App\Core\Setting::read('Menu.Side');

@@ -49,6 +49,7 @@ Initial new application
 ## Available shell commands
 
 ```
+	bin/cake install			: install default database
 	bin/cake refactory			: wipe existing database then install factory database
 	bin/cake users				: insert administrator
 	bin/cake roles				: insert 3 default roles [admin, manager, member]

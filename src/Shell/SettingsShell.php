@@ -38,7 +38,7 @@ class SettingsShell extends Shell
             ],
             [
                 'name' => 'App.Logo',
-                'value' => '/img/logo.png',
+                'value' => '/uploads/logo.png',
                 'description' => null,
                 'type' => 'file',
                 'editable' => 1,
