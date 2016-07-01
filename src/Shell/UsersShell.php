@@ -48,7 +48,7 @@ class UsersShell extends Shell
                 $this->out("\r\nOops! Something went wrong.");
                 foreach ($user->errors() as $k => $v) {
                     foreach ($v as $field => $error) {
-                        $this->out($error);
+                        $this->out($k . ': ' . $error);
                     }
                 }
                 $this->out("Please try again");

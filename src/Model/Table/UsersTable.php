@@ -100,14 +100,14 @@ class UsersTable extends Table
 
         $validator
             ->requirePresence('password', 'create')
-            ->notEmpty('password', __('New Password cannot be empty'))
+            ->notEmpty('password')
             ->add('password', 'minLength', [
                 'rule' => ['minLength', 4],
                 'message' => __('Passwords must equal or greater than 4 characters')]);
 
         $validator
             ->requirePresence('re_password', 'create')
-            ->notEmpty('re_password', __('re_password cannot be empty'))
+            ->notEmpty('re_password')
             ->add('re_password', 'minLength', [
                 'rule' => ['minLength', 4],
                 'message' => __('re_password must equal or greater than 4 characters')])
