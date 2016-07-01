@@ -10,16 +10,13 @@
             <ul class="nav navbar-nav">
             <?php
                 echo $this->Menu->link('<span class="icon fa fa-tachometer"></span><span class="title">' . __('Dashboard') . '</span>', 
-                    ['prefix' => 'admin', 'controller' => 'Dashboard', 'action' => 'index'],
+                    ['controller' => 'Dashboard', 'action' => 'index'],
                     ['escape' => false]
                 );
-                echo $this->Menu->link('<span class="icon fa fa-gears"></span><span class="title">' . __('Setting') . '</span>',
-                    ['prefix' => 'admin', 'controller' => 'Setting', 'action' => 'index'],
-                    ['escape' => false]
-                );
-                echo $this->Menu->groupLink('<span class="icon fa fa-shield"></span><span class="title">' . __('Security') . '</span>', [
+                echo $this->Menu->groupLink('<span class="icon fa fa-gears"></span><span class="title">' . __('System') . '</span>', [
                         [__('Roles'), ['controller' => 'Roles', 'action' => 'index']],
                         [__('Users'), ['controller' => 'Users', 'action' => 'index']],
+                        [__('Setting'), 'controller' => 'Setting', 'action' => 'index'],
                     ]
                 );
                 // $navbar_sides = App\Core\Setting::read('Menu.Side');

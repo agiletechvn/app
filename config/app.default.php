@@ -76,7 +76,7 @@ return [
      * enable timestamping regardless of debug value.
      */
     'Asset' => [
-        'timestamp' => force,
+        // 'timestamp' => true,
     ],
 
     /**

@@ -65,6 +65,9 @@ class MenuHelper extends Helper
         $result .= '<div class="panel-body">';
         $result .= '<ul class="nav navbar-nav">';
         foreach ($urls as $k => $v) {
+            if (empty($v[0]) || empty($v[1])) {
+                continue;
+            }
             $result .= '<li>' . $this->Html->link($v[0], $v[1]) . '</li>';
         }
         $result .= '</ul>';
