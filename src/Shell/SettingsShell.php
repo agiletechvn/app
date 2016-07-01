@@ -111,7 +111,7 @@ class SettingsShell extends Shell
             [
                 'name' => 'SchedulerShell.jobs.01.task',
                 'value' => 'EmailSender',
-                'description' => null,
+                'description' => 'EmailSender',
                 'type' => 'select',
                 'editable' => 1,
                 'weight' => 1,
@@ -120,7 +120,7 @@ class SettingsShell extends Shell
             [
                 'name' => 'SchedulerShell.jobs.01.interval',
                 'value' => 'PT1M',
-                'description' => null,
+                'description' => 'EmailSender',
                 'type' => 'select',
                 'editable' => 1,
                 'weight' => 2,
@@ -129,7 +129,7 @@ class SettingsShell extends Shell
             [
                 'name' => 'SchedulerShell.jobs.02.task',
                 'value' => 'Backup',
-                'description' => null,
+                'description' => 'Backup',
                 'type' => 'select',
                 'editable' => 1,
                 'weight' => 3,
@@ -138,7 +138,7 @@ class SettingsShell extends Shell
             [
                 'name' => 'SchedulerShell.jobs.02.interval',
                 'value' => 'P1M',
-                'description' => null,
+                'description' => 'Backup',
                 'type' => 'select',
                 'editable' => 1,
                 'weight' => 4,
