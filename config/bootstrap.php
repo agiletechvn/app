@@ -231,5 +231,3 @@ Plugin::load('WyriHaximus/MinifyHtml', ['bootstrap' => true]);
 Plugin::load('TinyAuth');
 Plugin::load('Xety/Cake3CookieAuth');
 Plugin::load('Search');
-Plugin::load('Cake/Localized');
-Plugin::load('SoftDelete');
