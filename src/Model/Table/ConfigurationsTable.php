@@ -26,41 +26,16 @@ class ConfigurationsTable extends Table
 
         $this->table('configurations');
         $this->displayField('name');
-        $this->addBehavior('Search.Search');
-        $this->searchManager()
-            ->add('id', 'Search.Value', [
-                'field' => $this->aliasField('id')
-            ])
-            ->add('name', 'Search.Like', [
-                'before' => true,
-                'after' => true,
-                'field' => $this->aliasField('name')
-            ])
-            ->add('value', 'Search.Value', [
-                'field' => $this->aliasField('value')
-            ])
-            ->add('description', 'Search.Like', [
-                'before' => true,
-                'after' => true,
-                'field' => $this->aliasField('description')
-            ])
-            ->add('type', 'Search.Like', [
-                'before' => true,
-                'after' => true,
-                'field' => $this->aliasField('type')
-            ])
-            ->add('editable', 'Search.Value', [
-                'field' => $this->aliasField('editable')
-            ])
-            ->add('weight', 'Search.Value', [
-                'field' => $this->aliasField('weight')
-            ])
-            ->add('autoload', 'Search.Value', [
-                'field' => $this->aliasField('autoload')
-            ]);
         $this->primaryKey('id');
 
-        $this->addBehavior('Timestamp');
+        $this->addBehavior('Timestamp', [
+            'events' => [
+                'Model.beforeSave' => [
+                    'created' => 'new',
+                    'modified' => 'existing'
+                ]
+            ]
+        ]);
     }
 
     /**
