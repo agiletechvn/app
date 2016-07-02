@@ -97,7 +97,7 @@ if (!Configure::read('debug')) {
  * Set server timezone to UTC. You can change it to another timezone of your
  * choice but using UTC makes time calculations / conversions easier.
  */
-date_default_timezone_set('UTC');
+date_default_timezone_set('Asia/Tokyo');
 
 /**
  * Configure the mbstring extension to use the correct encoding.
@@ -231,3 +231,5 @@ Plugin::load('WyriHaximus/MinifyHtml', ['bootstrap' => true]);
 Plugin::load('TinyAuth');
 Plugin::load('Xety/Cake3CookieAuth');
 Plugin::load('Search');
+Plugin::load('Cake/Localized');
+Plugin::load('SoftDelete');
