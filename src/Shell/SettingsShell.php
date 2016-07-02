@@ -29,7 +29,7 @@ class SettingsShell extends Shell
             ],
             [
                 'name' => 'App.Copyright',
-                'value' => 'Anhtuank7c',
+                'value' => 'Your copyright',
                 'description' => null,
                 'type' => 'text',
                 'editable' => 1,
