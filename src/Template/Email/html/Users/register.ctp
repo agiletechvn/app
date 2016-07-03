@@ -17,7 +17,7 @@ $this->assign('title', __('Verify account'));
             <table class="btn-primary" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td>
-                        <?= $this->Html->link(__('Create password'), $this->Url->build(['prefix' => 'admin', 'controller' => 'Users', 'action' => 'activeAccount', $token, urlencode($user->email)], ['full' => true]))?>
+                        <?= $this->Html->link(__('Create password'), $url)?>
                     </td>
                 </tr>
             </table>

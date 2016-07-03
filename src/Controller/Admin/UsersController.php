@@ -7,6 +7,7 @@ use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
 use Cake\ORM\TableRegistry;
+use Cake\Routing\Router;
 use Cake\Utility\Security;
 
 /**
@@ -249,10 +250,16 @@ class UsersController extends AppController
             throw new NotFoundException(__('Page not found'));
         }
         if ($this->Users->deactive($this->Auth->user('id'))) {
+            $url = Router::url([
+                    'prefix' => 'admin',
+                    'controller' => 'Users',
+                    'action' => 'login',
+                    '_full' => true,
+                ]);
             TableRegistry::get('EmailQueue')
                 ->enqueue($this->Auth->user('email'), [
                     'user' => $this->Auth->user(),
-                    'url' => full_base_url($this->request)
+                    'url' => $url
                 ], [
                     'subject' => __('Your account has been deactivated'),
                     'template' => 'Users/deactivated',
@@ -316,12 +323,19 @@ class UsersController extends AppController
             if ($this->Recaptcha->verify()) {
                 $tokenData = $this->Users->createToken($this->request->data['email'], true, Setting::readOrFail('Member.ResetPasswordTokenExpired'));
                 if ($tokenData) {
+                    $url = Router::url([
+                            'prefix' => 'admin',
+                            'controller' => 'Users',
+                            'action' => 'login',
+                            $tokenData['token'],
+                            $tokenData['user']->email,
+                            '_full' => true,
+                        ]);
                     TableRegistry::get('EmailQueue')
                         ->enqueue($tokenData['user']->email, [
                                 'user' => $tokenData['user'],
-                                'expired' => $tokenData['expired'],
-                                'token' => $tokenData['token'],
-                                'url' => full_base_url($this->request)
+                                'expired' => $tokenData['expired']->i18nFormat(),
+                                'url' => $url
                             ], [
                                 'subject' => __('Reset Password'),
                                 'template' => 'Users/reset_password',
@@ -368,10 +382,16 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $data, ['validate' => 'ResetPassword']);
             if ($this->Users->save($user)) {
                 unset($user->password);
+                $url = Router::url([
+                        'prefix' => 'admin',
+                        'controller' => 'Users',
+                        'action' => 'login',
+                        '_full' => true,
+                    ]);
                 TableRegistry::get('EmailQueue')
                     ->enqueue($user->email, [
                         'user' => $user,
-                        'url' => full_base_url($this->request)
+                        'url' => $url
                     ], [
                         'subject' => __('Your password has been recovered'),
                         'template' => 'Users/password_recovered',
@@ -407,12 +427,19 @@ class UsersController extends AppController
                 $user = $this->Users->patchEntity($user, $this->request->data, ['validate' => 'Register']);
                 if ($this->Users->save($user)) {
                     $tokenData = $this->Users->createToken($user->email, $user->status, Setting::readOrFail('Member.RegisterTokenExpired'));
+                    $url = Router::url([
+                            'prefix' => 'admin',
+                            'controller' => 'Users',
+                            'action' => 'login',
+                            $tokenData['token'],
+                            $user->email,
+                            '_full' => true,
+                        ]);
                     TableRegistry::get('EmailQueue')
                         ->enqueue($user->email, [
                             'user' => $user,
-                            'expired' => $tokenData['expired'],
-                            'token' => $tokenData['token'],
-                            'url' => full_base_url($this->request)
+                            'expired' => $tokenData['expired']->i18nFormat(),
+                            'url' => $url
                         ], [
                             'subject' => __('Create account'),
                             'template' => 'Users/register',
@@ -459,10 +486,16 @@ class UsersController extends AppController
             $user->status = true;
             if ($this->Users->save($user)) {
                 unset($user->password);
+                $url = Router::url([
+                        'prefix' => 'admin',
+                        'controller' => 'Users',
+                        'action' => 'login',
+                        '_full' => true,
+                    ]);
                 TableRegistry::get('EmailQueue')
                     ->enqueue($user->email, [
                         'user' => $user,
-                        'url' => full_base_url($this->request),
+                        'url' => $url,
                         ], [
                             'subject' => __('Your account has been activated'),
                             'template' => 'Users/account_verified',

@@ -84,8 +84,8 @@ Router::prefix('admin', function ($routes) {
             'controller' => 'Users',
             'action' => 'resetPassword'
         ], [
-            'email' => '^[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+\.)+([A-Za-z0-9]{2,4}|museum)$',
             'token' => '[a-z0-9]+',
+            'email' => '^[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+\.)+([A-Za-z0-9]{2,4}|museum)$',
             'pass' => ['token', 'email']
         ]);
     //Register account
@@ -94,8 +94,8 @@ Router::prefix('admin', function ($routes) {
             'controller' => 'Users',
             'action' => 'activeAccount'
         ], [
-            'email' => '^[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+\.)+([A-Za-z0-9]{2,4}|museum)$',
             'token' => '[a-z0-9]+',
+            'email' => '^[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+\.)+([A-Za-z0-9]{2,4}|museum)$',
             'pass' => ['token', 'email']
         ]);
     $routes->connect('/:controller', ['action' => 'index']);

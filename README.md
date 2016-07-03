@@ -57,11 +57,56 @@ Initial new application
 	bin/cake scheduler 			: run task, let's create crontab schedule [scroll down to Crontab schedule]
 ```
 
-## Important
+## EmailQueue
 
-Change `App.fullBaseUrl` from `false` to `http://your_domain.com` in production
+If you want to build an url point to your Controller, build it in the controller and set to the view
 
-**EmailSenderTask will use App.fullBaseUrl to generate the url**
+```
+// Router
+
+$routes->connect('/verify/:token/:email', [
+	'controller' => 'Coupons',
+	'action' => 'verify'
+], [
+	'token' => '[a-z0-9]+',
+	'email' => '^[A-Za-z0-9._%+-]+@([A-Za-z0-9-]+\.)+([A-Za-z0-9]{2,4}|museum)$',
+	'pass' => [
+		'token',
+		'email'
+	]
+]);
+
+// Build url
+
+use Cake\ORM\TableRegistry;
+use Cake\Routing\Router;
+
+TableRegistry::get('EmailQueue')
+	->enqueue(
+		$emailAddress,
+		[
+			'user' => 'Anh Tuan',
+			'variable_url' => Router::url([
+				'controller' => 'Coupons',
+				'action' => 'verify',
+				$tokenString,
+				$emailAddress,
+				'_full' => true
+			])
+		], [
+	        'subject' => __('Issue the coupon'),
+	        'template' => 'Coupon/issue',
+	        'format' => 'html',
+	        'layout' => 'default'
+	    ]);
+
+
+// Email view (src/Template/Email/html/Coupon/issue.ctp)
+
+<?= __('Hi {0},', $user)?>
+<?= $this->Html->link(__('Verify'), $url)?>
+
+```
 
 ## Bake
 
