@@ -6,6 +6,7 @@ use App\Core\Setting;
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Network\Exception\ForbiddenException;
 use Cake\Network\Exception\NotFoundException;
+use Cake\ORM\TableRegistry;
 use Cake\Utility\Security;
 
 /**
@@ -248,12 +249,15 @@ class UsersController extends AppController
             throw new NotFoundException(__('Page not found'));
         }
         if ($this->Users->deactive($this->Auth->user('id'))) {
-            enqueue($this->Auth->user('email'), [
-                'user' => $this->Auth->user()], [
-                'subject' => __('Your account has been deactivated'),
-                'template' => 'Users/deactivated',
-                'format' => 'html',
-                'layout' => 'default']);
+            TableRegistry::get('EmailQueue')
+                ->enqueue($this->Auth->user('email'), [
+                    'user' => $this->Auth->user(),
+                    'url' => full_base_url($this->request)
+                ], [
+                    'subject' => __('Your account has been deactivated'),
+                    'template' => 'Users/deactivated',
+                    'format' => 'html',
+                    'layout' => 'default']);
                 return $this->redirect(['action' => 'logout']);
         }
         $this->Flash->error(__('Unable to deactive your account. Please try again or contact to your administrator'));
@@ -312,14 +316,18 @@ class UsersController extends AppController
             if ($this->Recaptcha->verify()) {
                 $tokenData = $this->Users->createToken($this->request->data['email'], true, Setting::readOrFail('Member.ResetPasswordTokenExpired'));
                 if ($tokenData) {
-                    enqueue($tokenData['user']->email, [
-                        'user' => $tokenData['user'],
-                        'expired' => $tokenData['expired'],
-                        'token' => $tokenData['token']], [
-                        'subject' => __('Reset Password'),
-                        'template' => 'Users/reset_password',
-                        'format' => 'html',
-                        'layout' => 'default']);
+                    TableRegistry::get('EmailQueue')
+                        ->enqueue($tokenData['user']->email, [
+                                'user' => $tokenData['user'],
+                                'expired' => $tokenData['expired'],
+                                'token' => $tokenData['token'],
+                                'url' => full_base_url($this->request)
+                            ], [
+                                'subject' => __('Reset Password'),
+                                'template' => 'Users/reset_password',
+                                'format' => 'html',
+                                'layout' => 'default'
+                            ]);
                         $this->Flash->success(__('Please check your email to create a new password.'));
                         return $this->redirect(['action' => 'login']);
                 }
@@ -360,11 +368,16 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $data, ['validate' => 'ResetPassword']);
             if ($this->Users->save($user)) {
                 unset($user->password);
-                enqueue($user->email, ['user' => $user], [
-                    'subject' => __('Your password has been recovered'),
-                    'template' => 'Users/password_recovered',
-                    'layout' => 'default',
-                    'format' => 'html']);
+                TableRegistry::get('EmailQueue')
+                    ->enqueue($user->email, [
+                        'user' => $user,
+                        'url' => full_base_url($this->request)
+                    ], [
+                        'subject' => __('Your password has been recovered'),
+                        'template' => 'Users/password_recovered',
+                        'layout' => 'default',
+                        'format' => 'html'
+                    ]);
                     $this->Flash->success(__('Your password has been recovered. You can login right now!'));
                     return $this->redirect(['action' => 'login']);
             }
@@ -394,14 +407,18 @@ class UsersController extends AppController
                 $user = $this->Users->patchEntity($user, $this->request->data, ['validate' => 'Register']);
                 if ($this->Users->save($user)) {
                     $tokenData = $this->Users->createToken($user->email, $user->status, Setting::readOrFail('Member.RegisterTokenExpired'));
-                    enqueue($user->email, [
-                        'user' => $user,
-                        'expired' => $tokenData['expired'],
-                        'token' => $tokenData['token']], [
-                        'subject' => __('Create account'),
-                        'template' => 'Users/register',
-                        'format' => 'html',
-                        'layout' => 'default']);
+                    TableRegistry::get('EmailQueue')
+                        ->enqueue($user->email, [
+                            'user' => $user,
+                            'expired' => $tokenData['expired'],
+                            'token' => $tokenData['token'],
+                            'url' => full_base_url($this->request)
+                        ], [
+                            'subject' => __('Create account'),
+                            'template' => 'Users/register',
+                            'format' => 'html',
+                            'layout' => 'default'
+                        ]);
                         $this->Flash->success(__('Please check your email to verify account.'));
                         return $this->redirect(['action' => 'login']);
                 }
@@ -442,11 +459,16 @@ class UsersController extends AppController
             $user->status = true;
             if ($this->Users->save($user)) {
                 unset($user->password);
-                enqueue($user->email, ['user' => $user], [
-                    'subject' => __('Your account has been activated'),
-                    'template' => 'Users/account_verified',
-                    'layout' => 'default',
-                    'format' => 'html']);
+                TableRegistry::get('EmailQueue')
+                    ->enqueue($user->email, [
+                        'user' => $user,
+                        'url' => full_base_url($this->request),
+                        ], [
+                            'subject' => __('Your account has been activated'),
+                            'template' => 'Users/account_verified',
+                            'layout' => 'default',
+                            'format' => 'html'
+                        ]);
                     $this->Flash->success(__('Your account has been activated. You can login right now'));
                     return $this->redirect(['action' => 'login']);
             }
