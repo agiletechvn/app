@@ -187,6 +187,6 @@ Open crontab `crontab -e` then add cronjob:
 
 - [mod_deflate apache](http://httpd.apache.org/docs/current/mod/mod_deflate.html), [gzip nginx](http://aspyct.org/blog/2012/08/20/setting-up-http-cache-and-gzip-with-nginx/)
 
-	`Nodejp` required to use `gulp`
+`Nodejs` required to use `gulp`
 
 - Install and use [gulp](http://gulpjs.com/), [minify npm](https://github.com/srod/node-minify) to compress your js, css

@@ -787,6 +787,16 @@ div.mce-fullscreen {
 .select2-dropdown {
     z-index: 1
 }
+.select2-container--default .select2-selection--multiple,
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    box-shadow: none;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    border-radius: 0;
+}
 .required label:first-child:after {
     content: ' *';
     color: #FA2A00

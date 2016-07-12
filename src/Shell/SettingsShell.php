@@ -15,8 +15,12 @@ class SettingsShell extends Shell
      */
     public function main()
     {
-        $this->out("\r\nCreate settings");
         $this->loadModel('Configurations');
+        $settings = $this->Configurations->find('all');
+        if ($settings->count() > 0) {
+            $this->out("\r\nWipe existing settings");
+            $this->Configurations->connection()->execute('truncate table configurations');
+        }
         $entities = $this->Configurations->newEntities([
             [
                 'name' => 'App.Name',
@@ -208,6 +212,7 @@ class SettingsShell extends Shell
                 'autoload' => 1,
             ],
         ]);
+        $this->out("\r\nCreate settings");
         foreach ($entities as $entity) {
             if ($this->Configurations->save($entity)) {
                 $this->out("{$entity->name} has been saved");

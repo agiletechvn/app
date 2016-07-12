@@ -326,7 +326,7 @@ class UsersController extends AppController
                     $url = Router::url([
                             'prefix' => 'admin',
                             'controller' => 'Users',
-                            'action' => 'login',
+                            'action' => 'resetPassword',
                             $tokenData['token'],
                             $tokenData['user']->email,
                             '_full' => true,
