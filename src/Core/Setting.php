@@ -64,6 +64,7 @@ class Setting
             return false;
         }
         self::_store($key, $data['value']);
+
         return $value;
     }
 
@@ -82,6 +83,7 @@ class Setting
         if (!self::check($key, $type)) {
             throw new RuntimeException(sprintf('Expected configuration key "%s" not found.', $key));
         }
+
         return self::read($key, $type);
     }
 
@@ -142,6 +144,7 @@ class Setting
             }
         }
         self::_store($key, $value);
+
         return true;
     }
 
@@ -171,6 +174,7 @@ class Setting
         if (!$query->Count()) {
             return false;
         }
+
         return true;
     }
 
@@ -191,6 +195,7 @@ class Setting
         if (!self::$_model) {
             self::$_model = TableRegistry::get('Configurations');
         }
+
         return self::$_model;
     }
 
@@ -330,6 +335,7 @@ class Setting
     {
         $db = ConnectionManager::get('default');
         $tables = $db->schemaCollection()->listTables();
+
         return in_array('configurations', $tables);
     }
 }

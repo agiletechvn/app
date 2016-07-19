@@ -141,6 +141,7 @@ class UsersTable extends Table
     {
         $rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['role_id'], 'Roles'));
+
         return $rules;
     }
 
@@ -249,6 +250,7 @@ class UsersTable extends Table
                 'expired' => $user->token_created->modify("+ $expired"),
                 'user' => $user];
         }
+
         return false;
     }
 
@@ -269,6 +271,7 @@ class UsersTable extends Table
                     if (!$user) {
                         return false;
                     }
+
                     return (new DefaultPasswordHasher)->check($value, $user->password);
                 },
                 'message' => __('Current password does not match')
@@ -323,6 +326,7 @@ class UsersTable extends Table
     {
         $user = $this->get($userId);
         $user->status = false;
+
         return $this->save($user);
     }
 }

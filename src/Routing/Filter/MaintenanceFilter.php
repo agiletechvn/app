@@ -42,6 +42,7 @@ class MaintenanceFilter extends DispatcherFilter
         $response->statusCode(503);
         $response->body($body);
         $event->stopPropagation();
+
         return $response;
     }
 
@@ -53,6 +54,7 @@ class MaintenanceFilter extends DispatcherFilter
     {
         $view = new \Cake\View\View();
         $view->hasRendered = false;
+
         return $view;
     }
 
@@ -72,6 +74,7 @@ class MaintenanceFilter extends DispatcherFilter
         } else {
             $ip = $_SERVER['REMOTE_ADDR'];
         }
+
         return $ip;
     }
 

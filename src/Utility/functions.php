@@ -13,6 +13,7 @@ function full_base_url(Cake\Network\Request $request = null)
     if ($request->is('ssl')) {
         $protocol = 'https://';
     }
+
     return $protocol . $request->host();
 }
 
@@ -41,6 +42,7 @@ function str_unsign_unicode($source)
         "E", "E", "E", "E", "E", "E", "E", "E", "E", "E", "E", "I", "I", "I", "I", "I",
         "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O", "O",
         "U", "U", "U", "U", "U", "U", "U", "U", "U", "U", "U", "Y", "Y", "Y", "Y", "Y", "D", "e", "u", "a"];
+
     return strtolower(str_replace($signed, $unsigned, $source));
 }
 

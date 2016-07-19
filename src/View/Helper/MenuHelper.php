@@ -39,6 +39,7 @@ class MenuHelper extends Helper
         $result .= '>';
         $result .= $this->Html->link($title, $url, $options);
         $result .= '</li>';
+
         return $result;
     }
 
@@ -74,6 +75,7 @@ class MenuHelper extends Helper
         $result .= '</div>';
         $result .= '</div>';
         $result .= '</li>';
+
         return $result;
     }
 }

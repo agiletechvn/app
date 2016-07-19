@@ -36,8 +36,10 @@ class RecaptchaComponent extends Component
                 'response' => $controller->request->data['g-recaptcha-response'],
                 'remoteip' => $controller->request->clientIp()
             ]);
+
             return json_decode($response->body)->success;
         }
+
         return false;
     }
 }

@@ -21,6 +21,7 @@ class InstallShell extends Shell
         $this->migrate();
         if (!$this->tableExists('roles')) {
             $this->out("Migrating could not be done!");
+
             return false;
         }
         $this->out("Migrating Initial Tables completed!");
@@ -40,6 +41,7 @@ class InstallShell extends Shell
         $this->out("\r\n");
 
         $this->donate();
+
         return true;
     }
 
@@ -51,6 +53,7 @@ class InstallShell extends Shell
     protected function migrate()
     {
         $migrations = new Migrations();
+
         return $migrations->migrate();
     }
 
@@ -64,6 +67,7 @@ class InstallShell extends Shell
     {
         $db = ConnectionManager::get('default');
         $tables = $db->schemaCollection()->listTables();
+
         return in_array($table, $tables);
     }
 

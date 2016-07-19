@@ -21,6 +21,7 @@ class RefactoryShell extends Shell
         $confirm = $this->in('Are you sure you want to restore database to factory. (Destroy existing)', ['Y', 'N'], 'N');
         if ($confirm == 'N') {
             $this->out('You choose No. Nothing changed');
+
             return false;
         }
 

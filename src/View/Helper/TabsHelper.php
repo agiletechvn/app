@@ -86,6 +86,7 @@ class TabsHelper extends Helper
         $html .= $this->content();
         $html .= '</div>';
         $html .= '</div>';
+
         return $html;
     }
 
@@ -105,6 +106,7 @@ class TabsHelper extends Helper
             $html .= $this->Html->link($tab['title'], $tab['url'], ['aria-controls' => $tab['id'], 'role' => 'tab']);
         }
         $html .= '</li>';
+
         return $html;
     }
 
@@ -133,6 +135,7 @@ class TabsHelper extends Helper
         }
         $html .= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary']);
         $html .= $this->Form->end();
+
         return $html;
     }
 }

@@ -21,6 +21,7 @@ class UsersShell extends Shell
         if (!$roleAdmin) {
             $this->out("\r\nRole admin does not exist");
             $this->hr();
+
             return false;
         }
         $this->loadModel('Users');
@@ -56,6 +57,7 @@ class UsersShell extends Shell
             }
             $this->Users->save($user);
             $this->out("Users \"{$user->full_name}\" has been saved");
+
             return true;
     }
 }

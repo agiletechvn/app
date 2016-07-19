@@ -67,8 +67,10 @@ class Configuration extends Entity
             if (is_callable($options)) {
                 return $options();
             }
+
             return $options;
         }
+
         return false;
     }
 

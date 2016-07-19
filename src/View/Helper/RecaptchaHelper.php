@@ -23,6 +23,7 @@ class RecaptchaHelper extends Helper
         $lang = Setting::readOrFail('Recaptcha.lang');
         $theme = Setting::readOrFail('Recaptcha.theme');
         $type = Setting::readOrFail('Recaptcha.type');
+
         return <<<EOF
 <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?hl=$lang" async defer></script>
 <div class="g-recaptcha" data-sitekey="$sitekey" data-theme="$theme" data-type="$type"></div>

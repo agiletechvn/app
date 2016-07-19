@@ -88,6 +88,7 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
@@ -117,6 +118,7 @@ class UsersController extends AppController
                     $this->Auth->setUser($userSession);
                 }
                 $this->Flash->success(__('The user has been saved.'));
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
@@ -143,6 +145,7 @@ class UsersController extends AppController
         } else {
             $this->Flash->error(__('The user could not be deleted. Please, try again.'));
         }
+
         return $this->redirect($this->referer());
     }
 
@@ -158,6 +161,7 @@ class UsersController extends AppController
         $this->request->allowMethod(['post', 'put']);
         if ($this->Auth->user('id') == $id) {
             $this->Flash->error(__('Cannot change status your self.'));
+
             return $this->redirect($this->referer());
         }
         $user = $this->Users->get($id);
@@ -168,6 +172,7 @@ class UsersController extends AppController
         } else {
             $this->Flash->error(__('The user could not change status to {0}. Please, try again.', $statusText));
         }
+
         return $this->redirect($this->referer());
     }
 
@@ -192,6 +197,7 @@ class UsersController extends AppController
                 $userSession = $this->Users->get($user->id)->toArray();
                 unset($userSession['password']);
                 $this->Auth->setUser($userSession);
+
                 return $this->redirect([]);
             } else {
                 $this->Flash->error(__('The profile could not update. Please, try again.'));
@@ -229,6 +235,7 @@ class UsersController extends AppController
                         'password' => $this->request->data['re_password'],
                     ]);
                 }
+
                 return $this->redirect([]);
             } else {
                 $this->Flash->error(__('The password could not be change'));
@@ -266,9 +273,11 @@ class UsersController extends AppController
                     'template' => 'Users/deactivated',
                     'format' => 'html',
                     'layout' => 'default']);
+
                 return $this->redirect(['action' => 'logout']);
         }
         $this->Flash->error(__('Unable to deactive your account. Please try again or contact to your administrator'));
+
         return $this->redirect($this->referer());
     }
 
@@ -298,6 +307,7 @@ class UsersController extends AppController
                         'email' => $user['email'],
                         'password' => $this->request->data['password']]);
                 }
+
                 return $this->redirect($this->Auth->redirectUrl());
             }
             $this->Flash->error(__('Login failed. Please check your email, password'));
@@ -343,8 +353,9 @@ class UsersController extends AppController
                                 'format' => 'html',
                                 'layout' => 'default'
                             ]);
-                        $this->Flash->success(__('Please check your email to create a new password.'));
-                        return $this->redirect(['action' => 'login']);
+                    $this->Flash->success(__('Please check your email to create a new password.'));
+
+                    return $this->redirect(['action' => 'login']);
                 }
                 $this->Flash->error(__('Email does not exist/inactive. Please try again!'));
             } else {
@@ -374,6 +385,7 @@ class UsersController extends AppController
 
         if (!$user->token_created->wasWithinLast(Setting::readOrFail('Member.ResetPasswordTokenExpired'))) {
             $this->Flash->error(__('Your request has been expired. Please create a new request!'));
+
             return $this->redirect(['action' => 'lostPassword']);
         }
         unset($user->password);
@@ -400,8 +412,9 @@ class UsersController extends AppController
                         'layout' => 'default',
                         'format' => 'html'
                     ]);
-                    $this->Flash->success(__('Your password has been recovered. You can login right now!'));
-                    return $this->redirect(['action' => 'login']);
+                $this->Flash->success(__('Your password has been recovered. You can login right now!'));
+
+                return $this->redirect(['action' => 'login']);
             }
         }
         $this->set(compact('user'));
@@ -448,8 +461,9 @@ class UsersController extends AppController
                             'format' => 'html',
                             'layout' => 'default'
                         ]);
-                        $this->Flash->success(__('Please check your email to verify account.'));
-                        return $this->redirect(['action' => 'login']);
+                    $this->Flash->success(__('Please check your email to verify account.'));
+
+                    return $this->redirect(['action' => 'login']);
                 }
             } else {
                 $this->Flash->error(__('Please pass Google Recaptcha first'));
@@ -476,7 +490,6 @@ class UsersController extends AppController
         if ($token != Security::hash($user->email . $user->token_created . $user->id, 'sha1', true)) {
             throw new ForbiddenException(__('Invalid token. Please read email carefully and try again.'));
         }
-
         if (!$user->token_created->wasWithinLast(Setting::readOrFail('Member.RegisterTokenExpired'))) {
             throw new ForbiddenException(__('Your request has been expired. Please contact to your administrator.'));
         }
@@ -504,8 +517,9 @@ class UsersController extends AppController
                             'layout' => 'default',
                             'format' => 'html'
                         ]);
-                    $this->Flash->success(__('Your account has been activated. You can login right now'));
-                    return $this->redirect(['action' => 'login']);
+                $this->Flash->success(__('Your account has been activated. You can login right now'));
+
+                return $this->redirect(['action' => 'login']);
             }
         }
         $this->set(compact('user'));

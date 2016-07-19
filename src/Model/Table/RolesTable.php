@@ -111,6 +111,7 @@ class RolesTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['alias']));
+
         return $rules;
     }
 }

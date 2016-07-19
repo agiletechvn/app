@@ -66,6 +66,7 @@ class RolesController extends AppController
             $role = $this->Roles->patchEntity($role, $this->request->data);
             if ($this->Roles->save($role)) {
                 $this->Flash->success(__('The role has been saved.'));
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The role could not be saved. Please, try again.'));
@@ -89,6 +90,7 @@ class RolesController extends AppController
             $role = $this->Roles->patchEntity($role, $this->request->data);
             if ($this->Roles->save($role)) {
                 $this->Flash->success(__('The role has been saved.'));
+
                 return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The role could not be saved. Please, try again.'));
@@ -114,6 +116,7 @@ class RolesController extends AppController
         } else {
             $this->Flash->error(__('The role could not be deleted. Please, try again.'));
         }
+
         return $this->redirect(['action' => 'index']);
     }
 }

@@ -206,6 +206,7 @@ class SettingController extends AppController
             }
             Setting::clear(true);
             Setting::autoload();
+
             return $this->redirect([]);
         }
         $this->set(compact('settings', 'prefix'));
@@ -223,6 +224,7 @@ class SettingController extends AppController
         if (!$prefix) {
             return false;
         }
+
         return Hash::get($this->prefixes, ucfirst($prefix)) !== null;
     }
 }

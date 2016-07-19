@@ -113,6 +113,7 @@ class SchedulerShell extends Shell
 
         if ($processing && (time() - $processingFlag->lastChange()) < $this->processingTimeout) {
             $this->out("Scheduler already running! Exiting.");
+
             return false;
         } else {
             $processingFlag->delete();
