@@ -31,6 +31,8 @@ class UsersController extends AppController
         ]);
 
         //Allow guest to access this area
+        $this->Auth->allow(['lostPassword', 'register', 'activeAccount', 'resetPassword', 'login']);
+
         if (in_array($this->request->action, [
             'lostPassword',
             'register',
@@ -38,7 +40,6 @@ class UsersController extends AppController
             'resetPassword',
             'login',
         ])) {
-            $this->Auth->allow();
             $this->loadComponent('Csrf');
             $this->loadComponent('Recaptcha');
         }
@@ -380,6 +381,7 @@ class UsersController extends AppController
             $allowedToChange = ['password', 're_password'];
             $data = array_intersect_key($this->request->data, array_flip($allowedToChange));
             $user = $this->Users->patchEntity($user, $data, ['validate' => 'ResetPassword']);
+            $user->token_created = null;
             if ($this->Users->save($user)) {
                 unset($user->password);
                 $url = Router::url([
