@@ -30,6 +30,8 @@ class SettingController extends AppController
         Configure::write('Settings.Prefixes.Member', 'Member');
         Configure::write('Settings.Prefixes.Maintenance', 'Maintenance');
         Configure::write('Settings.Prefixes.SchedulerShell', 'SchedulerShell');
+        Configure::write('Settings.Prefixes.Remember', 'Remember');
+        Configure::write('Settings.Prefixes.BruteForceProtection', 'BruteForceProtection');
 
         Setting::register('App.Name', 'CakePHP', ['type' => 'text', 'weight' => 1]);
         Setting::register('App.Logo', '/uploads/logo.png', ['type' => 'file', 'weight' => 2]);
@@ -56,19 +58,7 @@ class SettingController extends AppController
             'type' => 'select',
             'weight' => 4
         ]);
-        Setting::register('Member.RememberCookieExpired', '1 month', [
-            'options' => [
-                '1 day' => '1 day',
-                '10 days' => '10 days',
-                '1 month' => '1 month',
-                '3 months' => '3 months',
-                '6 months' => '6 months',
-                '9 months' => '9 months',
-                '1 year' => '1 year',
-            ],
-            'type' => 'select',
-            'weight' => 5
-        ]);
+
         Setting::register('Recaptcha.type', 'image', [
             'options' => [
                 'image' => 'image',
@@ -165,6 +155,37 @@ class SettingController extends AppController
 
         Setting::register('Maintenance.enable', false, ['type' => 'checkbox', 'weight' => 1]);
         Setting::register('Maintenance.allowedIp', '127.0.0.1', ['type' => 'text', 'weight' => 2]);
+
+        //Brute Force Protection
+        Setting::register('BruteForceProtection.retries', 3, ['type' => 'number', 'description' => 'Number of allowed login attempts', 'weight' => 1, 'min' => 3, 'max' => 10]);
+        Setting::register('BruteForceProtection.expires', '5 minutes', [
+            'options' => [
+                '5 minutes' => __('5 minutes'),
+                '10 minutes' => __('10 minutes'),
+                '15 minutes' => __('15 minutes'),
+                '1 day' => __('1 day'),
+                '3 days' => __('3 days'),
+            ],
+            'description' => 'Time to block attack ip',
+            'type' => 'select',
+            'weight' => 2,
+        ]);
+        Setting::register('BruteForceProtection.file_path', 'prevent_brute_force', ['type' => 'text', 'description' => 'Folder to store list attacker ip', 'weight' => 3]);
+
+        // Remember
+        Setting::register('Remember.enable', true, ['type' => 'checkbox', 'description' => 'Allow store user/pass to Cookie', 'weight' => 1]);
+        Setting::register('Remember.key', 'RememberMe', ['type' => 'text', 'description' => 'Key to store', 'weight' => 2]);
+        Setting::register('Remember.expires', '1 month', [
+            'options' => [
+                '1 week' => __('1 week'),
+                '1 month' => __('1 month'),
+                '3 months' => __('3 months'),
+                '6 months' => __('6 months'),
+            ],
+            'description' => 'Time to keep in Cookie',
+            'type' => 'select',
+            'weight' => 3
+        ]);
 
         $this->prefixes = Configure::read('Settings.Prefixes');
         foreach ($this->prefixes as $prefix => $alias) {

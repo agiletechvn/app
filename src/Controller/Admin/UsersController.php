@@ -296,21 +296,8 @@ class UsersController extends AppController
                 $this->Auth->setUser($user);
                 $this->Flash->success(__('Login successful'));
 
-                //Write to cookie if Remember me is checked
-                if ((bool)$this->request->data['RememberMe']) {
-                    $this->Cookie->configKey('CookieAuth', [
-                        'expired' => Setting::readOrFail('Member.RememberCookieExpired'),
-                        'domain' => $this->request->host(),
-                        'httpOnly' => !$this->request->is('ssl'),
-                        'secure' => $this->request->is('ssl')]);
-                    $this->Cookie->write('CookieAuth', [
-                        'email' => $user['email'],
-                        'password' => $this->request->data['password']]);
-                }
-
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error(__('Login failed. Please check your email, password'));
         }
     }
 

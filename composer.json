@@ -11,8 +11,8 @@
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
         "dereuromark/cakephp-tinyauth": "^1.3",
-        "xety/cake3-cookieauth": "1.*",
         "friendsofcake/search": "^1.2",
+        "crabstudio/authenticate": "^1.0",
         "wyrihaximus/minify-html": "^1.1"
     },
     "require-dev": {

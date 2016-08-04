@@ -229,5 +229,5 @@ Type::map('serialize', 'App\Database\Type\SerializeType');
 
 Plugin::load('WyriHaximus/MinifyHtml', ['bootstrap' => true]);
 Plugin::load('TinyAuth');
-Plugin::load('Xety/Cake3CookieAuth');
+Plugin::load('Authenticate');
 Plugin::load('Search');

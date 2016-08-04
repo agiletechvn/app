@@ -14,6 +14,7 @@
  */
 namespace App\Controller;
 
+use App\Core\Setting;
 use Cake\Controller\Controller;
 use Cake\Core\Configure;
 use Cake\Event\Event;
@@ -53,14 +54,17 @@ class AppController extends Controller
                 ],
             ],
             'authenticate' => [
-                'Form' => [
-                    'fields' => [
-                        'username' => 'email',
-                        'password' => 'password',
+                'Authenticate.Advance' => [
+                    'lockout' => [
+                        'retries' => Setting::read('BruteForceProtection.retries'),
+                        'expires' => Setting::read('BruteForceProtection.expires'),
+                        'file_path' => Setting::read('BruteForceProtection.file_path'),
                     ],
-                    'scope' => ['Users.status' => true],
-                ],
-                'Xety/Cake3CookieAuth.Cookie' => [
+                    'remember' => [
+                        'enable' => Setting::read('Remember.enable'),
+                        'key' => Setting::read('Remember.key'),
+                        'expires' => Setting::read('Remember.expires'),
+                    ],
                     'fields' => [
                         'username' => 'email',
                         'password' => 'password',
@@ -85,7 +89,6 @@ class AppController extends Controller
             ],
             'unauthorizedRedirect' => false,
             'authError' => __('Did you really think you are allowed to see that?'),
-            'storage' => 'Session',
         ]);
     }
 
@@ -99,12 +102,12 @@ class AppController extends Controller
     public function beforeFilter(Event $event)
     {
         //Automaticaly Login.
-        if (!$this->Auth->user() && $this->Cookie->read('CookieAuth')) {
+        if (!$this->Auth->user() && $this->Cookie->read(Setting::read('Remember.key'))) {
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
             } else {
-                $this->Cookie->delete('CookieAuth');
+                $this->Cookie->delete(Setting::read('Remember.key'));
             }
         }
     }
