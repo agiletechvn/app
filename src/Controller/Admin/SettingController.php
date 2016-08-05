@@ -171,6 +171,8 @@ class SettingController extends AppController
             'weight' => 2,
         ]);
         Setting::register('BruteForceProtection.file_path', 'prevent_brute_force', ['type' => 'text', 'description' => 'Folder to store list attacker ip', 'weight' => 3]);
+        Setting::register('BruteForceProtection.message.locked', 'You have exceeded the number of allowed login attempts. Please try again in {0}', ['type' => 'text', 'description' => 'Locked message', 'weight' => 4]);
+        Setting::register('BruteForceProtection.message.login_fail', 'Incorrect username or password. {0} retries remain. Please try again', ['type' => 'text', 'description' => 'Retries remain message', 'weight' => 5]);
 
         // Remember
         Setting::register('Remember.enable', true, ['type' => 'checkbox', 'description' => 'Allow store user/pass to Cookie', 'weight' => 1]);

@@ -231,6 +231,24 @@ class SettingsShell extends Shell
                 'weight' => 3,
                 'autoload' => 1,
             ],
+            [
+                'name' => 'BruteForceProtection.message.locked',
+                'value' => 'You have exceeded the number of allowed login attempts. Please try again in {0}',
+                'description' => 'Locked message',
+                'type' => 'text',
+                'editable' => 1,
+                'weight' => 4,
+                'autoload' => 1,
+            ],
+            [
+                'name' => 'BruteForceProtection.message.login_fail',
+                'value' => 'Incorrect username or password. {0} retries remain. Please try again',
+                'description' => 'Retries remain message',
+                'type' => 'text',
+                'editable' => 1,
+                'weight' => 5,
+                'autoload' => 1,
+            ],
             // Remember
             [
                 'name' => 'Remember.enable',
