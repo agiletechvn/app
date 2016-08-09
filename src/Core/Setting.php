@@ -78,7 +78,7 @@ class Setting
      * @return mixed|bool
      * @throws RuntimeException
      */
-    public function readOrFail($key = null, $type = null)
+    public static function readOrFail($key = null, $type = null)
     {
         if (!self::check($key, $type)) {
             throw new RuntimeException(sprintf('Expected configuration key "%s" not found.', $key));
