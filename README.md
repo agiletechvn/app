@@ -19,8 +19,10 @@ The framework source code can be found here: [cakephp/cakephp](https://github.co
 9. Integrated file manager, tinymce
 10. Prevent brute force attack
 11. Remember/Auto login
+12. Compress whole project to `deploy.tar.gz` file to ship in one click `(deploy/compress.sh)`
+13. Provide VERY SIMPLE script to set up nginx ([script link](https://gist.github.com/anhtuank7c/657f46700e3ac12d1ab5e1f6345cb789))
 
-## Support me [![paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=anhtuank7c%40hotmail%2ecom&lc=US&item_name=Crabstudio%20CakePHP%203%20%2d%20FlatAdmin%20Skeleton&item_number=crabstudio%2dcakephp%2dskeleton&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest)
+## Support my passion [![paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=anhtuank7c%40hotmail%2ecom&lc=US&item_name=Crabstudio%20CakePHP%203%20%2d%20FlatAdmin%20Skeleton&item_number=crabstudio%2dcakephp%2dskeleton&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest)
 
 ## Create project
 
@@ -151,6 +153,18 @@ Open crontab `crontab -e` then add cronjob:
 */5 * * * * cd /path/to/app && bin/cake Scheduler
 ```
 
+## Compress project to ship
+
+Go to `deploy` folder then double click on `compress.sh`
+
+## Set up nginx Web server
+
+I recommend you to use nginx server.
+
+Use this [simple script](https://gist.github.com/anhtuank7c/657f46700e3ac12d1ab5e1f6345cb789) to set up **optimized** nginx on ubuntu in **4 simple steps**.
+
+![test](https://cloud.githubusercontent.com/assets/3163410/17489971/df7400aa-5dca-11e6-8278-a2b28b95a480.PNG)
+
 # Demo
 
 ![Login page](http://image.prntscr.com/image/1e676ca9184e4af78f1cae85b8b294e5.png)
@@ -178,17 +192,3 @@ Open crontab `crontab -e` then add cronjob:
 ![Edit](http://image.prntscr.com/image/46a6870ee9dc4804b081dc9a232d268c.png)
 
 ![View](http://image.prntscr.com/image/8e820a4daf244d7f99b77d0a7b23e4e1.png)
-
-# Page speed improvement
-
-- [Google pagespeed mod](https://developers.google.com/speed/pagespeed/module/) on your server
-
-	`.htaccess` already setup mod expires and deflate/gzip, you have to setup these mods
-
-- [mod_expires apache](http://httpd.apache.org/docs/current/mod/mod_expires.html), [expires nginx](https://gist.github.com/anhtuank7c/fa03b1dae5bc71a246af)
-
-- [mod_deflate apache](http://httpd.apache.org/docs/current/mod/mod_deflate.html), [gzip nginx](http://aspyct.org/blog/2012/08/20/setting-up-http-cache-and-gzip-with-nginx/)
-
-`Nodejs` required to use `gulp`
-
-- Install and use [gulp](http://gulpjs.com/), [minify npm](https://github.com/srod/node-minify) to compress your js, css
