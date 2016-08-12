@@ -59,6 +59,10 @@ class AppController extends Controller
                         'retries' => Setting::read('BruteForceProtection.retries'),
                         'expires' => Setting::read('BruteForceProtection.expires'),
                         'file_path' => Setting::read('BruteForceProtection.file_path'),
+                        'message' => [
+                            'locked' => Setting::read('BruteForceProtection.message.locked'),
+                            'login_fail' => Setting::read('BruteForceProtection.message.login_fail'),
+                        ]
                     ],
                     'remember' => [
                         'enable' => Setting::read('Remember.enable'),
